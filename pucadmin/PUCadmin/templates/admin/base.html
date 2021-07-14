@@ -1,0 +1,34 @@
+{% extends 'admin/base.html' %}
+
+{% block extrahead %}{{ block.super }}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap');
+        :root {
+            --ru-base: #e3000b;
+            --ru-poppy: #ff424b;
+            --ru-lady-bug: #be311a;
+            --ru-berry: #8f2011;
+            --ru-maroon: #730e04;
+            --ru-mahogany: #4a0004;
+
+            --accent: var(--ru-base);
+            --primary: var(--ru-maroon);
+            --secondary: var(--ru-mahogany);
+            --link-fg: var(--ru-lady-bug);
+            --link-hover-color: var(--ru-poppy);
+            --link-selected-fg: var(--ru-poppy);
+            --header-color: var(--ru-poppy);
+            --default-button-hover-bg: var(--ru-lady-bug);
+            --button-hover-bg: var(--ru-lady-bug);
+            --breadcrumbs-link-fg: var(--ru-poppy);
+            --breadcrumbs-fg: var(--ru-lady-bug);
+            --selected-row: rgba(255, 66, 75, 0.22);
+        }
+        body {
+            font-family: "Open Sans","Roboto","Lucida Grande","DejaVu Sans","Bitstream Vera Sans",Verdana,Arial,sans-serif;
+        }
+        h1, h2, h3, h4, h5, h6, label, a, strong, b, #header, #branding, #user-tools, #breadcrumbs, #changelist-filter {
+            font-weight: 800 !important;
+        }
+    </style>
+{% endblock %}

@@ -1,0 +1,10 @@
+<form method="post" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <h2>Students:</h2>
+    {{ students.as_p }}
+    {% if supervisors %}
+        <h2>Supervisors:</h2>
+        {{ supervisors.as_p }}
+    {% endif %}
+    <input type="submit" value="Save">
+</form>
