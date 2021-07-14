@@ -271,8 +271,9 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
     _supervisors.short_description = "supervisors"
 
     def _school(self, obj):
-        url = reverse("admin:schools_school_change", args=(obj.school.id,))
-        return format_html("<a href='{}'>{}</a>", url, obj.school)
+        if obj.school:
+            url = reverse("admin:schools_school_change", args=(obj.school.id,))
+            return format_html("<a href='{}'>{}</a>", url, obj.school)
 
     _school.short_description = "school"
     _school.admin_order_field = "school"
