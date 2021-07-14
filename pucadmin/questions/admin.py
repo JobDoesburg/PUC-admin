@@ -15,7 +15,7 @@ class CourseAssigneeAdmin(admin.ModelAdmin):
 
     def _assignee(self, obj):
         if obj.assignee:
-            url = reverse("admin:organisations_user_change", args=(obj.assignee.id,))
+            url = reverse("admin:organisations_user_change", args=(obj.assignee.pk,))
             return format_html("<a href='{}'>{}</a>", url, obj.assignee)
 
     _assignee.short_description = "assignee"
@@ -63,7 +63,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
 
     def _school(self, obj):
         if obj.school:
-            url = reverse("admin:schools_school_change", args=(obj.school.id,))
+            url = reverse("admin:schools_school_change", args=(obj.school.pk,))
             return format_html("<a href='{}'>{}</a>", url, obj.school)
 
     _school.short_description = "school"

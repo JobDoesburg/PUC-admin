@@ -112,7 +112,7 @@ class StudentAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdmin)
     def _school(self, obj):
         if obj.submission and obj.submission.school:
             url = reverse(
-                "admin:schools_school_change", args=(obj.submission.school.id,)
+                "admin:schools_school_change", args=(obj.submission.school.pk,)
             )
             return format_html("<a href='{}'>{}</a>", url, obj.submission.school)
 
@@ -128,7 +128,7 @@ class StudentAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdmin)
     def _submission_title(self, obj):
         if obj.submission:
             url = reverse(
-                "admin:competitions_submission_change", args=(obj.submission.id,)
+                "admin:competitions_submission_change", args=(obj.submission.pk,)
             )
             return format_html("<a href='{}'>{}</a>", url, obj.submission.title)
 
@@ -272,7 +272,7 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
 
     def _school(self, obj):
         if obj.school:
-            url = reverse("admin:schools_school_change", args=(obj.school.id,))
+            url = reverse("admin:schools_school_change", args=(obj.school.pk,))
             return format_html("<a href='{}'>{}</a>", url, obj.school)
 
     _school.short_description = "school"
@@ -281,7 +281,7 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
     def _competition(self, obj):
         if obj.competition:
             url = reverse(
-                "admin:competitions_competition_change", args=(obj.competition.id,)
+                "admin:competitions_competition_change", args=(obj.competition.pk,)
             )
             return format_html("<a href='{}'>{}</a>", url, obj.competition)
 
