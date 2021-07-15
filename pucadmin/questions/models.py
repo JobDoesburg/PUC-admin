@@ -46,7 +46,7 @@ class CourseAssignee(models.Model):
 
 
 def _notify_new_assignee(question):
-    if question.couse and question.course.assignee and question.course.assignee.assignee == question.assignee:
+    if question.course and question.course.assignee and question.course.assignee.assignee == question.assignee:
         email = question.course.assignee.notification_email
     else:
         if question.assignee and question.assignee.email:
