@@ -46,10 +46,13 @@ class CourseAssignee(models.Model):
 
 
 def _notify_new_assignee(question):
-    if question.course.assignee.assignee == question.assignee:
+    if question.couse and question.course.assignee and question.course.assignee.assignee == question.assignee:
         email = question.course.assignee.notification_email
     else:
-        email = question.assignee.email
+        if question.assignee and question.assignee.email:
+            email = question.assignee.email
+        else:
+            return
 
     subject = f"[PUC admin] A new question {question.id} was assigned to you"
     message = f"You were assigned a question by PUC admin.\n" \
@@ -105,7 +108,7 @@ class Question(models.Model):
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
-        if not self.assignee:
+        if not self.assignee and self.course and self.course.assignee:
             self.assignee = self.course.assignee.assignee
 
         old_assignee = Question.objects.get(pk=self.pk).assignee
