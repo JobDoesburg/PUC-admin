@@ -1,0 +1,314 @@
+# Copyright (C) 2021 Job Doesburg
+# This file is distributed under the same license as the PACKAGE package.
+# Job Doesburg <j.j.doesburg@student.ru.nl>, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-15 22:23+0200\n"
+"PO-Revision-Date: 2021-07-15 22:23+0200\n"
+"Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
+"Language-Team: \n"
+"Language: nl\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0\n"
+
+#: PUCadmin/admin.py:4 PUCadmin/admin.py:5
+msgid "PUC admin"
+msgstr "PUC admin"
+
+#: PUCadmin/settings/base.py:82
+msgid "Dutch"
+msgstr "Nederlands"
+
+#: PUCadmin/settings/base.py:83
+msgid "English"
+msgstr "Engels"
+
+#: competitions/admin.py:72
+msgid "#submissions"
+msgstr "#inzendingen"
+
+#: competitions/admin.py:77
+msgid "registration open"
+msgstr "aanmelding open"
+
+#: competitions/admin.py:121 competitions/admin.py:280
+#: competitions/models.py:100 questions/admin.py:70 questions/models.py:45
+#: schools/models.py:10 schools/models.py:45
+msgid "school"
+msgstr "school"
+
+#: competitions/admin.py:127 competitions/admin.py:290
+#: competitions/models.py:17 competitions/models.py:78
+msgid "competition"
+msgstr "wedstrijd"
+
+#: competitions/admin.py:137 competitions/models.py:85
+msgid "title"
+msgstr "titel"
+
+#: competitions/admin.py:143 competitions/models.py:108
+msgid "nominated"
+msgstr "genomineerd"
+
+#: competitions/admin.py:150 competitions/models.py:112
+msgid "prize"
+msgstr "prijs"
+
+#: competitions/admin.py:156 competitions/models.py:89
+#: competitions/models.py:239 organisations/models.py:19 questions/models.py:18
+#: questions/models.py:55
+msgid "course"
+msgstr "vak"
+
+#: competitions/admin.py:262 competitions/models.py:75 questions/admin.py:62
+#: questions/models.py:42 schools/models.py:42
+msgid "created at"
+msgstr "aangemaakt op"
+
+#: competitions/admin.py:268
+msgid "authors"
+msgstr "auteurs"
+
+#: competitions/admin.py:273 competitions/models.py:215
+msgid "supervisors"
+msgstr "begeleiders"
+
+#: competitions/apps.py:8
+msgid "Competitions"
+msgstr "Wedstrijden"
+
+#: competitions/models.py:18
+msgid "competitions"
+msgstr "wedstrijden"
+
+#: competitions/models.py:21 organisations/models.py:11
+#: organisations/models.py:22 schools/models.py:13
+msgid "name"
+msgstr "naam"
+
+#: competitions/models.py:23
+msgid "For example: Van Melsenprijs 2021"
+msgstr "Bijvoorbeeld: Van Melsenprijs 2021"
+
+#: competitions/models.py:27 competitions/models.py:86
+#: organisations/models.py:23
+msgid "slug"
+msgstr "slug"
+
+#: competitions/models.py:30 organisations/models.py:8
+#: organisations/models.py:27 organisations/models.py:40
+msgid "organisation"
+msgstr "organisatie"
+
+#: competitions/models.py:38
+msgid "registration start"
+msgstr "start aanmelding"
+
+#: competitions/models.py:39
+msgid "registration end"
+msgstr "eind aanmelding"
+
+#: competitions/models.py:41
+msgid "competition date"
+msgstr "wedstrijddatum"
+
+#: competitions/models.py:71 competitions/models.py:200
+#: competitions/models.py:249
+msgid "submission"
+msgstr "inzending"
+
+#: competitions/models.py:72
+msgid "submissions"
+msgstr "inzendingen"
+
+#: competitions/models.py:96
+msgid "abstract"
+msgstr "samenvatting"
+
+#: competitions/models.py:97
+msgid "document"
+msgstr "document"
+
+#: competitions/models.py:109
+msgid "nomination report"
+msgstr "nominatie rapport"
+
+#: competitions/models.py:110
+msgid "nomination score"
+msgstr "nominatie score"
+
+#: competitions/models.py:113
+msgid "jury report"
+msgstr "jury rapport"
+
+#: competitions/models.py:126
+msgid "This course is not managed by the organisation of this competition."
+msgstr "Dit vak wordt niet beheerd door de organisatie van deze wedstrijd."
+
+#: competitions/models.py:175 questions/models.py:115
+msgid "student"
+msgstr "student"
+
+#: competitions/models.py:176 questions/admin.py:76 questions/models.py:116
+msgid "students"
+msgstr "studenten"
+
+#: competitions/models.py:178 competitions/models.py:217
+#: questions/models.py:118
+msgid "first name"
+msgstr "voornaam"
+
+#: competitions/models.py:179 competitions/models.py:218
+#: questions/models.py:119
+msgid "last name"
+msgstr "achternaam"
+
+#: competitions/models.py:180 competitions/models.py:219 schools/models.py:14
+msgid "address 1"
+msgstr "adresregel 1"
+
+#: competitions/models.py:181 competitions/models.py:220 schools/models.py:15
+msgid "address 2"
+msgstr "adresregel 2"
+
+#: competitions/models.py:183 competitions/models.py:222 schools/models.py:17
+msgid "zip"
+msgstr "postcode"
+
+#: competitions/models.py:190 competitions/models.py:229 schools/models.py:24
+msgid "Enter zip code in this format: '1234 AB'"
+msgstr "Voer postcode in als: ‘1234 AB’"
+
+#: competitions/models.py:194 competitions/models.py:233 schools/models.py:28
+msgid "town"
+msgstr "plaatsnaam"
+
+#: competitions/models.py:195 competitions/models.py:234
+msgid "phone"
+msgstr "telefoon"
+
+#: competitions/models.py:196 competitions/models.py:235
+#: questions/models.py:120
+msgid "email"
+msgstr "e-mail"
+
+#: competitions/models.py:214
+msgid "supervisor"
+msgstr "begeleider"
+
+#: frontoffice/templates/submission_form.html:4
+msgid "Students"
+msgstr "Studenten"
+
+#: frontoffice/templates/submission_form.html:7
+msgid "Supervisors"
+msgstr "Begeleiders"
+
+#: frontoffice/templates/submission_form.html:10
+msgid "submit"
+msgstr "versturen"
+
+#: organisations/admin.py:27
+msgid "#schools"
+msgstr "#scholen"
+
+#: organisations/apps.py:8
+msgid "Organisations"
+msgstr "Organisaties"
+
+#: organisations/models.py:9
+msgid "organisations"
+msgstr "organisaties"
+
+#: organisations/models.py:20 organisations/models.py:47 schools/models.py:30
+msgid "courses"
+msgstr "vakken"
+
+#: organisations/models.py:50
+msgid "alternative email"
+msgstr "alternatief e-mailadres"
+
+#: organisations/models.py:53
+msgid ""
+"Notifications for new questions for this course will be sent to this "
+"address. If empty, the default email will be used."
+msgstr ""
+"Notificaties voor nieuwe vragen voor dit vak worden naar dit adres "
+"verstuurd. Indien leeg gelaten wordt het standaard e-mailadres gebruikt."
+
+#: questions/admin.py:22 questions/models.py:25 questions/models.py:68
+msgid "assignee"
+msgstr "verantwoordelijke"
+
+#: questions/apps.py:8
+msgid "Questions"
+msgstr "Vragen"
+
+#: questions/models.py:13
+msgid "course assignee"
+msgstr "vakverantwoordelijke"
+
+#: questions/models.py:14
+msgid "course assignees"
+msgstr "vakverantwoordelijken"
+
+#: questions/models.py:34
+#, python-format
+msgid "%(course)s assigned to %(assignee)s."
+msgstr "%(course)s toegewezen aan %(assignee)s."
+
+#: questions/models.py:39 questions/models.py:124
+msgid "question"
+msgstr "vraag"
+
+#: questions/models.py:40
+msgid "questions"
+msgstr "vragen"
+
+#: questions/models.py:62
+msgid "research question"
+msgstr "onderzoeksvraag"
+
+#: questions/models.py:63
+msgid "sub questions"
+msgstr "deelvragen"
+
+#: questions/models.py:64
+msgid "message"
+msgstr "bericht"
+
+#: questions/models.py:76
+msgid "completed"
+msgstr "afgerond"
+
+#: questions/models.py:94
+#, python-format
+msgid "Question %(id)s (%(course)s, %(created)s)"
+msgstr "Vraag %(id)s (%(course)s, %(created)s)"
+
+#: schools/apps.py:8
+msgid "Schools"
+msgstr "Scholen"
+
+#: schools/models.py:11
+msgid "schools"
+msgstr "scholen"
+
+#: schools/models.py:39 schools/models.py:52
+msgid "remark"
+msgstr "opmerking"
+
+#: schools/models.py:40
+msgid "remarks"
+msgstr "opmerkingen"
+
+#: schools/models.py:55
+#, python-format
+msgid "Remark on %(school)s at %(created)s."
+msgstr "Opmerking bij %(school)s op %(created)s."

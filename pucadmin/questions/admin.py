@@ -5,6 +5,7 @@ from django.contrib import admin
 from django.contrib.admin import register
 from django.urls import reverse
 from django.utils.html import format_html
+from django.utils.translation import gettext_lazy as _
 
 from .models import CourseAssignee, Question, Student
 
@@ -18,7 +19,7 @@ class CourseAssigneeAdmin(admin.ModelAdmin):
             url = reverse("admin:organisations_user_change", args=(obj.assignee.pk,))
             return format_html("<a href='{}'>{}</a>", url, obj.assignee)
 
-    _assignee.short_description = "assignee"
+    _assignee.short_description = _("assignee")
     _assignee.admin_order_field = "assignee"
 
 
@@ -58,7 +59,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
     def _created_at(self, obj):
         return f"{obj.created_at:%d-%m-%Y}"
 
-    _created_at.short_description = "created at"
+    _created_at.short_description = _("created at")
     _created_at.admin_order_field = "created_at"
 
     def _school(self, obj):
@@ -66,13 +67,13 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
             url = reverse("admin:schools_school_change", args=(obj.school.pk,))
             return format_html("<a href='{}'>{}</a>", url, obj.school)
 
-    _school.short_description = "school"
+    _school.short_description = _("school")
     _school.admin_order_field = "school"
 
     def _students(self, obj):
         return obj.students_text
 
-    _students.short_description = "students"
+    _students.short_description = _("students")
 
     list_filter = (
         "course",

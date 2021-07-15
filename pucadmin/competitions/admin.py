@@ -10,6 +10,7 @@ from import_export.admin import (
     ImportExportMixin,
     ExportActionMixin,
 )
+from django.utils.translation import gettext_lazy as _
 
 from .models import Competition, Student, Supervisor, Submission
 from .resources import SubmissionResource, StudentResource, SupervisorResource
@@ -68,12 +69,12 @@ class CompetitionAdmin(admin.ModelAdmin):
     def _num_submissions(self, obj):
         return obj.submissions.count()
 
-    _num_submissions.short_description = "#submissions"
+    _num_submissions.short_description = _("#submissions")
 
     def _registration_open(self, obj):
         return obj.registration_open
 
-    _registration_open.short_description = "registration open"
+    _registration_open.short_description = _("registration open")
     _registration_open.boolean = True
 
 
@@ -117,13 +118,13 @@ class StudentAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdmin)
             )
             return format_html("<a href='{}'>{}</a>", url, obj.submission.school)
 
-    _school.short_description = "school"
+    _school.short_description = _("school")
     _school.admin_order_field = "submission__school"
 
     def _competition(self, obj):
         return obj.submission.competition
 
-    _competition.short_description = "competition"
+    _competition.short_description = _("competition")
     _competition.admin_order_field = "submission__competition"
 
     def _submission_title(self, obj):
@@ -133,26 +134,26 @@ class StudentAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdmin)
             )
             return format_html("<a href='{}'>{}</a>", url, obj.submission.title)
 
-    _submission_title.short_description = "title"
+    _submission_title.short_description = _("title")
     _submission_title.admin_order_field = "submission__title"
 
     def _nominated(self, obj):
         return obj.submission.nominated
 
-    _nominated.short_description = "nominated"
+    _nominated.short_description = _("nominated")
     _nominated.boolean = True
     _nominated.admin_order_field = "submission__nominated"
 
     def _prize(self, obj):
         return obj.submission.prize
 
-    _prize.short_description = "prize"
+    _prize.short_description = _("prize")
     _prize.admin_order_field = "submission__prize"
 
     def _course(self, obj):
         return obj.submission.course
 
-    _course.short_description = "course"
+    _course.short_description = _("course")
     _course.admin_order_field = "submission__course"
 
 
@@ -258,25 +259,25 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
     def _created_at(self, obj):
         return f"{obj.created_at:%d-%m-%Y}"
 
-    _created_at.short_description = "created at"
+    _created_at.short_description = _("created at")
     _created_at.admin_order_field = "created_at"
 
     def _authors(self, obj):
         return obj.authors_text
 
-    _authors.short_description = "authors"
+    _authors.short_description = _("authors")
 
     def _supervisors(self, obj):
         return obj.supervisors_text
 
-    _supervisors.short_description = "supervisors"
+    _supervisors.short_description = _("supervisors")
 
     def _school(self, obj):
         if obj.school:
             url = reverse("admin:schools_school_change", args=(obj.school.pk,))
             return format_html("<a href='{}'>{}</a>", url, obj.school)
 
-    _school.short_description = "school"
+    _school.short_description = _("school")
     _school.admin_order_field = "school"
 
     def _competition(self, obj):
@@ -286,5 +287,5 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
             )
             return format_html("<a href='{}'>{}</a>", url, obj.competition)
 
-    _competition.short_description = "competition"
+    _competition.short_description = _("competition")
     _competition.admin_order_field = "competition"

@@ -1,13 +1,14 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 
 class Organisation(models.Model):
     class Meta:
-        verbose_name = "organisation"
-        verbose_name_plural = "organisations"
+        verbose_name = _("organisation")
+        verbose_name_plural = _("organisations")
 
-    name = models.CharField(unique=True, max_length=20, blank=False, null=False)
+    name = models.CharField(verbose_name=_("name"), unique=True, max_length=20, blank=False, null=False)
 
     def __str__(self):
         return self.name
@@ -15,14 +16,15 @@ class Organisation(models.Model):
 
 class Course(models.Model):
     class Meta:
-        verbose_name = "course"
-        verbose_name_plural = "courses"
+        verbose_name = _("course")
+        verbose_name_plural = _("courses")
 
-    name = models.CharField(max_length=20, unique=True, blank=False, null=False)
-    slug = models.SlugField(unique=True, max_length=3, blank=False, null=False)
+    name = models.CharField(verbose_name=_("name"), max_length=20, unique=True, blank=False, null=False)
+    slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=3, blank=False, null=False)
 
     organisation = models.ForeignKey(
         Organisation,
+        verbose_name=_("organisation"),
         on_delete=models.PROTECT,
         related_name="courses",
         related_query_name="courses",
@@ -35,18 +37,20 @@ class Course(models.Model):
 class User(AbstractUser):
     organisation = models.ForeignKey(
         Organisation,
+        verbose_name=_("organisation"),
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
         related_name="users",
         related_query_name="users",
     )
-    courses = models.ManyToManyField(Course)
+    courses = models.ManyToManyField(Course, verbose_name=_("courses"))
 
     alternative_email = models.EmailField(
+        verbose_name=_("alternative email"),
         blank=True,
         null=True,
-        help_text="Notifications for new questions for this course will be sent to this address. If empty, the default email will be used.",
+        help_text=_("Notifications for new questions for this course will be sent to this address. If empty, the default email will be used."),
     )
 
     @property
@@ -55,8 +59,5 @@ class User(AbstractUser):
             return self.alternative_email
         return self.email
 
-
-
-
-def __str__(self):
+    def __str__(self):
         return f"{self.first_name} {self.last_name}"

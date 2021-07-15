@@ -3,6 +3,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
+from django.utils.translation import gettext_lazy as _
 
 from organisations.models import Course
 
@@ -13,18 +14,20 @@ from organisations.models import Organisation
 
 class Competition(models.Model):
     class Meta:
-        verbose_name = "competition"
-        verbose_name_plural = "competitions"
+        verbose_name = _("competition")
+        verbose_name_plural = _("competitions")
 
     name = models.CharField(
+        verbose_name=_("name"),
         max_length=20,
-        help_text="For example: Van Melsenprijs 2021",
+        help_text=_("For example: Van Melsenprijs 2021"),
         blank=False,
         null=False,
     )
-    slug = models.SlugField(unique=True, max_length=20, blank=False, null=False)
+    slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=20, blank=False, null=False)
     organisation = models.ForeignKey(
         Organisation,
+        verbose_name=_("organisation"),
         on_delete=models.PROTECT,
         blank=False,
         null=False,
@@ -32,10 +35,10 @@ class Competition(models.Model):
         related_query_name="competitions",
     )
 
-    registration_start = models.DateTimeField(blank=True, null=True)
-    registration_end = models.DateTimeField(blank=True, null=True)
+    registration_start = models.DateTimeField(verbose_name=_("registration start"), blank=True, null=True)
+    registration_end = models.DateTimeField(verbose_name=_("registration end"), blank=True, null=True)
 
-    competition_date = models.DateField(blank=False, null=True)
+    competition_date = models.DateField(verbose_name=_("competition date"), blank=False, null=True)
 
     @property
     def registration_open(self):
@@ -65,33 +68,36 @@ def submission_upload_path(instance, filename):
 
 class Submission(models.Model):
     class Meta:
-        verbose_name = "submission"
-        verbose_name_plural = "submissions"
+        verbose_name = _("submission")
+        verbose_name_plural = _("submissions")
         unique_together = [["competition", "prize"], ["competition", "title"]]
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     competition = models.ForeignKey(
         Competition,
+        verbose_name=_("competition"),
         on_delete=models.PROTECT,
         blank=False,
         null=False,
         related_name="submissions",
         related_query_name="submissions",
     )
-    title = models.CharField(max_length=100, unique=True, blank=False, null=False)
-    slug = models.SlugField(max_length=120, unique=True, blank=False, null=False)
+    title = models.CharField(verbose_name=_("title"), max_length=100, unique=True, blank=False, null=False)
+    slug = models.SlugField(verbose_name=_("slug"), max_length=120, unique=True, blank=False, null=False)
     course = models.ForeignKey(
         Course,
+        verbose_name=_("course"),
         on_delete=models.PROTECT,
         blank=False,
         null=False,
         related_name="submissions",
         related_query_name="submissions",
     )
-    abstract = models.TextField(blank=False, null=False)
-    document = models.FileField(upload_to=submission_upload_path)
+    abstract = models.TextField(verbose_name=_("abstract"), blank=False, null=False)
+    document = models.FileField(verbose_name=_("document"), upload_to=submission_upload_path)
     school = models.ForeignKey(
         School,
+        verbose_name=_("school"),
         on_delete=models.PROTECT,
         blank=True,
         null=True,
@@ -99,12 +105,12 @@ class Submission(models.Model):
         related_query_name="submissions",
     )
 
-    nominated = models.BooleanField(default=False)
-    nomination_report = models.TextField(blank=True, null=False)
-    nomination_score = models.PositiveSmallIntegerField(blank=True, null=True)
+    nominated = models.BooleanField(verbose_name=_("nominated"), default=False)
+    nomination_report = models.TextField(verbose_name=_("nomination report"), blank=True, null=False)
+    nomination_score = models.PositiveSmallIntegerField(verbose_name=_("nomination score"), blank=True, null=True)
 
-    prize = models.PositiveSmallIntegerField(blank=True, null=True)
-    jury_report = models.TextField(blank=True, null=True)
+    prize = models.PositiveSmallIntegerField(verbose_name=_("prize"), blank=True, null=True)
+    jury_report = models.TextField(verbose_name=_("jury report"), blank=True, null=True)
 
     def clean(self):
         super().clean()
@@ -117,7 +123,7 @@ class Submission(models.Model):
         ):
             errors.update(
                 {
-                    "course": "This course is not managed by the organisation of this competition."
+                    "course": _("This course is not managed by the organisation of this competition.")
                 }
             )
         if errors:
@@ -166,30 +172,32 @@ class Submission(models.Model):
 
 class Student(models.Model):
     class Meta:
-        verbose_name = "student"
-        verbose_name_plural = "students"
+        verbose_name = _("student")
+        verbose_name_plural = _("students")
 
-    first_name = models.CharField(max_length=20, blank=False, null=False)
-    last_name = models.CharField(max_length=20, blank=False, null=False)
-    address_1 = models.CharField(max_length=100, blank=True, null=True)
-    address_2 = models.CharField(max_length=100, blank=True, null=True)
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20, blank=False, null=False)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=20, blank=False, null=False)
+    address_1 = models.CharField(verbose_name=_("address 1"), max_length=100, blank=True, null=True)
+    address_2 = models.CharField(verbose_name=_("address 2"), max_length=100, blank=True, null=True)
     zip = models.CharField(
+        verbose_name=_("zip"),
         max_length=7,
         blank=True,
         null=True,
         validators=[
             RegexValidator(
                 regex="^[1-9][0-9]{3} (?!SA|SD|SS)[A-Z]{2}",
-                message="Enter zip code in this format: '1234 AB'",
+                message=_("Enter zip code in this format: '1234 AB'"),
             )
         ],
     )
-    town = models.CharField(max_length=50, blank=True, null=True)
-    phone = models.CharField(max_length=20, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
+    town = models.CharField(verbose_name=_("town"), max_length=50, blank=True, null=True)
+    phone = models.CharField(verbose_name=_("phone"), max_length=20, blank=True, null=True)
+    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
 
     submission = models.ForeignKey(
         Submission,
+        verbose_name=_("submission"),
         on_delete=models.CASCADE,
         blank=False,
         null=False,
@@ -203,30 +211,32 @@ class Student(models.Model):
 
 class Supervisor(models.Model):
     class Meta:
-        verbose_name = "supervisor"
-        verbose_name_plural = "supervisors"
+        verbose_name = _("supervisor")
+        verbose_name_plural = _("supervisors")
 
-    first_name = models.CharField(max_length=20, blank=False, null=False)
-    last_name = models.CharField(max_length=20, blank=False, null=False)
-    address_1 = models.CharField(max_length=100, blank=True, null=True)
-    address_2 = models.CharField(max_length=100, blank=True, null=True)
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20, blank=False, null=False)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=20, blank=False, null=False)
+    address_1 = models.CharField(verbose_name=_("address 1"), max_length=100, blank=True, null=True)
+    address_2 = models.CharField(verbose_name=_("address 2"), max_length=100, blank=True, null=True)
     zip = models.CharField(
+        verbose_name=_("zip"),
         max_length=7,
         blank=True,
         null=True,
         validators=[
             RegexValidator(
                 regex="^[1-9][0-9]{3} (?!SA|SD|SS)[A-Z]{2}",
-                message="Enter zip code in this format: '1234 AB'",
+                message=_("Enter zip code in this format: '1234 AB'"),
             )
         ],
     )
-    town = models.CharField(max_length=50, blank=True, null=True)
-    phone = models.CharField(max_length=20, blank=True, null=True)
-    email = models.EmailField(blank=True, null=True)
+    town = models.CharField(verbose_name=_("town"), max_length=50, blank=True, null=True)
+    phone = models.CharField(verbose_name=_("phone"), max_length=20, blank=True, null=True)
+    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
 
     course = models.ForeignKey(
         Course,
+        verbose_name=_("course"),
         on_delete=models.PROTECT,
         blank=False,
         null=False,
@@ -236,6 +246,7 @@ class Supervisor(models.Model):
 
     submission = models.ForeignKey(
         Submission,
+        verbose_name=_("submission"),
         on_delete=models.CASCADE,
         blank=False,
         null=False,

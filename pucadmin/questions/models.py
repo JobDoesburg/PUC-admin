@@ -1,5 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils.translation import gettext_lazy as _
 
 from organisations.models import Course
 from questions.services import notify_new_assignee
@@ -9,17 +10,19 @@ from schools.models import School
 
 class CourseAssignee(models.Model):
     class Meta:
-        verbose_name = "course assignee"
-        verbose_name_plural = "course assignees"
+        verbose_name = _("course assignee")
+        verbose_name_plural = _("course assignees")
 
     course = models.OneToOneField(
         Course,
+        verbose_name=_("course"),
         on_delete=models.CASCADE,
         related_name="assignee",
         related_query_name="assignee",
     )
     assignee = models.ForeignKey(
         get_user_model(),
+        verbose_name=_("assignee"),
         on_delete=models.PROTECT,
         blank=False,
         null=False,
@@ -28,17 +31,18 @@ class CourseAssignee(models.Model):
     )
 
     def __str__(self):
-        return f"{self.course} assigned to {self.assignee}"
+        return  _('%(course)s assigned to %(assignee)s.') % {'course': self.course, 'assignee': self.assignee}
 
 
 class Question(models.Model):
     class Meta:
-        verbose_name = "question"
-        verbose_name_plural = "questions"
+        verbose_name = _("question")
+        verbose_name_plural = _("questions")
 
-    created_at = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     school = models.ForeignKey(
         School,
+        verbose_name=_("school"),
         on_delete=models.PROTECT,
         blank=True,
         null=True,
@@ -48,18 +52,20 @@ class Question(models.Model):
 
     course = models.ForeignKey(
         Course,
+        verbose_name=_("course"),
         on_delete=models.PROTECT,
         blank=False,
         null=False,
         related_name="questions",
         related_query_name="questions",
     )
-    research_question = models.TextField(blank=True, null=True)
-    sub_questions = models.TextField(blank=True, null=True)
-    message = models.TextField(blank=False, null=False)
+    research_question = models.TextField(verbose_name=_("research question"), blank=True, null=True)
+    sub_questions = models.TextField(verbose_name=_("sub questions"), blank=True, null=True)
+    message = models.TextField(verbose_name=_("message"), blank=False, null=False)
 
     assignee = models.ForeignKey(
         get_user_model(),
+        verbose_name=_("assignee"),
         on_delete=models.SET_NULL,
         blank=True,
         null=True,
@@ -67,7 +73,7 @@ class Question(models.Model):
         related_query_name="assigned_questions",
     )
 
-    completed = models.BooleanField(default=False)
+    completed = models.BooleanField(verbose_name=_("completed"), default=False)
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
@@ -85,7 +91,7 @@ class Question(models.Model):
         return ret
 
     def __str__(self):
-        return f"Question {self.id} ({self.course}, {self.created_at:%d-%m-%Y})"
+        return  _('Question %(id)s (%(course)s, %(created)s)') % {'id': self.id, 'course': self.course, 'created': self.created_at.strftime("%d-%M-%Y")}
 
     @staticmethod
     def __stringify_persons(queryset):
@@ -106,15 +112,16 @@ class Question(models.Model):
 
 class Student(models.Model):
     class Meta:
-        verbose_name = "student"
-        verbose_name_plural = "students"
+        verbose_name = _("student")
+        verbose_name_plural = _("students")
 
-    first_name = models.CharField(max_length=20, blank=False, null=False)
-    last_name = models.CharField(max_length=20, blank=False, null=False)
-    email = models.EmailField(blank=True, null=True)
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20, blank=False, null=False)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=20, blank=False, null=False)
+    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
 
     question = models.ForeignKey(
         Question,
+        verbose_name=_("question"),
         on_delete=models.CASCADE,
         blank=False,
         null=False,

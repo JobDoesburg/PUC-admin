@@ -1,6 +1,7 @@
 from django.contrib import admin
 
 from django.contrib.admin import register
+from django.utils.translation import gettext_lazy as _
 
 from .models import Organisation, Course, User
 
@@ -23,7 +24,7 @@ class CourseAdmin(admin.ModelAdmin):
     def _num_schools(self, obj):
         return obj.schools.count()
 
-    _num_schools.short_description = "#schools"
+    _num_schools.short_description = _("#schools")
 
 
 @register(User)
