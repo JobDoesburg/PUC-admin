@@ -27,3 +27,7 @@ RELOAD
 # Media and static
 static/
 media/
+
+# Production settings
+pucadmin/PUCadmin/settings/production.py
+pucadmin/PUCadmin/settings/management.py
