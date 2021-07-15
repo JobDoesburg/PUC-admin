@@ -17,18 +17,14 @@ class SubmissionForm(models.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["competition"].label = "Wedstrijd"
         self.fields["competition"].queryset = Competition.open_for_registration()
         self.fields["competition"].initial = Competition.open_for_registration().first()
-
-        self.fields["title"].label = "Titel"
-
-        self.fields["course"].label = "Vak"
-        self.fields[
-            "course"
-        ].help_text = "Kies het vak dat het meest van toepassing is."
-
-        self.fields["abstract"].label = "Samenvatting"
+        self.fields['competition'].required = True
+        self.fields['title'].required = True
+        self.fields['course'].required = True
+        self.fields['abstract'].required = True
+        self.fields['document'].required = True
+        self.fields['school'].required = True
 
 
 class CompetitionStudentForm(models.ModelForm):
@@ -45,6 +41,15 @@ class CompetitionStudentForm(models.ModelForm):
             "email",
         ]
 
+    def __init__(self):
+        super().__init__()
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['address_1'].required = True
+        self.fields['zip'].required = True
+        self.fields['town'].required = True
+        self.fields['email'].required = True
+
 
 class CompetitionSupervisorForm(models.ModelForm):
     class Meta:
@@ -58,7 +63,15 @@ class CompetitionSupervisorForm(models.ModelForm):
             "town",
             "phone",
             "email",
+            "course"
         ]
+
+    def __init__(self):
+        super().__init__()
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
+        self.fields['course'].required = True
 
 
 class QuestionSubmissionForm(models.ModelForm):
@@ -66,8 +79,22 @@ class QuestionSubmissionForm(models.ModelForm):
         model = Question
         fields = ["school", "course", "research_question", "sub_questions", "message"]
 
+    def __init__(self):
+        super().__init__()
+        self.fields['school'].required = True
+        self.fields['course'].required = True
+        self.fields['research_question'].required = True
+        self.fields['sub_questions'].required = True
+        self.fields['message'].required = True
+
 
 class QuestionStudentForm(models.ModelForm):
     class Meta:
         model = QuestionStudent
         fields = ["first_name", "last_name", "email"]
+
+    def __init__(self):
+        super().__init__()
+        self.fields['first_name'].required = True
+        self.fields['last_name'].required = True
+        self.fields['email'].required = True
