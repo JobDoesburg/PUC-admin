@@ -41,8 +41,8 @@ class CompetitionStudentForm(models.ModelForm):
             "email",
         ]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['address_1'].required = True
@@ -66,8 +66,8 @@ class CompetitionSupervisorForm(models.ModelForm):
             "course"
         ]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['email'].required = True
@@ -79,8 +79,8 @@ class QuestionSubmissionForm(models.ModelForm):
         model = Question
         fields = ["school", "course", "research_question", "sub_questions", "message"]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['school'].required = True
         self.fields['course'].required = True
         self.fields['research_question'].required = True
@@ -93,8 +93,8 @@ class QuestionStudentForm(models.ModelForm):
         model = QuestionStudent
         fields = ["first_name", "last_name", "email"]
 
-    def __init__(self):
-        super().__init__()
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['email'].required = True
