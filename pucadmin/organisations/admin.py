@@ -29,7 +29,7 @@ class CourseAdmin(admin.ModelAdmin):
 @register(User)
 class UserAdmin(admin.ModelAdmin):
     fieldsets = (
-        ("Personal", {"fields": ("first_name", "last_name", "email",)},),
+        ("Personal", {"fields": ("first_name", "last_name", "email", "alternative_email", )},),
         (
             "Administration",
             {
@@ -53,6 +53,8 @@ class UserAdmin(admin.ModelAdmin):
 
     list_display = (
         "__str__",
+        "email",
+        "alternative_email",
         "organisation",
         "is_active",
         "is_staff",

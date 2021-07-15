@@ -43,5 +43,20 @@ class User(AbstractUser):
     )
     courses = models.ManyToManyField(Course)
 
-    def __str__(self):
+    alternative_email = models.EmailField(
+        blank=True,
+        null=True,
+        help_text="Notifications for new questions for this course will be sent to this address. If empty, the default email will be used.",
+    )
+
+    @property
+    def notification_email(self):
+        if self.alternative_email:
+            return self.alternative_email
+        return self.email
+
+
+
+
+def __str__(self):
         return f"{self.first_name} {self.last_name}"

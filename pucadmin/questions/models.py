@@ -29,31 +29,15 @@ class CourseAssignee(models.Model):
         related_query_name="assigned_courses",
     )
 
-    alternative_email = models.EmailField(
-        blank=True,
-        null=True,
-        help_text="Notifications for new questions for this course will be sent to this address. If empty, the user email of the assignee will be used.",
-    )
-
-    @property
-    def notification_email(self):
-        if self.alternative_email:
-            return self.alternative_email
-        return self.assignee.email
-
     def __str__(self):
         return f"{self.course} assigned to {self.assignee}"
 
 
 def _notify_new_assignee(question):
-    if question.course and question.course.assignee and question.course.assignee.assignee == question.assignee:
-        email = question.course.assignee.notification_email
-    else:
-        if question.assignee and question.assignee.email:
-            email = question.assignee.email
-        else:
-            return
+    if not question.assignee or question.assignee.notification_email is None:
+        return
 
+    email = question.assignee.notification_email
     subject = f"[PUC admin] A new question {question.id} was assigned to you"
     message = f"You were assigned a question by PUC admin.\n" \
               f"The question was submitted at {question.created_at:%d-%m-%Y %H:%M} " \
@@ -112,9 +96,10 @@ class Question(models.Model):
             self.assignee = self.course.assignee.assignee
 
         old_assignee = Question.objects.get(pk=self.pk).assignee
+
         ret = super().save(force_insert, force_update, using, update_fields)
 
-        if self.assignee != old_assignee:
+        if self.assignee and self.assignee != old_assignee:
             _notify_new_assignee(self)
 
         return ret

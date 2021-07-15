@@ -11,7 +11,7 @@ from .models import CourseAssignee, Question, Student
 
 @register(CourseAssignee)
 class CourseAssigneeAdmin(admin.ModelAdmin):
-    list_display = ("course", "_assignee", "notification_email")
+    list_display = ("course", "_assignee",)
 
     def _assignee(self, obj):
         if obj.assignee:
