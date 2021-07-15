@@ -12,8 +12,11 @@ To run management commands on production, first activate the python env with `so
 
 
 # Data minimisation
+Data can be minimised by running `manage.py minimisedata`. This will use the following policy:
+
 ##### Competitions
 Personal information from students and supervisors for competition submissions, is minimised 100 days after the competition has ended. Address, email and phone number are deleted. Name, school and the submitted document, together with the reports are kept indefinitely.
 
 ##### Questions
 All personal information from students that submitted a question is deleted 30 days after the question has been marked completed. The content of the question itself and the school are stored indefinitely, but name and email are deleted. 
+
