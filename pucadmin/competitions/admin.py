@@ -58,6 +58,7 @@ class CompetitionAdmin(admin.ModelAdmin):
     inlines = [SubmissionInline]
     list_display = (
         "name",
+        "competition_date",
         "_registration_open",
         "_num_submissions",
     )

@@ -35,6 +35,8 @@ class Competition(models.Model):
     registration_start = models.DateTimeField(blank=True, null=True)
     registration_end = models.DateTimeField(blank=True, null=True)
 
+    competition_date = models.DateField(blank=False, null=True)
+
     @property
     def registration_open(self):
         if self.registration_start and self.registration_end:
