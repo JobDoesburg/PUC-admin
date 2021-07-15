@@ -51,6 +51,7 @@ LOGGING = {
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = "smtp.science.ru.nl"
 EMAIL_PORT = 25
+EMAIL_DEFAULT_SENDER = "webmaster@science.ru.nl"
 
 
 # Static files (CSS, JavaScript, Images)

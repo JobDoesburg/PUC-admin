@@ -23,8 +23,8 @@ DATABASES = {
 # Email
 # https://docs.djangoproject.com/en/3.2/topics/email/
 
-EMAIL_BACKEND = 'django.core.mail.backends.dummy.EmailBackend'
-
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_DEFAULT_SENDER = "development@example.com"
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/

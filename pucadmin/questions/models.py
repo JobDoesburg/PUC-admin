@@ -1,5 +1,8 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.core.mail import send_mail
+from django.utils import timezone
 
 from organisations.models import Course
 
@@ -41,6 +44,25 @@ class CourseAssignee(models.Model):
     def __str__(self):
         return f"{self.course} assigned to {self.assignee}"
 
+
+def _notify_new_assignee(question):
+    if question.course.assignee.assignee == question.assignee:
+        email = question.course.assignee.notification_email
+    else:
+        email = question.assignee.email
+
+    subject = f"[PUC admin] A new question {question.id} was assigned to you"
+    message = f"You were assigned a question by PUC admin.\n" \
+              f"The question was submitted at {question.created_at:%d-%m-%Y %H:%M} " \
+              f"for the course {question.course.name} by " \
+              f"{question.students_text} ({question.school}) " \
+              f"and assigned to you at {timezone.now():%d-%m-%Y %H:%M}:" \
+              f"\n\n\t{question.message}\n\n" \
+              f"Research question:\n\t{question.research_question}\n\n" \
+              f"Sub questions:\n\t{question.sub_questions}\n\n" \
+              f"Do not forget to mark this question as `completed` when it has been answered!\n\n" \
+              f"_This email was sent automatically_"
+    send_mail(subject, message, from_email=settings.EMAIL_DEFAULT_SENDER, recipient_list=[email])
 
 class Question(models.Model):
     class Meta:
@@ -86,7 +108,13 @@ class Question(models.Model):
         if not self.assignee:
             self.assignee = self.course.assignee.assignee
 
-        return super().save(force_insert, force_update, using, update_fields)
+        old_assignee = Question.objects.get(pk=self.pk).assignee
+        ret = super().save(force_insert, force_update, using, update_fields)
+
+        if self.assignee != old_assignee:
+            _notify_new_assignee(self)
+
+        return ret
 
     def __str__(self):
         return f"Question {self.id} ({self.course}, {self.created_at:%d-%m-%Y})"
