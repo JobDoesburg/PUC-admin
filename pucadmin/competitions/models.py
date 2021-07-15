@@ -3,6 +3,7 @@ from django.core.validators import RegexValidator
 from django.db import models
 from django.db.models import Q
 from django.utils import timezone
+from django.utils.text import slugify
 from django.utils.translation import gettext_lazy as _
 
 from organisations.models import Course
@@ -70,7 +71,7 @@ class Submission(models.Model):
     class Meta:
         verbose_name = _("submission")
         verbose_name_plural = _("submissions")
-        unique_together = [["competition", "prize"], ["competition", "title"]]
+        unique_together = [["competition", "title"]]
 
     created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     competition = models.ForeignKey(
@@ -129,9 +130,16 @@ class Submission(models.Model):
         if errors:
             raise ValidationError(errors)
 
+    def save(self, force_insert=False, force_update=False, using=None,
+             update_fields=None):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        return super().save(force_insert, force_update, using, update_fields)
+
     @staticmethod
     def __stringify_persons(queryset):
-        persons = queryset.order_by("last_name").all()
+        persons = list(queryset.order_by("last_name").all())
         if len(persons) == 0:
             return None
         elif len(persons) == 1:
@@ -139,7 +147,7 @@ class Submission(models.Model):
         elif len(persons) == 2:
             return f"{persons[0]} & {persons[1]}"
         else:
-            return ", ".join(persons[0:-2]) + f" & {persons[-1]}"
+            return ", ".join([str(person) for person in persons[0:-1]]) + f" & {persons[-1]}"
 
     @property
     def authors_text(self):

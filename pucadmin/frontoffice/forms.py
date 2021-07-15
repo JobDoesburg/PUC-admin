@@ -1,4 +1,4 @@
-from django.forms import models
+from django.forms import models, inlineformset_factory
 
 from competitions.models import (
     Submission,
@@ -74,6 +74,30 @@ class CompetitionSupervisorForm(models.ModelForm):
         self.fields['course'].required = True
 
 
+CompetitionStudentFormset = inlineformset_factory(
+    parent_model=Submission,
+    model=CompetitionStudent,
+    form=CompetitionStudentForm,
+    extra=1,
+    can_delete=False,
+    max_num=3,
+    validate_max=True,
+    min_num=1,
+    validate_min=True,
+)
+
+CompetitionSupervisorFormSet = inlineformset_factory(
+    parent_model=Submission,
+    model=CompetitionSupervisor,
+    form=CompetitionSupervisorForm,
+    extra=0,
+    can_delete=False,
+    max_num=2,
+    validate_max=True,
+    min_num=1,
+    validate_min=True,
+)
+
 class QuestionSubmissionForm(models.ModelForm):
     class Meta:
         model = Question
@@ -98,3 +122,15 @@ class QuestionStudentForm(models.ModelForm):
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['email'].required = True
+
+QuestionStudentFormset = inlineformset_factory(
+    parent_model=Question,
+    model=QuestionStudent,
+    form=QuestionStudentForm,
+    extra=1,
+    can_delete=False,
+    max_num=3,
+    validate_max=True,
+    min_num=1,
+    validate_min=True,
+)

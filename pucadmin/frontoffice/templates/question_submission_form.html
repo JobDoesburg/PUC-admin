@@ -1,0 +1,51 @@
+{% load i18n %}
+<form method="post" id="form-container" enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <h2>{% trans "Students" %}:</h2>
+    {{ students.management_form }}
+    {% for form in students %}
+        <div class="student-form">
+            {{form.as_p}}
+        </div>
+    {% endfor %}
+    <button id="add-student-form" type="button">{% trans "Add student" %}</button>
+    <button id="delete-student-form" type="button">{% trans "Delete student" %}</button>
+    <input type="submit" value="{% trans "submit" %}">
+</form>
+<script>
+    let container = document.querySelector("#form-container")
+
+    let studentForm = document.querySelectorAll(".student-form")
+    let addStudentButton = document.querySelector("#add-student-form")
+    let deleteStudentButton = document.querySelector("#delete-student-form")
+    let totalStudentsForms = document.querySelector("#id_students-TOTAL_FORMS")
+    let studentFormNum = totalStudentsForms.getAttribute("value")
+    let maxStudentsForms = document.querySelector("#id_students-MAX_NUM_FORMS").getAttribute("value")
+    let minStudentsForms = document.querySelector("#id_students-MIN_NUM_FORMS").getAttribute("value")
+    addStudentButton.addEventListener('click', addStudentForm)
+    deleteStudentButton.addEventListener('click', deleteStudentForm)
+    function addStudentForm(e){
+        e.preventDefault()
+
+        if (studentFormNum < maxStudentsForms) {
+            let newForm = studentForm[0].cloneNode(true)
+            let formRegex = RegExp(`students-(\\d){1}-`,'g')
+
+            studentFormNum++
+            newForm.innerHTML = newForm.innerHTML.replace(formRegex, `students-${studentFormNum-1}-`)
+            container.insertBefore(newForm, addStudentButton)
+
+            totalStudentsForms.setAttribute('value', `${studentFormNum}`)
+        }
+    }
+    function deleteStudentForm(e){
+        e.preventDefault()
+
+        if (studentFormNum > minStudentsForms) {
+            studentForm = document.querySelectorAll(".student-form")
+            studentForm.pop()
+            studentFormNum--
+            totalStudentsForms.setAttribute('value', `${studentFormNum}`)
+        }
+    }
+</script>

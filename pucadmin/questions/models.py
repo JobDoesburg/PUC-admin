@@ -95,7 +95,7 @@ class Question(models.Model):
 
     @staticmethod
     def __stringify_persons(queryset):
-        persons = queryset.order_by("last_name").all()
+        persons = list(queryset.order_by("last_name").all())
         if len(persons) == 0:
             return None
         elif len(persons) == 1:
@@ -103,7 +103,7 @@ class Question(models.Model):
         elif len(persons) == 2:
             return f"{persons[0]} & {persons[1]}"
         else:
-            return ", ".join(persons[0:-2]) + f" & {persons[-1]}"
+            return ", ".join([str(person) for person in persons[0:-1]]) + f" & {persons[-1]}"
 
     @property
     def students_text(self):
