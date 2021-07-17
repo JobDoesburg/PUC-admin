@@ -1,3 +1,4 @@
+from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 from django.views.decorators.clickjacking import xframe_options_exempt
 
@@ -10,7 +11,7 @@ from .forms import (
     CompetitionSupervisorFormSet, QuestionStudentFormset,
 )
 
-@xframe_options_exempt
+@method_decorator(xframe_options_exempt, name='dispatch')
 class CompetitionSubmissionView(CreateView):
     model = Submission
     form_class = SubmissionForm
@@ -39,7 +40,7 @@ class CompetitionSubmissionView(CreateView):
             supervisors.save()
         return super().form_valid(form)
 
-@xframe_options_exempt
+@method_decorator(xframe_options_exempt, name='dispatch')
 class QuestionSubmissionView(CreateView):
     model = Question
     form_class = QuestionSubmissionForm
