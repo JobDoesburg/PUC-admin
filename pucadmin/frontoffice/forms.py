@@ -1,3 +1,6 @@
+from django import forms
+from django.contrib import admin
+from django.contrib.admin.widgets import AutocompleteSelect
 from django.forms import models, inlineformset_factory
 
 from competitions.models import (
@@ -8,6 +11,7 @@ from competitions.models import (
 )
 
 from questions.models import Question, Student as QuestionStudent
+from schools.models import School
 
 
 class SubmissionForm(models.ModelForm):
@@ -25,6 +29,11 @@ class SubmissionForm(models.ModelForm):
         self.fields['abstract'].required = True
         self.fields['document'].required = True
         self.fields['school'].required = True
+
+    school = forms.ModelChoiceField(
+        queryset=School.objects.all(),
+        widget=AutocompleteSelect(Submission._meta.get_field('school').remote_field, admin.AdminSite)
+    )
 
 
 class CompetitionStudentForm(models.ModelForm):

@@ -1,4 +1,5 @@
 from django.views.generic import CreateView
+from django.views.decorators.clickjacking import xframe_options_exempt
 
 from competitions.models import Submission
 from questions.models import Question
@@ -9,7 +10,7 @@ from .forms import (
     CompetitionSupervisorFormSet, QuestionStudentFormset,
 )
 
-
+@xframe_options_exempt
 class CompetitionSubmissionView(CreateView):
     model = Submission
     form_class = SubmissionForm
@@ -38,7 +39,7 @@ class CompetitionSubmissionView(CreateView):
             supervisors.save()
         return super().form_valid(form)
 
-
+@xframe_options_exempt
 class QuestionSubmissionView(CreateView):
     model = Question
     form_class = QuestionSubmissionForm

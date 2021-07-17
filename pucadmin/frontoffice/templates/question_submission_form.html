@@ -1,11 +1,13 @@
-{% load i18n %}
-<form method="post" id="form-container" enctype="multipart/form-data">{% csrf_token %}
-    {{ form.as_p }}
+{% load i18n django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<form method="post" id="form-container" class="form" enctype="multipart/form-data">{% csrf_token %}
+    {% bootstrap_form form %}
     <h2>{% trans "Students" %}:</h2>
     {{ students.management_form }}
     {% for form in students %}
         <div class="student-form">
-            {{form.as_p}}
+            {% bootstrap_form form %}
         </div>
     {% endfor %}
     <button id="add-student-form" type="button">{% trans "Add student" %}</button>

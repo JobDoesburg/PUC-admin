@@ -1,25 +1,39 @@
-{% load i18n %}
-<form method="post" id="form-container" enctype="multipart/form-data">{% csrf_token %}
-    {{ form.as_p }}
-    <h2>{% trans "Students" %}:</h2>
+{% load i18n django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+<style>
+    * {
+        border-radius: 0!important;
+    }
+</style>
+<form method="post" id="form-container" class="form" enctype="multipart/form-data">{% csrf_token %}
+    {% bootstrap_form_errors form layout='inline' %}
+    {% bootstrap_form form %}
+
+    <h2 class="mt-4">{% trans "Students" %}:</h2>
     {{ students.management_form }}
     {% for form in students %}
-        <div class="student-form">
-            {{form.as_p}}
+        <div class="student-form mb-5">
+            {% bootstrap_form_errors form layout='inline' %}
+            {% bootstrap_form form %}
         </div>
     {% endfor %}
-    <button id="add-student-form" type="button">{% trans "Add student" %}</button>
-    <button id="delete-student-form" type="button">{% trans "Delete student" %}</button>
-    <h2>{% trans "Supervisors" %}:</h2>
+    {% bootstrap_button "Add" id="add-student-form" button_class="btn-secondary" %}
+    {% bootstrap_button "Delete" id="delete-student-form" button_class="btn-secondary" %}
+
+    <h2 class="mt-4">{% trans "Supervisors" %}:</h2>
     {{ supervisors.management_form }}
     {% for form in supervisors %}
-        <div class="supervisor-form">
-            {{form.as_p}}
+        <div class="supervisor-form mb-5">
+            {% bootstrap_form_errors form layout='inline' %}
+            {% bootstrap_form form %}
         </div>
     {% endfor %}
-    <button id="add-supervisor-form" type="button">{% trans "Add supervisor" %}</button>
-    <button id="delete-supervisor-form" type="button">{% trans "Delete supervisor" %}</button>
-    <input type="submit" value="{% trans "submit" %}">
+    {% bootstrap_button "Add" id="add-supervisor-form" button_class="btn-secondary" %}
+    {% bootstrap_button "Delete" id="delete-supervisor-form" button_class="btn-secondary" %}
+
+    <br>
+    {% bootstrap_button "Save" button_type="submit" button_class="btn-primary mt-5" %}
 </form>
 <script>
     let container = document.querySelector("#form-container")

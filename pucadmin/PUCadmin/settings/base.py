@@ -18,6 +18,7 @@ INSTALLED_APPS = [
     "schools",
     "competitions",
     "questions",
+    "django_bootstrap5",
     "frontoffice",
 ]
 
