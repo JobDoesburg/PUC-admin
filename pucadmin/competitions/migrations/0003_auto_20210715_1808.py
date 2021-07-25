@@ -7,45 +7,82 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisations', '0003_auto_20210715_1808'),
-        ('schools', '0002_auto_20210715_1808'),
-        ('competitions', '0002_initial'),
+        ("organisations", "0003_auto_20210715_1808"),
+        ("schools", "0002_auto_20210715_1808"),
+        ("competitions", "0002_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='competition',
-            name='organisation',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='competitions', related_query_name='competitions', to='organisations.organisation'),
+            model_name="competition",
+            name="organisation",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="competitions",
+                related_query_name="competitions",
+                to="organisations.organisation",
+            ),
         ),
         migrations.AlterField(
-            model_name='student',
-            name='submission',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='authors', related_query_name='authors', to='competitions.submission'),
+            model_name="student",
+            name="submission",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="authors",
+                related_query_name="authors",
+                to="competitions.submission",
+            ),
         ),
         migrations.AlterField(
-            model_name='submission',
-            name='competition',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='submissions', related_query_name='submissions', to='competitions.competition'),
+            model_name="submission",
+            name="competition",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="submissions",
+                related_query_name="submissions",
+                to="competitions.competition",
+            ),
         ),
         migrations.AlterField(
-            model_name='submission',
-            name='course',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='submissions', related_query_name='submissions', to='organisations.course'),
+            model_name="submission",
+            name="course",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="submissions",
+                related_query_name="submissions",
+                to="organisations.course",
+            ),
         ),
         migrations.AlterField(
-            model_name='submission',
-            name='school',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='submissions', related_query_name='submissions', to='schools.school'),
+            model_name="submission",
+            name="school",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="submissions",
+                related_query_name="submissions",
+                to="schools.school",
+            ),
         ),
         migrations.AlterField(
-            model_name='supervisor',
-            name='course',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='supervisors', related_query_name='supervisors', to='organisations.course'),
+            model_name="supervisor",
+            name="course",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="supervisors",
+                related_query_name="supervisors",
+                to="organisations.course",
+            ),
         ),
         migrations.AlterField(
-            model_name='supervisor',
-            name='submission',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='supervisors', related_query_name='supervisors', to='competitions.submission'),
+            model_name="supervisor",
+            name="submission",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="supervisors",
+                related_query_name="supervisors",
+                to="competitions.submission",
+            ),
         ),
     ]

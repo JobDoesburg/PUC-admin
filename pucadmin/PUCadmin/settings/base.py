@@ -11,7 +11,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    #"django_saml2_auth",
+    # "django_saml2_auth",
     "autocompletefilter",
     "import_export",
     "organisations",
@@ -80,8 +80,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGES = [
-    ('nl', _('Dutch')),
-    ('en', _('English')),
+    ("nl", _("Dutch")),
+    ("en", _("English")),
 ]
 LOCALE_PATHS = [
     "locale",

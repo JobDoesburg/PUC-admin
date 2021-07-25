@@ -1,23 +1,40 @@
 {% load i18n django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+{% translate "Add" as add %}
+{% translate "Delete" as delete %}
+{% translate "Submit" as submit %}
+<style>
+    * {
+        border-radius: 0!important;
+    }
+</style>
 <form method="post" id="form-container" class="form" enctype="multipart/form-data">{% csrf_token %}
-    {% bootstrap_form form %}
+    {% bootstrap_form_errors form layout='horizontal' %}
+    {% bootstrap_form form layout='horizontal' exclude="privacy_policy" %}
+
     <h2>{% trans "Students" %}:</h2>
-    {{ students.management_form }}
-    {% for form in students %}
-        <div class="student-form">
-            {% bootstrap_form form %}
+        {{ students.management_form }}
+        {% for form in students %}
+            <div class="student-form">
+                <hr/>
+                {% bootstrap_form form layout='horizontal' %}
+                {% bootstrap_form_errors form layout='horizontal' %}
+            </div>
+        {% endfor %}
+        <div id="student-buttons" class="btn-group" role="group">
+            {% bootstrap_button add id="add-student-form" button_class="btn-secondary" %}
+            {% bootstrap_button delete id="delete-student-form" button_class="btn-secondary" %}
         </div>
-    {% endfor %}
-    <button id="add-student-form" type="button">{% trans "Add student" %}</button>
-    <button id="delete-student-form" type="button">{% trans "Delete student" %}</button>
-    <input type="submit" value="{% trans "submit" %}">
+    <hr/>
+    {% bootstrap_field form.privacy_policy wrapper_class="mb-3"%}
+    {% bootstrap_button submit button_type="submit" button_class="btn-primary" %}
 </form>
 <script>
     let container = document.querySelector("#form-container")
 
     let studentForm = document.querySelectorAll(".student-form")
+    let studentButtons = document.querySelector("#student-buttons")
     let addStudentButton = document.querySelector("#add-student-form")
     let deleteStudentButton = document.querySelector("#delete-student-form")
     let totalStudentsForms = document.querySelector("#id_students-TOTAL_FORMS")
@@ -35,7 +52,7 @@
 
             studentFormNum++
             newForm.innerHTML = newForm.innerHTML.replace(formRegex, `students-${studentFormNum-1}-`)
-            container.insertBefore(newForm, addStudentButton)
+            container.insertBefore(newForm, studentButtons)
 
             totalStudentsForms.setAttribute('value', `${studentFormNum}`)
         }
@@ -45,7 +62,7 @@
 
         if (studentFormNum > minStudentsForms) {
             studentForm = document.querySelectorAll(".student-form")
-            studentForm.pop()
+            studentForm[studentForm.length-1].remove()
             studentFormNum--
             totalStudentsForms.setAttribute('value', `${studentFormNum}`)
         }

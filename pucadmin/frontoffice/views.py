@@ -2,16 +2,20 @@ from django.utils.decorators import method_decorator
 from django.views.generic import CreateView
 from django.views.decorators.clickjacking import xframe_options_exempt
 
+from PUCadmin.utils import send_email
 from competitions.models import Submission
 from questions.models import Question
 
 from .forms import (
     SubmissionForm,
-    QuestionSubmissionForm, CompetitionStudentFormset,
-    CompetitionSupervisorFormSet, QuestionStudentFormset,
+    QuestionSubmissionForm,
+    CompetitionStudentFormset,
+    CompetitionSupervisorFormSet,
+    QuestionStudentFormset,
 )
 
-@method_decorator(xframe_options_exempt, name='dispatch')
+
+@method_decorator(xframe_options_exempt, name="dispatch")
 class CompetitionSubmissionView(CreateView):
     model = Submission
     form_class = SubmissionForm
@@ -38,9 +42,21 @@ class CompetitionSubmissionView(CreateView):
             students.save()
             supervisors.instance = obj
             supervisors.save()
+
+            send_email(
+                (
+                    list(obj.authors.values_list("email", flat=True))
+                    + list(obj.supervisors.values_list("email", flat=True))
+                ),
+                f"Bevestiging inzending {obj.competition}",
+                "email/submission-confirmation.txt",
+                {"submission": obj},
+            )
+
         return super().form_valid(form)
 
-@method_decorator(xframe_options_exempt, name='dispatch')
+
+@method_decorator(xframe_options_exempt, name="dispatch")
 class QuestionSubmissionView(CreateView):
     model = Question
     form_class = QuestionSubmissionForm
@@ -62,4 +78,12 @@ class QuestionSubmissionView(CreateView):
             obj = form.save()
             students.instance = obj
             students.save()
+
+            send_email(
+                list(obj.students.values_list("email", flat=True)),
+                "Bevestiging PWS vraag aan Radboud Pre-University College",
+                "email/question-confirmation.txt",
+                {"question": obj},
+            )
+
         return super().form_valid(form)

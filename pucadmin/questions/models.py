@@ -31,7 +31,10 @@ class CourseAssignee(models.Model):
     )
 
     def __str__(self):
-        return  _('%(course)s assigned to %(assignee)s.') % {'course': self.course, 'assignee': self.assignee}
+        return _("%(course)s assigned to %(assignee)s.") % {
+            "course": self.course,
+            "assignee": self.assignee,
+        }
 
 
 class Question(models.Model):
@@ -40,6 +43,9 @@ class Question(models.Model):
         verbose_name_plural = _("questions")
 
     created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
+    school_text = models.CharField(
+        verbose_name=_("school (text)"), max_length=100, blank=True, null=True
+    )
     school = models.ForeignKey(
         School,
         verbose_name=_("school"),
@@ -59,8 +65,12 @@ class Question(models.Model):
         related_name="questions",
         related_query_name="questions",
     )
-    research_question = models.TextField(verbose_name=_("research question"), blank=True, null=True)
-    sub_questions = models.TextField(verbose_name=_("sub questions"), blank=True, null=True)
+    research_question = models.TextField(
+        verbose_name=_("research question"), blank=True, null=True
+    )
+    sub_questions = models.TextField(
+        verbose_name=_("sub questions"), blank=True, null=True
+    )
     message = models.TextField(verbose_name=_("message"), blank=False, null=False)
 
     assignee = models.ForeignKey(
@@ -78,10 +88,13 @@ class Question(models.Model):
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
-        if not self.assignee and self.course and self.course.assignee:
+        if not self.assignee and self.course and hasattr(self.course, "assignee"):
             self.assignee = self.course.assignee.assignee
 
-        old_assignee = Question.objects.get(pk=self.pk).assignee
+        try:
+            old_assignee = Question.objects.get(pk=self.pk).assignee
+        except models.ObjectDoesNotExist:
+            old_assignee = None
 
         ret = super().save(force_insert, force_update, using, update_fields)
 
@@ -91,7 +104,11 @@ class Question(models.Model):
         return ret
 
     def __str__(self):
-        return  _('Question %(id)s (%(course)s, %(created)s)') % {'id': self.id, 'course': self.course, 'created': self.created_at.strftime("%d-%M-%Y")}
+        return _("Question %(id)s (%(course)s, %(created)s)") % {
+            "id": self.id,
+            "course": self.course,
+            "created": self.created_at.strftime("%d-%M-%Y"),
+        }
 
     @staticmethod
     def __stringify_persons(queryset):
@@ -103,7 +120,10 @@ class Question(models.Model):
         elif len(persons) == 2:
             return f"{persons[0]} & {persons[1]}"
         else:
-            return ", ".join([str(person) for person in persons[0:-1]]) + f" & {persons[-1]}"
+            return (
+                ", ".join([str(person) for person in persons[0:-1]])
+                + f" & {persons[-1]}"
+            )
 
     @property
     def students_text(self):
@@ -115,8 +135,12 @@ class Student(models.Model):
         verbose_name = _("student")
         verbose_name_plural = _("students")
 
-    first_name = models.CharField(verbose_name=_("first name"), max_length=20, blank=False, null=False)
-    last_name = models.CharField(verbose_name=_("last name"), max_length=20, blank=False, null=False)
+    first_name = models.CharField(
+        verbose_name=_("first name"), max_length=20, blank=False, null=False
+    )
+    last_name = models.CharField(
+        verbose_name=_("last name"), max_length=20, blank=False, null=False
+    )
     email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
 
     question = models.ForeignKey(

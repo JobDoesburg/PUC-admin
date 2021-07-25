@@ -1,0 +1,20 @@
+You were assigned a question by PUC admin.
+The question was submitted at {{ question.created_at|date:"SHORT_DATE_FORMAT" }} {{ question.created_at|time }} for the course {{ question.course.name }}
+by {{ question.students_text }} ({{ question.school }}) and assigned to you at {{ assigned_date|date:"SHORT_DATE_FORMAT" }} {{ assigned_date|time }}:
+
+    {{ question.message }}
+
+
+Research question:
+
+    {{ question.research_question }}
+
+
+Sub questions:
+
+    {{ question.sub_questions }}
+
+
+Do not forget to mark this question as `completed` when it has been answered!
+
+_This email was sent automatically by puc-admin.science.ru.nl_

@@ -25,7 +25,9 @@ class Competition(models.Model):
         blank=False,
         null=False,
     )
-    slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=20, blank=False, null=False)
+    slug = models.SlugField(
+        verbose_name=_("slug"), unique=True, max_length=20, blank=False, null=False
+    )
     organisation = models.ForeignKey(
         Organisation,
         verbose_name=_("organisation"),
@@ -36,10 +38,25 @@ class Competition(models.Model):
         related_query_name="competitions",
     )
 
-    registration_start = models.DateTimeField(verbose_name=_("registration start"), blank=True, null=True)
-    registration_end = models.DateTimeField(verbose_name=_("registration end"), blank=True, null=True)
+    registration_start = models.DateTimeField(
+        verbose_name=_("registration start"), blank=True, null=True
+    )
+    registration_end = models.DateTimeField(
+        verbose_name=_("registration end"), blank=True, null=True
+    )
 
-    competition_date = models.DateField(verbose_name=_("competition date"), blank=False, null=True)
+    nomination_date = models.DateField(
+        verbose_name=_("nomination date"),
+        blank=False,
+        null=True,
+        help_text=_(
+            "Communicated towards students in confirmation email as the latest date they will hear about their nomination"
+        ),
+    )
+
+    competition_date = models.DateField(
+        verbose_name=_("competition date"), blank=False, null=True
+    )
 
     @property
     def registration_open(self):
@@ -83,8 +100,12 @@ class Submission(models.Model):
         related_name="submissions",
         related_query_name="submissions",
     )
-    title = models.CharField(verbose_name=_("title"), max_length=100, unique=True, blank=False, null=False)
-    slug = models.SlugField(verbose_name=_("slug"), max_length=120, unique=True, blank=False, null=False)
+    title = models.CharField(
+        verbose_name=_("title"), max_length=100, unique=True, blank=False, null=False
+    )
+    slug = models.SlugField(
+        verbose_name=_("slug"), max_length=120, unique=True, blank=False, null=False
+    )
     course = models.ForeignKey(
         Course,
         verbose_name=_("course"),
@@ -95,7 +116,12 @@ class Submission(models.Model):
         related_query_name="submissions",
     )
     abstract = models.TextField(verbose_name=_("abstract"), blank=False, null=False)
-    document = models.FileField(verbose_name=_("document"), upload_to=submission_upload_path)
+    document = models.FileField(
+        verbose_name=_("document"), upload_to=submission_upload_path
+    )
+    school_text = models.CharField(
+        verbose_name=_("school (text)"), max_length=100, blank=True, null=True
+    )
     school = models.ForeignKey(
         School,
         verbose_name=_("school"),
@@ -107,10 +133,16 @@ class Submission(models.Model):
     )
 
     nominated = models.BooleanField(verbose_name=_("nominated"), default=False)
-    nomination_report = models.TextField(verbose_name=_("nomination report"), blank=True, null=False)
-    nomination_score = models.PositiveSmallIntegerField(verbose_name=_("nomination score"), blank=True, null=True)
+    nomination_report = models.TextField(
+        verbose_name=_("nomination report"), blank=True, null=False
+    )
+    nomination_score = models.PositiveSmallIntegerField(
+        verbose_name=_("nomination score"), blank=True, null=True
+    )
 
-    prize = models.PositiveSmallIntegerField(verbose_name=_("prize"), blank=True, null=True)
+    prize = models.PositiveSmallIntegerField(
+        verbose_name=_("prize"), blank=True, null=True
+    )
     jury_report = models.TextField(verbose_name=_("jury report"), blank=True, null=True)
 
     def clean(self):
@@ -124,14 +156,17 @@ class Submission(models.Model):
         ):
             errors.update(
                 {
-                    "course": _("This course is not managed by the organisation of this competition.")
+                    "course": _(
+                        "This course is not managed by the organisation of this competition."
+                    )
                 }
             )
         if errors:
             raise ValidationError(errors)
 
-    def save(self, force_insert=False, force_update=False, using=None,
-             update_fields=None):
+    def save(
+        self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
         if not self.slug:
             self.slug = slugify(self.title)
 
@@ -147,7 +182,10 @@ class Submission(models.Model):
         elif len(persons) == 2:
             return f"{persons[0]} & {persons[1]}"
         else:
-            return ", ".join([str(person) for person in persons[0:-1]]) + f" & {persons[-1]}"
+            return (
+                ", ".join([str(person) for person in persons[0:-1]])
+                + f" & {persons[-1]}"
+            )
 
     @property
     def authors_text(self):
@@ -183,10 +221,18 @@ class Student(models.Model):
         verbose_name = _("student")
         verbose_name_plural = _("students")
 
-    first_name = models.CharField(verbose_name=_("first name"), max_length=20, blank=False, null=False)
-    last_name = models.CharField(verbose_name=_("last name"), max_length=20, blank=False, null=False)
-    address_1 = models.CharField(verbose_name=_("address 1"), max_length=100, blank=True, null=True)
-    address_2 = models.CharField(verbose_name=_("address 2"), max_length=100, blank=True, null=True)
+    first_name = models.CharField(
+        verbose_name=_("first name"), max_length=20, blank=False, null=False
+    )
+    last_name = models.CharField(
+        verbose_name=_("last name"), max_length=20, blank=False, null=False
+    )
+    address_1 = models.CharField(
+        verbose_name=_("address 1"), max_length=100, blank=True, null=True
+    )
+    address_2 = models.CharField(
+        verbose_name=_("address 2"), max_length=100, blank=True, null=True
+    )
     zip = models.CharField(
         verbose_name=_("zip"),
         max_length=7,
@@ -199,8 +245,12 @@ class Student(models.Model):
             )
         ],
     )
-    town = models.CharField(verbose_name=_("town"), max_length=50, blank=True, null=True)
-    phone = models.CharField(verbose_name=_("phone"), max_length=20, blank=True, null=True)
+    town = models.CharField(
+        verbose_name=_("town"), max_length=50, blank=True, null=True
+    )
+    phone = models.CharField(
+        verbose_name=_("phone"), max_length=20, blank=True, null=True
+    )
     email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
 
     submission = models.ForeignKey(
@@ -222,24 +272,15 @@ class Supervisor(models.Model):
         verbose_name = _("supervisor")
         verbose_name_plural = _("supervisors")
 
-    first_name = models.CharField(verbose_name=_("first name"), max_length=20, blank=False, null=False)
-    last_name = models.CharField(verbose_name=_("last name"), max_length=20, blank=False, null=False)
-    address_1 = models.CharField(verbose_name=_("address 1"), max_length=100, blank=True, null=True)
-    address_2 = models.CharField(verbose_name=_("address 2"), max_length=100, blank=True, null=True)
-    zip = models.CharField(
-        verbose_name=_("zip"),
-        max_length=7,
-        blank=True,
-        null=True,
-        validators=[
-            RegexValidator(
-                regex="^[1-9][0-9]{3} (?!SA|SD|SS)[A-Z]{2}",
-                message=_("Enter zip code in this format: '1234 AB'"),
-            )
-        ],
+    first_name = models.CharField(
+        verbose_name=_("first name"), max_length=20, blank=False, null=False
     )
-    town = models.CharField(verbose_name=_("town"), max_length=50, blank=True, null=True)
-    phone = models.CharField(verbose_name=_("phone"), max_length=20, blank=True, null=True)
+    last_name = models.CharField(
+        verbose_name=_("last name"), max_length=20, blank=False, null=False
+    )
+    phone = models.CharField(
+        verbose_name=_("phone"), max_length=20, blank=True, null=True
+    )
     email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
 
     course = models.ForeignKey(

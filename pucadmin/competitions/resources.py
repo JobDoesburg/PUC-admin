@@ -87,3 +87,23 @@ class StudentResource(resources.ModelResource):
 class SupervisorResource(StudentResource):
     class Meta:
         model = Supervisor
+        fields = (
+            "id",
+            "first_name",
+            "last_name",
+            "phone",
+            "email",
+        )
+        export_order = (
+            "id",
+            "first_name",
+            "last_name",
+            "phone",
+            "email",
+            "submission_id",
+            "submission",
+            "nominated",
+            "prize",
+            "course",
+            "school",
+        )

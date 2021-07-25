@@ -7,23 +7,40 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organisations', '0002_auto_20210708_1526'),
+        ("organisations", "0002_auto_20210708_1526"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='user',
-            name='alternative_email',
-            field=models.EmailField(blank=True, help_text='Notifications for new questions for this course will be sent to this address. If empty, the default email will be used.', max_length=254, null=True),
+            model_name="user",
+            name="alternative_email",
+            field=models.EmailField(
+                blank=True,
+                help_text="Notifications for new questions for this course will be sent to this address. If empty, the default email will be used.",
+                max_length=254,
+                null=True,
+            ),
         ),
         migrations.AlterField(
-            model_name='course',
-            name='organisation',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='courses', related_query_name='courses', to='organisations.organisation'),
+            model_name="course",
+            name="organisation",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="courses",
+                related_query_name="courses",
+                to="organisations.organisation",
+            ),
         ),
         migrations.AlterField(
-            model_name='user',
-            name='organisation',
-            field=models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.SET_NULL, related_name='users', related_query_name='users', to='organisations.organisation'),
+            model_name="user",
+            name="organisation",
+            field=models.ForeignKey(
+                blank=True,
+                null=True,
+                on_delete=django.db.models.deletion.SET_NULL,
+                related_name="users",
+                related_query_name="users",
+                to="organisations.organisation",
+            ),
         ),
     ]

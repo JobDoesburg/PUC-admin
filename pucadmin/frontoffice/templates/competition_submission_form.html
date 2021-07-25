@@ -1,44 +1,54 @@
 {% load i18n django_bootstrap5 %}
 {% bootstrap_css %}
 {% bootstrap_javascript %}
+{% translate "Add" as add %}
+{% translate "Delete" as delete %}
+{% translate "Submit" as submit %}
 <style>
     * {
         border-radius: 0!important;
     }
 </style>
 <form method="post" id="form-container" class="form" enctype="multipart/form-data">{% csrf_token %}
-    {% bootstrap_form_errors form layout='inline' %}
-    {% bootstrap_form form %}
+    {% bootstrap_form_errors form layout='horizontal' %}
+    {% bootstrap_form form layout='horizontal' exclude="privacy_policy" %}
 
-    <h2 class="mt-4">{% trans "Students" %}:</h2>
+    <h2 class="mt-3">{% trans "Students" %}:</h2>
     {{ students.management_form }}
     {% for form in students %}
-        <div class="student-form mb-5">
-            {% bootstrap_form_errors form layout='inline' %}
-            {% bootstrap_form form %}
+        <div class="student-form">
+            <hr/>
+            {% bootstrap_form_errors form layout='horizontal' %}
+            {% bootstrap_form form layout='horizontal' %}
         </div>
     {% endfor %}
-    {% bootstrap_button "Add" id="add-student-form" button_class="btn-secondary" %}
-    {% bootstrap_button "Delete" id="delete-student-form" button_class="btn-secondary" %}
+    <div id="student-buttons" class="btn-group" role="group">
+        {% bootstrap_button add id="add-student-form" button_class="btn-secondary" %}
+        {% bootstrap_button delete id="delete-student-form" button_class="btn-secondary" %}
+    </div>
 
-    <h2 class="mt-4">{% trans "Supervisors" %}:</h2>
+    <h2 class="mt-3">{% trans "Supervisors" %}:</h2>
     {{ supervisors.management_form }}
     {% for form in supervisors %}
-        <div class="supervisor-form mb-5">
-            {% bootstrap_form_errors form layout='inline' %}
-            {% bootstrap_form form %}
+        <div class="supervisor-form">
+            <hr/>
+            {% bootstrap_form_errors form layout='horizontal' %}
+            {% bootstrap_form form layout='horizontal' %}
         </div>
     {% endfor %}
-    {% bootstrap_button "Add" id="add-supervisor-form" button_class="btn-secondary" %}
-    {% bootstrap_button "Delete" id="delete-supervisor-form" button_class="btn-secondary" %}
-
-    <br>
-    {% bootstrap_button "Save" button_type="submit" button_class="btn-primary mt-5" %}
+    <div id="supervisor-buttons" class="btn-group" role="group">
+        {% bootstrap_button add id="add-supervisor-form" button_class="btn-secondary" %}
+        {% bootstrap_button delete id="delete-supervisor-form" button_class="btn-secondary" %}
+    </div>
+    <hr/>
+    {% bootstrap_field form.privacy_policy wrapper_class="mb-3"%}
+    {% bootstrap_button submit button_type="submit" button_class="btn-primary" %}
 </form>
 <script>
     let container = document.querySelector("#form-container")
 
     let studentForm = document.querySelectorAll(".student-form")
+    let studentButtons = document.querySelector("#student-buttons")
     let addStudentButton = document.querySelector("#add-student-form")
     let deleteStudentButton = document.querySelector("#delete-student-form")
     let totalStudentsForms = document.querySelector("#id_authors-TOTAL_FORMS")
@@ -56,7 +66,7 @@
 
             studentFormNum++
             newForm.innerHTML = newForm.innerHTML.replace(formRegex, `authors-${studentFormNum-1}-`)
-            container.insertBefore(newForm, addStudentButton)
+            container.insertBefore(newForm, studentButtons)
 
             totalStudentsForms.setAttribute('value', `${studentFormNum}`)
         }
@@ -75,6 +85,7 @@
 
 
     let supervisorForm = document.querySelectorAll(".supervisor-form")
+    let supervisorButtons = document.querySelector("#supervisor-buttons")
     let addSupervisorButton = document.querySelector("#add-supervisor-form")
     let deleteSupervisorButton = document.querySelector("#delete-supervisor-form")
     let totalSupervisorsForms = document.querySelector("#id_supervisors-TOTAL_FORMS")
@@ -92,7 +103,7 @@
 
             supervisorFormNum++
             newForm.innerHTML = newForm.innerHTML.replace(formRegex, `supervisors-${supervisorFormNum-1}-`)
-            container.insertBefore(newForm, addSupervisorButton)
+            container.insertBefore(newForm, supervisorButtons)
 
             totalSupervisorsForms.setAttribute('value', `${supervisorFormNum }`)
         }

@@ -1,0 +1,12 @@
+Beste {{ submission.authors_text }}, {{ submission.supervisors_text }},
+
+Dit is een bevestiging van de inzending "{{ submission.title }}" voor de {{ submission.competition }} van de Radboud Universiteit Nijmegen.
+
+Samenvatting inzending:
+
+    {{ submission.abstract }}
+
+
+De inzending zal nu worden beoordeeld. {% if submission.competition.nomination_date %}Uiterlijk {{ submission.competition.nomination_date|date }} krijg je te horen of jouw inzending genomineerd is.{% endif %}
+
+Wil je meer informatie ontvangen van Radboud Pre-University College? Meld je dan aan via https://www.ru.nl/puc/blijf-hoogte/

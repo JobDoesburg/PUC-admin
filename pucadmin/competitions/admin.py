@@ -212,6 +212,7 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
                     "course",
                     "abstract",
                     "document",
+                    "school_text",
                     "school",
                 )
             },

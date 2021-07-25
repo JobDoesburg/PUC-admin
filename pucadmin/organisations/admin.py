@@ -30,7 +30,10 @@ class CourseAdmin(admin.ModelAdmin):
 @register(User)
 class UserAdmin(admin.ModelAdmin):
     fieldsets = (
-        ("Personal", {"fields": ("first_name", "last_name", "email", "alternative_email", )},),
+        (
+            "Personal",
+            {"fields": ("first_name", "last_name", "email", "alternative_email",)},
+        ),
         (
             "Administration",
             {

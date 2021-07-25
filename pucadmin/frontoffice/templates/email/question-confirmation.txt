@@ -1,0 +1,22 @@
+Beste {{ question.students_text }},
+
+Je vraag aan het Radboud {{ question.course.organisation }} is succesvol verzonden.
+Het kan enkele dagen duren voordat je van ons per e-mail antwoord ontvangt.
+
+Wil je meer informatie ontvangen van Radboud Pre-University College? Meld je dan aan via https://www.ru.nl/puc/blijf-hoogte/
+
+Jouw bericht:
+
+    {{ question.message }}
+
+
+Onderzoeksvraag:
+
+    {{ question.research_question }}
+
+
+Deelvragen:
+
+    {{ question.sub_questions }}
+
+å
