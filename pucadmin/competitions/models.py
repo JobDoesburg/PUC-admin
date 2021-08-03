@@ -14,10 +14,6 @@ from organisations.models import Organisation
 
 
 class Competition(models.Model):
-    class Meta:
-        verbose_name = _("competition")
-        verbose_name_plural = _("competitions")
-
     name = models.CharField(
         verbose_name=_("name"),
         max_length=20,
@@ -53,6 +49,13 @@ class Competition(models.Model):
         verbose_name=_("competition date"), null=True, blank=True
     )
 
+    class Meta:
+        verbose_name = _("competition")
+        verbose_name_plural = _("competitions")
+
+    def __str__(self):
+        return self.name
+
     @property
     def registration_open(self):
         if self.registration_start and self.registration_end:
@@ -71,20 +74,12 @@ class Competition(models.Model):
             )
         )
 
-    def __str__(self):
-        return self.name
-
 
 def submission_upload_path(instance, filename):
     return f"{instance.competition.slug}/submission_{instance.course.slug}_{instance.slug}/{filename}"
 
 
 class Submission(models.Model):
-    class Meta:
-        verbose_name = _("submission")
-        verbose_name_plural = _("submissions")
-        unique_together = [["competition", "title"]]
-
     created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     competition = models.ForeignKey(
         Competition,
@@ -106,7 +101,7 @@ class Submission(models.Model):
     document = models.FileField(
         verbose_name=_("document"), upload_to=submission_upload_path
     )
-    school_text = models.CharField(
+    school_text = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("school (text)"), max_length=100, blank=True, null=True
     )
     school = models.ForeignKey(
@@ -128,7 +123,25 @@ class Submission(models.Model):
     prize = models.PositiveSmallIntegerField(
         verbose_name=_("prize"), blank=True, null=True
     )
-    jury_report = models.TextField(verbose_name=_("jury report"), blank=True, null=True)
+    jury_report = models.TextField(verbose_name=_("jury report"), blank=True, null=True)  # django-doctor: disable=nullable-string-field
+
+    class Meta:
+        verbose_name = _("submission")
+        verbose_name_plural = _("submissions")
+        unique_together = [["competition", "title"]]
+
+    def __str__(self):
+        if self.prize:
+            return f"{self.title} ({self.authors_text}, {self.created_at:%Y}) [{self.prize_text}]"
+        return f"{self.title} ({self.authors_text}, {self.created_at:%Y})"
+
+    def save(
+            self, force_insert=False, force_update=False, using=None, update_fields=None
+    ):
+        if not self.slug:
+            self.slug = slugify(self.title)
+
+        return super().save(force_insert, force_update, using, update_fields)
 
     def clean(self):
         super().clean()
@@ -148,14 +161,6 @@ class Submission(models.Model):
             )
         if errors:
             raise ValidationError(errors)
-
-    def save(
-        self, force_insert=False, force_update=False, using=None, update_fields=None
-    ):
-        if not self.slug:
-            self.slug = slugify(self.title)
-
-        return super().save(force_insert, force_update, using, update_fields)
 
     @staticmethod
     def __stringify_persons(queryset):
@@ -195,26 +200,17 @@ class Submission(models.Model):
             return f"{ordinal(self.prize)} prize"
         return None
 
-    def __str__(self):
-        if self.prize:
-            return f"{self.title} ({self.authors_text}, {self.created_at:%Y}) [{self.prize_text}]"
-        return f"{self.title} ({self.authors_text}, {self.created_at:%Y})"
-
 
 class Student(models.Model):
-    class Meta:
-        verbose_name = _("student")
-        verbose_name_plural = _("students")
-
     first_name = models.CharField(verbose_name=_("first name"), max_length=20)
     last_name = models.CharField(verbose_name=_("last name"), max_length=20)
-    address_1 = models.CharField(
+    address_1 = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("address 1"), max_length=100, blank=True, null=True
     )
-    address_2 = models.CharField(
+    address_2 = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("address 2"), max_length=100, blank=True, null=True
     )
-    zip = models.CharField(
+    zip = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("zip"),
         max_length=7,
         blank=True,
@@ -226,13 +222,13 @@ class Student(models.Model):
             )
         ],
     )
-    town = models.CharField(
+    town = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("town"), max_length=50, blank=True, null=True
     )
-    phone = models.CharField(
+    phone = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("phone"), max_length=20, blank=True, null=True
     )
-    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
+    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
 
     submission = models.ForeignKey(
         Submission,
@@ -242,25 +238,21 @@ class Student(models.Model):
         related_query_name="authors",
     )
 
+    class Meta:
+        verbose_name = _("student")
+        verbose_name_plural = _("students")
+
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
 
 
 class Supervisor(models.Model):
-    class Meta:
-        verbose_name = _("supervisor")
-        verbose_name_plural = _("supervisors")
-
-    first_name = models.CharField(
-        verbose_name=_("first name"), max_length=20, blank=False, null=False
-    )
-    last_name = models.CharField(
-        verbose_name=_("last name"), max_length=20, blank=False, null=False
-    )
-    phone = models.CharField(
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=20)
+    phone = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("phone"), max_length=20, blank=True, null=True
     )
-    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
+    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
 
     course = models.ForeignKey(
         Course,
@@ -277,6 +269,10 @@ class Supervisor(models.Model):
         related_name="supervisors",
         related_query_name="supervisors",
     )
+
+    class Meta:
+        verbose_name = _("supervisor")
+        verbose_name_plural = _("supervisors")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

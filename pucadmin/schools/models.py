@@ -6,17 +6,9 @@ from organisations.models import Course
 
 
 class School(models.Model):
-    class Meta:
-        verbose_name = _("school")
-        verbose_name_plural = _("schools")
-
-    name = models.CharField(
-        verbose_name=_("name"), max_length=100, unique=True, blank=False, null=False
-    )
-    address_1 = models.CharField(
-        verbose_name=_("address 1"), max_length=100, blank=False, null=False
-    )
-    address_2 = models.CharField(
+    name = models.CharField(verbose_name=_("name"), max_length=100, unique=True)
+    address_1 = models.CharField(verbose_name=_("address 1"), max_length=100)
+    address_2 = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("address 2"), max_length=100, blank=True, null=True
     )
     zip = models.CharField(
@@ -37,15 +29,15 @@ class School(models.Model):
         related_name="schools",
     )
 
+    class Meta:
+        verbose_name = _("school")
+        verbose_name_plural = _("schools")
+
     def __str__(self):
         return f"{self.name} ({self.town})"
 
 
 class SchoolRemark(models.Model):
-    class Meta:
-        verbose_name = _("remark")
-        verbose_name_plural = _("remarks")
-
     created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     school = models.ForeignKey(
         School,
@@ -55,6 +47,10 @@ class SchoolRemark(models.Model):
         related_name="remarks",
     )
     remark = models.TextField(verbose_name=_("remark"))
+
+    class Meta:
+        verbose_name = _("remark")
+        verbose_name_plural = _("remarks")
 
     def __str__(self):
         return _("Remark on %(school)s at %(created)s.") % {

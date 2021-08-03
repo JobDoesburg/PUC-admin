@@ -9,10 +9,6 @@ from schools.models import School
 
 
 class CourseAssignee(models.Model):
-    class Meta:
-        verbose_name = _("course assignee")
-        verbose_name_plural = _("course assignees")
-
     course = models.OneToOneField(
         Course,
         verbose_name=_("course"),
@@ -28,6 +24,10 @@ class CourseAssignee(models.Model):
         related_query_name="assigned_courses",
     )
 
+    class Meta:
+        verbose_name = _("course assignee")
+        verbose_name_plural = _("course assignees")
+
     def __str__(self):
         return _("%(course)s assigned to %(assignee)s.") % {
             "course": self.course,
@@ -36,10 +36,6 @@ class CourseAssignee(models.Model):
 
 
 class Question(models.Model):
-    class Meta:
-        verbose_name = _("question")
-        verbose_name_plural = _("questions")
-
     created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     school_text = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("school (text)"), max_length=100, blank=True, null=True
@@ -61,13 +57,13 @@ class Question(models.Model):
         related_name="questions",
         related_query_name="questions",
     )
-    research_question = models.TextField(
+    research_question = models.TextField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("research question"), blank=True, null=True
     )
-    sub_questions = models.TextField(
+    sub_questions = models.TextField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("sub questions"), blank=True, null=True
     )
-    message = models.TextField(verbose_name=_("message"), blank=False, null=False)
+    message = models.TextField(verbose_name=_("message"))
 
     assignee = models.ForeignKey(
         get_user_model(),
@@ -80,6 +76,17 @@ class Question(models.Model):
     )
 
     completed = models.BooleanField(verbose_name=_("completed"), default=False)
+
+    class Meta:
+        verbose_name = _("question")
+        verbose_name_plural = _("questions")
+
+    def __str__(self):
+        return _("Question %(id)s (%(course)s, %(created)s)") % {
+            "id": self.id,
+            "course": self.course,
+            "created": self.created_at.strftime("%d-%M-%Y"),
+        }
 
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
@@ -98,13 +105,6 @@ class Question(models.Model):
             notify_new_assignee(self)
 
         return ret
-
-    def __str__(self):
-        return _("Question %(id)s (%(course)s, %(created)s)") % {
-            "id": self.id,
-            "course": self.course,
-            "created": self.created_at.strftime("%d-%M-%Y"),
-        }
 
     @staticmethod
     def __stringify_persons(queryset):
@@ -127,17 +127,9 @@ class Question(models.Model):
 
 
 class Student(models.Model):
-    class Meta:
-        verbose_name = _("student")
-        verbose_name_plural = _("students")
-
-    first_name = models.CharField(
-        verbose_name=_("first name"), max_length=20, blank=False, null=False
-    )
-    last_name = models.CharField(
-        verbose_name=_("last name"), max_length=20, blank=False, null=False
-    )
-    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=20)
+    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)  # django-doctor: disable=nullable-string-field
 
     question = models.ForeignKey(
         Question,
@@ -146,6 +138,10 @@ class Student(models.Model):
         related_name="students",
         related_query_name="students",
     )
+
+    class Meta:
+        verbose_name = _("student")
+        verbose_name_plural = _("students")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

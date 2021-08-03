@@ -6,9 +6,9 @@ app_name = "frontoffice"
 
 urlpatterns = [
     path(
-        "competition",
+        "competition/",
         CompetitionSubmissionView.as_view(),
         name="competition-submission",
     ),
-    path("question", QuestionSubmissionView.as_view(), name="competition-submission"),
+    path("question/", QuestionSubmissionView.as_view(), name="question-submission"),
 ]
