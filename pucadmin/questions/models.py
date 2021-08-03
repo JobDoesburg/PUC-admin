@@ -24,8 +24,6 @@ class CourseAssignee(models.Model):
         get_user_model(),
         verbose_name=_("assignee"),
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         related_name="assigned_courses",
         related_query_name="assigned_courses",
     )
@@ -43,7 +41,7 @@ class Question(models.Model):
         verbose_name_plural = _("questions")
 
     created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
-    school_text = models.CharField(
+    school_text = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("school (text)"), max_length=100, blank=True, null=True
     )
     school = models.ForeignKey(
@@ -60,8 +58,6 @@ class Question(models.Model):
         Course,
         verbose_name=_("course"),
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         related_name="questions",
         related_query_name="questions",
     )
@@ -147,8 +143,6 @@ class Student(models.Model):
         Question,
         verbose_name=_("question"),
         on_delete=models.CASCADE,
-        blank=False,
-        null=False,
         related_name="students",
         related_query_name="students",
     )

@@ -22,18 +22,12 @@ class Competition(models.Model):
         verbose_name=_("name"),
         max_length=20,
         help_text=_("For example: Van Melsenprijs 2021"),
-        blank=False,
-        null=False,
     )
-    slug = models.SlugField(
-        verbose_name=_("slug"), unique=True, max_length=20, blank=False, null=False
-    )
+    slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=20)
     organisation = models.ForeignKey(
         Organisation,
         verbose_name=_("organisation"),
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         related_name="competitions",
         related_query_name="competitions",
     )
@@ -47,15 +41,16 @@ class Competition(models.Model):
 
     nomination_date = models.DateField(
         verbose_name=_("nomination date"),
-        blank=False,
         null=True,
         help_text=_(
-            "Communicated towards students in confirmation email as the latest date they will hear about their nomination"
+            "Communicated towards students in confirmation email as the latest date they"
+            " will hear about their nomination"
         ),
+        blank=True,
     )
 
     competition_date = models.DateField(
-        verbose_name=_("competition date"), blank=False, null=True
+        verbose_name=_("competition date"), null=True, blank=True
     )
 
     @property
@@ -95,27 +90,19 @@ class Submission(models.Model):
         Competition,
         verbose_name=_("competition"),
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         related_name="submissions",
         related_query_name="submissions",
     )
-    title = models.CharField(
-        verbose_name=_("title"), max_length=100, unique=True, blank=False, null=False
-    )
-    slug = models.SlugField(
-        verbose_name=_("slug"), max_length=120, unique=True, blank=False, null=False
-    )
+    title = models.CharField(verbose_name=_("title"), max_length=100, unique=True)
+    slug = models.SlugField(verbose_name=_("slug"), max_length=120, unique=True)
     course = models.ForeignKey(
         Course,
         verbose_name=_("course"),
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         related_name="submissions",
         related_query_name="submissions",
     )
-    abstract = models.TextField(verbose_name=_("abstract"), blank=False, null=False)
+    abstract = models.TextField(verbose_name=_("abstract"))
     document = models.FileField(
         verbose_name=_("document"), upload_to=submission_upload_path
     )
@@ -133,9 +120,7 @@ class Submission(models.Model):
     )
 
     nominated = models.BooleanField(verbose_name=_("nominated"), default=False)
-    nomination_report = models.TextField(
-        verbose_name=_("nomination report"), blank=True, null=False
-    )
+    nomination_report = models.TextField(verbose_name=_("nomination report"), blank=True)
     nomination_score = models.PositiveSmallIntegerField(
         verbose_name=_("nomination score"), blank=True, null=True
     )
@@ -221,12 +206,8 @@ class Student(models.Model):
         verbose_name = _("student")
         verbose_name_plural = _("students")
 
-    first_name = models.CharField(
-        verbose_name=_("first name"), max_length=20, blank=False, null=False
-    )
-    last_name = models.CharField(
-        verbose_name=_("last name"), max_length=20, blank=False, null=False
-    )
+    first_name = models.CharField(verbose_name=_("first name"), max_length=20)
+    last_name = models.CharField(verbose_name=_("last name"), max_length=20)
     address_1 = models.CharField(
         verbose_name=_("address 1"), max_length=100, blank=True, null=True
     )
@@ -257,8 +238,6 @@ class Student(models.Model):
         Submission,
         verbose_name=_("submission"),
         on_delete=models.CASCADE,
-        blank=False,
-        null=False,
         related_name="authors",
         related_query_name="authors",
     )
@@ -287,8 +266,6 @@ class Supervisor(models.Model):
         Course,
         verbose_name=_("course"),
         on_delete=models.PROTECT,
-        blank=False,
-        null=False,
         related_name="supervisors",
         related_query_name="supervisors",
     )
@@ -297,8 +274,6 @@ class Supervisor(models.Model):
         Submission,
         verbose_name=_("submission"),
         on_delete=models.CASCADE,
-        blank=False,
-        null=False,
         related_name="supervisors",
         related_query_name="supervisors",
     )

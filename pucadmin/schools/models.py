@@ -22,8 +22,6 @@ class School(models.Model):
     zip = models.CharField(
         _("zip"),
         max_length=7,
-        blank=False,
-        null=False,
         validators=[
             RegexValidator(
                 regex="^[1-9][0-9]{3} (?!SA|SD|SS)[A-Z]{2}",
@@ -31,9 +29,7 @@ class School(models.Model):
             )
         ],
     )
-    town = models.CharField(
-        verbose_name=_("town"), max_length=50, blank=False, null=False
-    )
+    town = models.CharField(verbose_name=_("town"), max_length=50)
     courses_offered = models.ManyToManyField(
         Course,
         verbose_name=_("courses"),
@@ -50,19 +46,15 @@ class SchoolRemark(models.Model):
         verbose_name = _("remark")
         verbose_name_plural = _("remarks")
 
-    created_at = models.DateTimeField(
-        verbose_name=_("created at"), auto_now_add=True, blank=False, null=False
-    )
+    created_at = models.DateTimeField(verbose_name=_("created at"), auto_now_add=True)
     school = models.ForeignKey(
         School,
         verbose_name=_("school"),
         on_delete=models.CASCADE,
-        blank=False,
-        null=False,
         related_query_name="remarks",
         related_name="remarks",
     )
-    remark = models.TextField(verbose_name=_("remark"), null=False, blank=False)
+    remark = models.TextField(verbose_name=_("remark"))
 
     def __str__(self):
         return _("Remark on %(school)s at %(created)s.") % {

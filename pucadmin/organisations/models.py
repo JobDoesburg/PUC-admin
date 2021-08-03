@@ -8,9 +8,7 @@ class Organisation(models.Model):
         verbose_name = _("organisation")
         verbose_name_plural = _("organisations")
 
-    name = models.CharField(
-        verbose_name=_("name"), unique=True, max_length=20, blank=False, null=False
-    )
+    name = models.CharField(verbose_name=_("name"), unique=True, max_length=20)
 
     def __str__(self):
         return self.name
@@ -21,12 +19,8 @@ class Course(models.Model):
         verbose_name = _("course")
         verbose_name_plural = _("courses")
 
-    name = models.CharField(
-        verbose_name=_("name"), max_length=20, unique=True, blank=False, null=False
-    )
-    slug = models.SlugField(
-        verbose_name=_("slug"), unique=True, max_length=3, blank=False, null=False
-    )
+    name = models.CharField(verbose_name=_("name"), max_length=20, unique=True)
+    slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=3)
 
     organisation = models.ForeignKey(
         Organisation,

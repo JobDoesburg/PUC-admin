@@ -135,6 +135,11 @@ class QuestionSubmissionForm(models.ModelForm):
             "sub_questions",
             "message",
         ]
+        widgets = {
+            'research_question': forms.Textarea(attrs={'rows':2,}),
+            'sub_questions': forms.Textarea(attrs={'rows':5,}),
+            'message': forms.Textarea(attrs={'rows':8,}),
+        }
 
     privacy_policy = forms.BooleanField(required=True,)
 
@@ -147,11 +152,11 @@ class QuestionSubmissionForm(models.ModelForm):
             "The course to which your research relates most"
         )
         self.fields["research_question"].required = True
-        self.fields["research_question"].help_text = _(
-            "Try to be as specific as possible. The more clearly the question is asked, the more specifically the answer can be formulated and the faster you will receive an answer. Also clearly state your subject and research plan in the question. We can help you with the following issues: Choosing a specific topic; Arranging a meeting with an expert; Borrowing material from Radboud University; Conducting an experiment at Radboud University; Collection of literature. Of course, other questions are also welcome, we can always give advice."
-        )
         self.fields["sub_questions"].required = True
         self.fields["message"].required = True
+        self.fields["message"].help_text = _(
+            "Try to be as specific as possible. The more clearly the question is asked, the more specifically the answer can be formulated and the faster you will receive an answer. Also clearly state your subject and research plan in the question. We can help you with the following issues: Choosing a specific topic; Arranging a meeting with an expert; Borrowing material from Radboud University; Conducting an experiment at Radboud University; Collection of literature. Of course, other questions are also welcome, we can always give advice."
+        )
         self.fields["privacy_policy"].label = mark_safe(
             _(
                 'The Radboud Pre-University College of Science processes the above data for the purpose of answering the questions. The personal data will not be stored after processing. I agree with the <a href="https://www.ru.nl/vaste-materialen/privacystatement-radboud-universiteit/" target="_blank">privacy regulations of Radboud University</a> and with the processing of the data provided by me for the purposes described above.'
