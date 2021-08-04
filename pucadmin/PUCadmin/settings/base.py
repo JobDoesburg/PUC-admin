@@ -11,7 +11,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django_saml2_auth",
+    "django_saml2_auth",
     "autocompletefilter",
     "import_export",
     "organisations",
@@ -105,7 +105,7 @@ SAML2_AUTH = {
     # Metadata is required, choose either remote url or local file path
     "METADATA_LOCAL_FILE_PATH": "saml-metadata.xml",
     # Optional settings below
-    "DEFAULT_NEXT_URL": "/",  # Custom target redirect URL after the user get logged in. Default to /admin if not set. This setting will be overwritten if you have parameter ?next= specificed in the login URL.
+    "DEFAULT_NEXT_URL": "/admin",  # Custom target redirect URL after the user get logged in. Default to /admin if not set. This setting will be overwritten if you have parameter ?next= specificed in the login URL.
     "CREATE_USER": "TRUE",  # Create a new Django user when a new user logs in. Defaults to True.
     "NEW_USER_PROFILE": {
         "USER_GROUPS": [],  # The default group name when a new user logs in
@@ -122,7 +122,7 @@ SAML2_AUTH = {
         # 'CREATE_USER': 'path.to.your.new.user.hook.method',
         # 'BEFORE_LOGIN': 'path.to.your.login.hook.method',
     },
-    "ASSERTION_URL": "https://puc-admin.science.ru.nl/saml2_auth/acs",  # Custom URL to validate incoming SAML requests against
+    "ASSERTION_URL": "https://puc-admin.science.ru.nl/saml/acs/",  # Custom URL to validate incoming SAML requests against
     "ENTITY_ID": "puc-admin.science.ru.nl",  # Populates the Issuer element in authn request
     "NAME_ID_FORMAT": "uid",  # Sets the Format property of authn NameIDPolicy element
     "USE_JWT": False,  # Set this to True if you are running a Single Page Application (SPA) with Django Rest Framework (DRF), and are using JWT authentication to authorize client users
