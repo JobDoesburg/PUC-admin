@@ -11,7 +11,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    # "django_saml2_auth",
+    "django_saml2_auth",
     "autocompletefilter",
     "import_export",
     "organisations",
@@ -122,7 +122,7 @@ SAML2_AUTH = {
         # 'CREATE_USER': 'path.to.your.new.user.hook.method',
         # 'BEFORE_LOGIN': 'path.to.your.login.hook.method',
     },
-    "ASSERTION_URL": "https://puc-admin.science.ru.nl/saml2_auth/acs",  # Custom URL to validate incoming SAML requests against
+    "ASSERTION_URL": "https://puc-admin.science.ru.nl/saml/acs",  # Custom URL to validate incoming SAML requests against
     "ENTITY_ID": "puc-admin.science.ru.nl",  # Populates the Issuer element in authn request
     "NAME_ID_FORMAT": "uid",  # Sets the Format property of authn NameIDPolicy element
     "USE_JWT": False,  # Set this to True if you are running a Single Page Application (SPA) with Django Rest Framework (DRF), and are using JWT authentication to authorize client users
