@@ -11,7 +11,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "django_saml2_auth",
+    "sp",
     "autocompletefilter",
     "import_export",
     "organisations",
@@ -20,6 +20,11 @@ INSTALLED_APPS = [
     "questions",
     "django_bootstrap5",
     "frontoffice",
+]
+
+AUTHENTICATION_BACKENDS = [
+    "django.contrib.auth.backends.ModelBackend",
+    "sp.backends.SAMLAuthenticationBackend",
 ]
 
 MIDDLEWARE = [
@@ -97,34 +102,5 @@ USE_L10N = True
 
 USE_TZ = False
 
-
-# SAML
-# https://pypi.org/project/django-saml2-auth/
-
-SAML2_AUTH = {
-    # Metadata is required, choose either remote url or local file path
-    "METADATA_LOCAL_FILE_PATH": "saml-metadata.xml",
-    # Optional settings below
-    "DEFAULT_NEXT_URL": "/admin",  # Custom target redirect URL after the user get logged in. Default to /admin if not set. This setting will be overwritten if you have parameter ?next= specificed in the login URL.
-    "CREATE_USER": "TRUE",  # Create a new Django user when a new user logs in. Defaults to True.
-    "NEW_USER_PROFILE": {
-        "USER_GROUPS": [],  # The default group name when a new user logs in
-        "ACTIVE_STATUS": False,  # The default active status for new users
-        "STAFF_STATUS": True,  # The staff status for new users
-        "SUPERUSER_STATUS": False,  # The superuser status for new users
-    },
-    "ATTRIBUTES_MAP": {  # Change Email/UserName/FirstName/LastName to corresponding SAML2 userprofile attributes.
-        "email": "mail",
-        "username": "uid",
-        "first_name": "displayName",
-    },
-    "TRIGGER": {
-        # 'CREATE_USER': 'path.to.your.new.user.hook.method',
-        # 'BEFORE_LOGIN': 'path.to.your.login.hook.method',
-    },
-    "ASSERTION_URL": "https://puc-admin.science.ru.nl/saml/acs/",  # Custom URL to validate incoming SAML requests against
-    "ENTITY_ID": "puc-admin.science.ru.nl",  # Populates the Issuer element in authn request
-    "NAME_ID_FORMAT": "uid",  # Sets the Format property of authn NameIDPolicy element
-    "USE_JWT": False,  # Set this to True if you are running a Single Page Application (SPA) with Django Rest Framework (DRF), and are using JWT authentication to authorize client users
-    "FRONTEND_URL": "puc-admin.science.ru.nl",  # Redirect URL for the client if you are using JWT auth with DRF. See explanation below
-}
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
