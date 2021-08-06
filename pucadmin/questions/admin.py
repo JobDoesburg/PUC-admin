@@ -89,7 +89,6 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
         "course",
         "school",
     )
-    date_hierarchy = "created_at"
 
     def _created_at(self, obj):
         return f"{obj.created_at:%d-%m-%Y}"
