@@ -68,6 +68,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
         ),
     )
     readonly_fields = (
+        "id",
         "created_at",
         "send_email",
     )
