@@ -4,13 +4,12 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path("", RedirectView.as_view(url="/admin"), name="index"),
-    path("frontoffice/", include("frontoffice.urls")),
+    path("sso/<idp_slug>/", include("sp.urls")),
+    path("login/", RedirectView.as_view(url="/sso/science_puc/login/"), name="saml-login"),
+    path("logout/", RedirectView.as_view(url="/sso/science_puc/logout/"), name="saml-logout"),
+    path("admin/login/", RedirectView.as_view(url="/login"), name="login-redirect"),
+    path("admin/logout/", RedirectView.as_view(url="/logout"), name="logout-redirect"),
+    path("admin-login/", admin.site.login, name="admin-login"),
     path("admin/", admin.site.urls),
-    path("sso/", include("sp.urls")),
-    # path("saml/", include('django_saml2_auth.urls')),
-    # path("login/", django_saml2_auth.views.signin, name="saml-login"),
-    # path("logout/", django_saml2_auth.views.signout, name="saml-logout"),
-    # path("admin/login/", RedirectView.as_view(url="/login"), name="login-redirect"),
-    # path("admin/logout/", RedirectView.as_view(url="/logout"), name="logout-redirect"),
-    # path("admin-login/", admin.site.login, name="admin-login"),
+    path("frontoffice/", include("frontoffice.urls")),
 ]

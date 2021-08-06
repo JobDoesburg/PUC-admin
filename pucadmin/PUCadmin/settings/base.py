@@ -102,5 +102,9 @@ USE_L10N = True
 
 USE_TZ = False
 
+# SAML SP SETTINGS
+
 LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
+SP_UNIQUE_USERNAMES = False
+SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer'
