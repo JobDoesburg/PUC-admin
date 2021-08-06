@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-07-25 23:33+0200\n"
-"PO-Revision-Date: 2021-07-25 23:33+0200\n"
+"POT-Creation-Date: 2021-08-06 21:42+0200\n"
+"PO-Revision-Date: 2021-08-06 21:45+0200\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -21,11 +21,11 @@ msgstr ""
 msgid "PUC admin"
 msgstr "PUC admin"
 
-#: PUCadmin/settings/base.py:83
+#: PUCadmin/settings/base.py:94
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: PUCadmin/settings/base.py:84
+#: PUCadmin/settings/base.py:95
 msgid "English"
 msgstr "Engels"
 
@@ -37,45 +37,53 @@ msgstr "#inzendingen"
 msgid "registration open"
 msgstr "aanmelding open"
 
-#: competitions/admin.py:121 competitions/admin.py:281
-#: competitions/models.py:127 questions/admin.py:73 questions/models.py:51
-#: schools/models.py:10 schools/models.py:58
+#: competitions/admin.py:121 competitions/admin.py:294
+#: competitions/models.py:109 questions/admin.py:104 questions/models.py:45
+#: schools/models.py:33 schools/models.py:44
 msgid "school"
 msgstr "school"
 
-#: competitions/admin.py:127 competitions/admin.py:291
-#: competitions/models.py:18 competitions/models.py:96
+#: competitions/admin.py:127 competitions/admin.py:304
+#: competitions/models.py:53 competitions/models.py:86
 msgid "competition"
 msgstr "wedstrijd"
 
-#: competitions/admin.py:137 competitions/models.py:104
+#: competitions/admin.py:137 competitions/models.py:91
 msgid "title"
 msgstr "titel"
 
-#: competitions/admin.py:143 competitions/models.py:135
+#: competitions/admin.py:143 competitions/models.py:117
 msgid "nominated"
 msgstr "genomineerd"
 
-#: competitions/admin.py:150 competitions/models.py:144
+#: competitions/admin.py:150 competitions/models.py:126
 msgid "prize"
 msgstr "prijs"
 
-#: competitions/admin.py:156 competitions/models.py:111
-#: competitions/models.py:288 organisations/models.py:21 questions/models.py:18
-#: questions/models.py:61
+#: competitions/admin.py:156 competitions/models.py:95
+#: competitions/models.py:267 organisations/models.py:30 questions/models.py:14
+#: questions/models.py:55
 msgid "course"
 msgstr "vak"
 
-#: competitions/admin.py:263 competitions/models.py:93 questions/admin.py:65
-#: questions/models.py:45 schools/models.py:54
+#: competitions/admin.py:221
+msgid "Nomimation"
+msgstr "Nominatie"
+
+#: competitions/admin.py:232
+msgid "Jury"
+msgstr "Jury"
+
+#: competitions/admin.py:276 competitions/models.py:83 questions/admin.py:96
+#: questions/models.py:39 schools/models.py:41
 msgid "created at"
 msgstr "aangemaakt op"
 
-#: competitions/admin.py:269
+#: competitions/admin.py:282
 msgid "authors"
 msgstr "auteurs"
 
-#: competitions/admin.py:274 competitions/models.py:273
+#: competitions/admin.py:287 competitions/models.py:283
 msgid "supervisors"
 msgstr "begeleiders"
 
@@ -83,158 +91,158 @@ msgstr "begeleiders"
 msgid "Competitions"
 msgstr "Wedstrijden"
 
-#: competitions/models.py:19
-msgid "competitions"
-msgstr "wedstrijden"
-
-#: competitions/models.py:22 organisations/models.py:12
-#: organisations/models.py:25 schools/models.py:14
+#: competitions/models.py:18 organisations/models.py:7
+#: organisations/models.py:18 schools/models.py:9
 msgid "name"
 msgstr "naam"
 
-#: competitions/models.py:24
+#: competitions/models.py:20
 msgid "For example: Van Melsenprijs 2021"
 msgstr "Bijvoorbeeld: Van Melsenprijs 2021"
 
-#: competitions/models.py:29 competitions/models.py:107
-#: organisations/models.py:28
+#: competitions/models.py:22 competitions/models.py:92
+#: organisations/models.py:19
 msgid "slug"
 msgstr "slug"
 
-#: competitions/models.py:33 organisations/models.py:8
-#: organisations/models.py:33 organisations/models.py:46
+#: competitions/models.py:25 organisations/models.py:10
+#: organisations/models.py:23 organisations/models.py:40
 msgid "organisation"
 msgstr "organisatie"
 
-#: competitions/models.py:42
+#: competitions/models.py:32
 msgid "registration start"
 msgstr "start aanmelding"
 
-#: competitions/models.py:45
+#: competitions/models.py:35
 msgid "registration end"
 msgstr "eind aanmelding"
 
-#: competitions/models.py:49
+#: competitions/models.py:39
 msgid "nomination date"
 msgstr "nominatie datum"
 
-#: competitions/models.py:53
+#: competitions/models.py:42
 msgid ""
 "Communicated towards students in confirmation email as the latest date they "
 "will hear about their nomination"
 msgstr ""
-"Gecommuniceerd naar studenten in bevestigingsmail als de uiterste datum "
+"Gecommuniceerd naar leerlingen in bevestigingsmail als de uiterste datum "
 "waarop ze over hun nominatie zullen horen"
 
-#: competitions/models.py:58
+#: competitions/models.py:49
 msgid "competition date"
 msgstr "wedstrijddatum"
 
-#: competitions/models.py:89 competitions/models.py:258
-#: competitions/models.py:298
-msgid "submission"
-msgstr "inzending"
+#: competitions/models.py:54
+msgid "competitions"
+msgstr "wedstrijden"
 
-#: competitions/models.py:90
-msgid "submissions"
-msgstr "inzendingen"
-
-#: competitions/models.py:118
+#: competitions/models.py:100
 msgid "abstract"
 msgstr "samenvatting"
 
-#: competitions/models.py:120
+#: competitions/models.py:102
 msgid "document"
 msgstr "document"
 
-#: competitions/models.py:123 questions/models.py:47
+#: competitions/models.py:105 questions/models.py:41
 msgid "school (text)"
 msgstr "school (tekst)"
 
-#: competitions/models.py:137
+#: competitions/models.py:119
 msgid "nomination report"
 msgstr "nominatie rapport"
 
-#: competitions/models.py:140
+#: competitions/models.py:122
 msgid "nomination score"
 msgstr "nominatie score"
 
-#: competitions/models.py:146
+#: competitions/models.py:129
 msgid "jury report"
 msgstr "jury rapport"
 
-#: competitions/models.py:160
+#: competitions/models.py:133 competitions/models.py:241
+#: competitions/models.py:275
+msgid "submission"
+msgstr "inzending"
+
+#: competitions/models.py:134
+msgid "submissions"
+msgstr "inzendingen"
+
+#: competitions/models.py:162
 msgid "This course is not managed by the organisation of this competition."
 msgstr "Dit vak wordt niet beheerd door de organisatie van deze wedstrijd."
 
-#: competitions/models.py:221 questions/models.py:135
-msgid "student"
-msgstr "leerling"
-
-#: competitions/models.py:222 questions/admin.py:79 questions/models.py:136
-msgid "students"
-msgstr "leerlingen"
-
-#: competitions/models.py:225 competitions/models.py:276
-#: questions/models.py:139
+#: competitions/models.py:209 competitions/models.py:256
+#: questions/models.py:143
 msgid "first name"
 msgstr "voornaam"
 
-#: competitions/models.py:228 competitions/models.py:279
-#: questions/models.py:142
+#: competitions/models.py:210 competitions/models.py:257
+#: questions/models.py:144
 msgid "last name"
 msgstr "achternaam"
 
-#: competitions/models.py:231 schools/models.py:17
+#: competitions/models.py:212 schools/models.py:10
 msgid "address 1"
 msgstr "adresregel 1"
 
-#: competitions/models.py:234 schools/models.py:20
+#: competitions/models.py:215 schools/models.py:12
 msgid "address 2"
 msgstr "adresregel 2"
 
-#: competitions/models.py:237 schools/models.py:23
+#: competitions/models.py:218 schools/models.py:15
 msgid "zip"
 msgstr "postcode"
 
-#: competitions/models.py:244 schools/models.py:30
+#: competitions/models.py:225 schools/models.py:20
 msgid "Enter zip code in this format: '1234 AB'"
 msgstr "Voer postcode in als: ‘1234 AB’"
 
-#: competitions/models.py:249 schools/models.py:35
+#: competitions/models.py:230 schools/models.py:24
 msgid "town"
 msgstr "plaatsnaam"
 
-#: competitions/models.py:252 competitions/models.py:282
+#: competitions/models.py:233 competitions/models.py:259
 msgid "phone"
 msgstr "telefoon"
 
-#: competitions/models.py:254 competitions/models.py:284
-#: questions/models.py:144
+#: competitions/models.py:236 competitions/models.py:262 questions/admin.py:116
+#: questions/models.py:146
 msgid "email"
 msgstr "e-mail"
 
-#: competitions/models.py:272
+#: competitions/models.py:248 questions/models.py:158
+msgid "student"
+msgstr "leerling"
+
+#: competitions/models.py:249 questions/admin.py:121 questions/models.py:159
+msgid "students"
+msgstr "leerlingen"
+
+#: competitions/models.py:282
 msgid "supervisor"
 msgstr "begeleider"
 
-#: frontoffice/forms.py:30
+#: frontoffice/forms.py:39
 msgid "The title of your research"
 msgstr "De titel van jullie onderzoek"
 
-#: frontoffice/forms.py:32 frontoffice/forms.py:131
+#: frontoffice/forms.py:42 frontoffice/forms.py:169
 msgid "The course to which your research relates most"
 msgstr "Het vak waarop jullie onderzoek de meeste betrekking heeft"
 
-#: frontoffice/forms.py:34
+#: frontoffice/forms.py:46
 msgid "Provide a brief summary of your research (50 to 300 words)"
 msgstr "Geef een korte samenvatting van jullie onderzoek (50 tot 300 woorden)"
 
-#: frontoffice/forms.py:37 frontoffice/forms.py:129
+#: frontoffice/forms.py:50 frontoffice/forms.py:166
 msgid "School"
 msgstr "School"
 
-#: frontoffice/forms.py:40
+#: frontoffice/forms.py:54
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
 "the purpose of participation in the contest. The personal data will not be "
@@ -251,7 +259,7 @@ msgstr ""
 "verwerking van de door mij verstrekte gegevens voor de hierboven beschreven "
 "doeleinden."
 
-#: frontoffice/forms.py:133
+#: frontoffice/forms.py:175
 msgid ""
 "Try to be as specific as possible. The more clearly the question is asked, "
 "the more specifically the answer can be formulated and the faster you will "
@@ -271,7 +279,7 @@ msgstr ""
 "experiment op de Radboud Universiteit; Het verzamelen van literatuur. "
 "Natuurlijk zijn andere vragen ook welkom, we kunnen altijd advies geven."
 
-#: frontoffice/forms.py:137
+#: frontoffice/forms.py:179
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
 "the purpose of answering the questions. The personal data will not be stored "
@@ -288,12 +296,31 @@ msgstr ""
 "a> en met de verwerking van de door mij verstrekte gegevens voor de "
 "hierboven beschreven doeleinden."
 
-#: frontoffice/templates/competition_submission_form.html:13
-#: frontoffice/templates/question_submission_form.html:8
+#: frontoffice/forms.py:184
+msgid "DD-MM-YYYY. When do you expect to be finished with your research."
+msgstr "DD-MM-JJJJ. Wanneer verwacht je klaar te zijn met het onderzoek."
+
+#: frontoffice/templates/competition_submission_form.html:4
+#: frontoffice/templates/question_submission_form.html:4
+msgid "Add"
+msgstr "Toevoegen"
+
+#: frontoffice/templates/competition_submission_form.html:5
+#: frontoffice/templates/question_submission_form.html:5
+msgid "Delete"
+msgstr "Verwijder"
+
+#: frontoffice/templates/competition_submission_form.html:6
+#: frontoffice/templates/question_submission_form.html:6
+msgid "Submit"
+msgstr "Verstuur"
+
+#: frontoffice/templates/competition_submission_form.html:16
+#: frontoffice/templates/question_submission_form.html:16
 msgid "Students"
 msgstr "Leerlingen"
 
-#: frontoffice/templates/competition_submission_form.html:27
+#: frontoffice/templates/competition_submission_form.html:30
 msgid "Supervisors"
 msgstr "Begeleiders"
 
@@ -305,19 +332,19 @@ msgstr "#scholen"
 msgid "Organisations"
 msgstr "Organisaties"
 
-#: organisations/models.py:9
+#: organisations/models.py:11
 msgid "organisations"
 msgstr "organisaties"
 
-#: organisations/models.py:22 organisations/models.py:53 schools/models.py:39
+#: organisations/models.py:31 organisations/models.py:47 schools/models.py:27
 msgid "courses"
 msgstr "vakken"
 
-#: organisations/models.py:56
+#: organisations/models.py:50
 msgid "alternative email"
 msgstr "alternatief e-mailadres"
 
-#: organisations/models.py:60
+#: organisations/models.py:54
 msgid ""
 "Notifications for new questions for this course will be sent to this "
 "address. If empty, the default email will be used."
@@ -325,52 +352,80 @@ msgstr ""
 "Notificaties voor nieuwe vragen voor dit vak worden naar dit adres "
 "verstuurd. Indien leeg gelaten wordt het standaard e-mailadres gebruikt."
 
-#: questions/admin.py:25 questions/models.py:25 questions/models.py:78
+#: questions/admin.py:27 questions/models.py:21 questions/models.py:72
 msgid "assignee"
 msgstr "verantwoordelijke"
+
+#: questions/admin.py:43
+msgid "Administrative"
+msgstr "Administratief"
+
+#: questions/admin.py:58
+msgid "Question"
+msgstr "Vraag"
+
+#: questions/admin.py:112
+msgid "Send email to students"
+msgstr "Verstuur e-mail naar leerlingen"
 
 #: questions/apps.py:8
 msgid "Questions"
 msgstr "Vragen"
 
-#: questions/models.py:13
+#: questions/models.py:28
 msgid "course assignee"
 msgstr "vakverantwoordelijke"
 
-#: questions/models.py:14
+#: questions/models.py:29
 msgid "course assignees"
 msgstr "vakverantwoordelijken"
 
-#: questions/models.py:34
+#: questions/models.py:32
 #, python-format
 msgid "%(course)s assigned to %(assignee)s."
 msgstr "%(course)s toegewezen aan %(assignee)s."
 
-#: questions/models.py:42 questions/models.py:148
-msgid "question"
-msgstr "vraag"
-
-#: questions/models.py:43
-msgid "questions"
-msgstr "vragen"
-
-#: questions/models.py:69
+#: questions/models.py:62
 msgid "research question"
 msgstr "onderzoeksvraag"
 
-#: questions/models.py:72
+#: questions/models.py:66
 msgid "sub questions"
 msgstr "deelvragen"
 
-#: questions/models.py:74
+#: questions/models.py:68
 msgid "message"
 msgstr "bericht"
 
-#: questions/models.py:86
+#: questions/models.py:80
 msgid "completed"
 msgstr "afgerond"
 
-#: questions/models.py:107
+#: questions/models.py:82
+msgid "expected end date"
+msgstr "verwachtte einddatum"
+
+#: questions/models.py:85 questions/models.py:151
+msgid "question"
+msgstr "vraag"
+
+#: questions/models.py:86
+msgid "questions"
+msgstr "vragen"
+
+#: questions/models.py:88
+msgid "Can view questions not assigned to that user"
+msgstr "Kan vragen bekijken die niet toegewezen zijn aan gebruiker"
+
+#: questions/models.py:89
+msgid "Can change the completion status of questions"
+msgstr "Kan afrondingsstatus van vragen wijzigen"
+
+#: questions/models.py:90
+msgid "Can change the assignee of questions"
+msgstr "Kan verantwoordelijke van vragen wijzigen"
+
+#: questions/models.py:94
 #, python-format
 msgid "Question %(id)s (%(course)s, %(created)s)"
 msgstr "Vraag %(id)s (%(course)s, %(created)s)"
@@ -379,28 +434,230 @@ msgstr "Vraag %(id)s (%(course)s, %(created)s)"
 msgid "Schools"
 msgstr "Scholen"
 
-#: schools/models.py:11
+#: schools/models.py:34
 msgid "schools"
 msgstr "scholen"
 
-#: schools/models.py:50 schools/models.py:65
+#: schools/models.py:49 schools/models.py:52
 msgid "remark"
 msgstr "opmerking"
 
-#: schools/models.py:51
+#: schools/models.py:53
 msgid "remarks"
 msgstr "opmerkingen"
 
-#: schools/models.py:68
+#: schools/models.py:56
 #, python-format
 msgid "Remark on %(school)s at %(created)s."
 msgstr "Opmerking bij %(school)s op %(created)s."
 
+#: sp/apps.py:7
+msgid "SAML SP"
+msgstr ""
+
+#: sp/models.py:25
+msgid "URL Parameters"
+msgstr ""
+
+#: sp/models.py:29
+msgid "Application-specific URL path parameters."
+msgstr ""
+
+#: sp/models.py:32
+msgid "Base URL"
+msgstr ""
+
+#: sp/models.py:34
+msgid "Root URL for the site, including http/https, no trailing slash."
+msgstr ""
+
+#: sp/models.py:37 sp/models.py:144
+msgid "Entity ID"
+msgstr ""
+
+#: sp/models.py:40
+msgid "Leave blank to automatically use the metadata URL."
+msgstr ""
+
+#: sp/models.py:51
+msgid "Leave this blank if entering metadata XML directly."
+msgstr ""
+
+#: sp/models.py:54
+msgid "Verify metadata URL certificate"
+msgstr ""
+
+#: sp/models.py:57
+msgid "Metadata XML"
+msgstr ""
+
+#: sp/models.py:60
+msgid ""
+"Automatically loaded from the metadata URL, if specified. Otherwise input "
+"directly."
+msgstr ""
+
+#: sp/models.py:65
+msgid "Check this if the identity provider is ADFS."
+msgstr ""
+
+#: sp/models.py:69
+msgid "Settings imported and used by the python-saml library."
+msgstr ""
+
+#: sp/models.py:75
+msgid "NameID is case sensitive"
+msgstr ""
+
+#: sp/models.py:78
+msgid "Create users that do not already exist"
+msgstr ""
+
+#: sp/models.py:81
+msgid "Associate existing users with this IdP by username"
+msgstr ""
+
+#: sp/models.py:84
+msgid "Prefix for usernames generated by this IdP"
+msgstr ""
+
+#: sp/models.py:89
+msgid "Suffix for usernames generated by this IdP"
+msgstr ""
+
+#: sp/models.py:94
+msgid "Respect IdP session expiration"
+msgstr ""
+
+#: sp/models.py:97
+msgid ""
+"Expires the Django session based on the IdP session expiration. Only works "
+"when using SESSION_SERIALIZER=PickleSerializer."
+msgstr ""
+
+#: sp/models.py:102
+msgid "Logout triggers SLO"
+msgstr ""
+
+#: sp/models.py:104
+msgid "Whether logging out should trigger a SLO request to the IdP."
+msgstr ""
+
+#: sp/models.py:109
+msgid "URL name or path to redirect after a successful login."
+msgstr ""
+
+#: sp/models.py:114
+msgid "URL name or path to redirect after logout."
+msgstr ""
+
+#: sp/models.py:123
+msgid "Time (in seconds) the SAML login request state is valid for."
+msgstr ""
+
+#: sp/models.py:127 sp/models.py:295 sp/models.py:316
+msgid "identity provider"
+msgstr ""
+
+#: sp/models.py:149
+msgid "ACS"
+msgstr ""
+
+#: sp/models.py:154
+msgid "SLO"
+msgstr ""
+
+#: sp/models.py:303
+msgid "user default value"
+msgstr ""
+
+#: sp/models.py:304
+msgid "user default values"
+msgstr ""
+
+#: sp/models.py:323
+msgid "Is NameID"
+msgstr ""
+
+#: sp/models.py:326
+msgid "Check if this should be the unique identifier of the SSO identity."
+msgstr ""
+
+#: sp/models.py:330
+msgid "Always Update"
+msgstr ""
+
+#: sp/models.py:333
+msgid ""
+"Update this mapped user field on every successful authentication. By "
+"default, mapped fields are only set on user creation."
+msgstr ""
+
+#: sp/models.py:339
+msgid "attribute mapping"
+msgstr ""
+
+#: sp/models.py:340
+msgid "attribute mappings"
+msgstr ""
+
+#: sp/templates/admin/sp/idp/change_form.html:6
+msgid "View Metadata"
+msgstr ""
+
+#: sp/templates/admin/sp/idp/change_form.html:7
+msgid "Test IdP"
+msgstr ""
+
+#: sp/templates/sp/error.html:5
+msgid "SSO Error"
+msgstr ""
+
+#: sp/templates/sp/error.html:7
+msgid "State"
+msgstr ""
+
+#: sp/templates/sp/test.html:7
+msgid "Name ID Format"
+msgstr ""
+
+#: sp/templates/sp/test.html:10
+msgid "Name ID"
+msgstr ""
+
+#: sp/templates/sp/test.html:16
+msgid "SAML Attribute"
+msgstr ""
+
+#: sp/templates/sp/test.html:17
+msgid "Mapped Name"
+msgstr ""
+
+#: sp/templates/sp/test.html:18
+msgid "NameID"
+msgstr ""
+
+#: sp/templates/sp/test.html:19
+msgid "Value"
+msgstr ""
+
+#: sp/templates/sp/unauth.html:5
+msgid "Verification Error"
+msgstr ""
+
+#: sp/templates/sp/unauth.html:5
+msgid "Authentication Error"
+msgstr ""
+
+#: sp/templates/sp/unauth.html:6
+#, python-format
+msgid "Could not authenticate user \"%(nameid)s\"."
+msgstr ""
+
+#: sp/templates/sp/unauth.html:7
+#, python-format
+msgid "Expected verification credentials for \"%(user)s\"."
+msgstr ""
+
 #~ msgid "Add student"
 #~ msgstr "Voeg student toe"
-
-#~ msgid "Delete student"
-#~ msgstr "Verwijder student"
-
-#~ msgid "submit"
-#~ msgstr "versturen"
