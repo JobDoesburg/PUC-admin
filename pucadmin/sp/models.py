@@ -24,6 +24,7 @@ class IdP(models.Model):
     url_params = models.JSONField(
         _("URL Parameters"),
         default=dict,
+        max_length=200,
         blank=True,
         unique=True,
         help_text=_("Application-specific URL path parameters."),
