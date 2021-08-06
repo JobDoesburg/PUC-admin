@@ -60,7 +60,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "question", "verbose_name_plural": "questions",},
+            options={
+                "verbose_name": "question",
+                "verbose_name_plural": "questions",
+            },
         ),
         migrations.CreateModel(
             name="Student",
@@ -86,7 +89,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "student", "verbose_name_plural": "students",},
+            options={
+                "verbose_name": "student",
+                "verbose_name_plural": "students",
+            },
         ),
         migrations.CreateModel(
             name="CourseAssignee",

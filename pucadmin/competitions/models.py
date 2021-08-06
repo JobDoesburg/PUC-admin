@@ -115,7 +115,9 @@ class Submission(models.Model):
     )
 
     nominated = models.BooleanField(verbose_name=_("nominated"), default=False)
-    nomination_report = models.TextField(verbose_name=_("nomination report"), blank=True)
+    nomination_report = models.TextField(
+        verbose_name=_("nomination report"), blank=True
+    )
     nomination_score = models.PositiveSmallIntegerField(
         verbose_name=_("nomination score"), blank=True, null=True
     )
@@ -123,7 +125,9 @@ class Submission(models.Model):
     prize = models.PositiveSmallIntegerField(
         verbose_name=_("prize"), blank=True, null=True
     )
-    jury_report = models.TextField(verbose_name=_("jury report"), blank=True, null=True)  # django-doctor: disable=nullable-string-field
+    jury_report = models.TextField(
+        verbose_name=_("jury report"), blank=True, null=True
+    )  # django-doctor: disable=nullable-string-field
 
     class Meta:
         verbose_name = _("submission")
@@ -136,7 +140,7 @@ class Submission(models.Model):
         return f"{self.title} ({self.authors_text}, {self.created_at:%Y})"
 
     def save(
-            self, force_insert=False, force_update=False, using=None, update_fields=None
+        self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
         if not self.slug:
             self.slug = slugify(self.title)
@@ -228,7 +232,9 @@ class Student(models.Model):
     phone = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("phone"), max_length=20, blank=True, null=True
     )
-    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
+    email = models.EmailField(
+        verbose_name=_("email"), blank=True, null=True
+    )  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
 
     submission = models.ForeignKey(
         Submission,
@@ -252,7 +258,9 @@ class Supervisor(models.Model):
     phone = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("phone"), max_length=20, blank=True, null=True
     )
-    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
+    email = models.EmailField(
+        verbose_name=_("email"), blank=True, null=True
+    )  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
 
     course = models.ForeignKey(
         Course,

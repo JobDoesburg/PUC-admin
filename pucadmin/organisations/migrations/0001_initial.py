@@ -58,7 +58,10 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "course", "verbose_name_plural": "courses",},
+            options={
+                "verbose_name": "course",
+                "verbose_name_plural": "courses",
+            },
         ),
         migrations.CreateModel(
             name="User",
@@ -180,6 +183,8 @@ class Migration(migrations.Migration):
                 "verbose_name_plural": "users",
                 "abstract": False,
             },
-            managers=[("objects", django.contrib.auth.models.UserManager()),],
+            managers=[
+                ("objects", django.contrib.auth.models.UserManager()),
+            ],
         ),
     ]

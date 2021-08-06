@@ -44,7 +44,10 @@ class Migration(migrations.Migration):
                 ("town", models.CharField(max_length=50)),
                 ("courses_offered", models.ManyToManyField(to="organisations.Course")),
             ],
-            options={"verbose_name": "school", "verbose_name_plural": "schools",},
+            options={
+                "verbose_name": "school",
+                "verbose_name_plural": "schools",
+            },
         ),
         migrations.CreateModel(
             name="SchoolRemark",
@@ -67,6 +70,9 @@ class Migration(migrations.Migration):
                     ),
                 ),
             ],
-            options={"verbose_name": "remark", "verbose_name_plural": "remarks",},
+            options={
+                "verbose_name": "remark",
+                "verbose_name_plural": "remarks",
+            },
         ),
     ]

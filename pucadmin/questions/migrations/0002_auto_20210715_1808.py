@@ -15,7 +15,10 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="courseassignee", name="alternative_email",),
+        migrations.RemoveField(
+            model_name="courseassignee",
+            name="alternative_email",
+        ),
         migrations.AlterField(
             model_name="courseassignee",
             name="assignee",

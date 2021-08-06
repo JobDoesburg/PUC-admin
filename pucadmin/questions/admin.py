@@ -3,7 +3,9 @@ from autocompletefilter.filters import AutocompleteListFilter
 from django.contrib import admin
 
 from django.contrib.admin import register
-from django.urls import reverse
+from django.contrib.admin.utils import flatten_fieldsets
+from django.db.models import Q
+from django.urls import reverse, path
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
@@ -36,6 +38,36 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
     inlines = [StudentSubmissionInline]
 
     autocomplete_fields = ["school"]
+    fieldsets = (
+        (
+            _("Administrative"),
+            {
+                "classes": ("",),
+                "fields": (
+                    "id",
+                    "created_at",
+                    "school_text",
+                    "school",
+                    "expected_end_date",
+                    "assignee",
+                    "completed",
+                ),
+            },
+        ),
+        (
+            _("Question"),
+            {
+                "fields": (
+                    "course",
+                    "research_question",
+                    "sub_questions",
+                    "message",
+                    "send_email",
+                )
+            },
+        ),
+    )
+    readonly_fields = ("send_email",)
     list_display = (
         "_created_at",
         "_students",
@@ -73,6 +105,17 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
     _school.short_description = _("school")
     _school.admin_order_field = "school"
 
+    def send_email(self, obj):
+        if obj:
+            return format_html(
+                "<a class='button' href='mailto:{}'>{}</a>",
+                obj.student_emails,
+                _("Send email to students"),
+            )
+        return ""
+
+    send_email.short_description = _("email")
+
     def _students(self, obj):
         return obj.students_text
 
@@ -85,3 +128,36 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
         "completed",
         "created_at",
     )
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+
+        if not request.user.has_perm("questions.view_unassigned"):
+            queryset = queryset.filter(
+                Q(assignee=request.user)
+                | Q(course__in=request.user.assigned_courses.values("course"))
+            )
+
+        return queryset
+
+    def has_change_permission(self, request, obj=None):
+        if obj is not None and request.user.has_perm("questions.complete_question"):
+            return True
+        return super().has_change_permission(request, obj)
+
+    def get_readonly_fields(self, request, obj=None):
+        fields = list(super().get_readonly_fields(request, obj))
+
+        if not request.user.has_perm("questions.change_question"):
+            fields += [f.name for f in self.model._meta.fields]
+
+            if request.user.has_perm("questions.complete_question"):
+                fields.remove("completed")
+
+            if request.user.has_perm("questions.change_assignee"):
+                fields.remove("assignee")
+
+            if obj:
+                fields.remove("school")
+
+        return fields

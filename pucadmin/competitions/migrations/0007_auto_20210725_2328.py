@@ -10,8 +10,20 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RemoveField(model_name="supervisor", name="address_1",),
-        migrations.RemoveField(model_name="supervisor", name="address_2",),
-        migrations.RemoveField(model_name="supervisor", name="town",),
-        migrations.RemoveField(model_name="supervisor", name="zip",),
+        migrations.RemoveField(
+            model_name="supervisor",
+            name="address_1",
+        ),
+        migrations.RemoveField(
+            model_name="supervisor",
+            name="address_2",
+        ),
+        migrations.RemoveField(
+            model_name="supervisor",
+            name="town",
+        ),
+        migrations.RemoveField(
+            model_name="supervisor",
+            name="zip",
+        ),
     ]

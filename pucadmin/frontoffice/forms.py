@@ -26,7 +26,9 @@ class SubmissionForm(models.ModelForm):
             "school_text",
         ]
 
-    privacy_policy = forms.BooleanField(required=True,)
+    privacy_policy = forms.BooleanField(
+        required=True,
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -134,14 +136,29 @@ class QuestionSubmissionForm(models.ModelForm):
             "research_question",
             "sub_questions",
             "message",
+            "expected_end_date",
         ]
         widgets = {
-            'research_question': forms.Textarea(attrs={'rows':2,}),
-            'sub_questions': forms.Textarea(attrs={'rows':5,}),
-            'message': forms.Textarea(attrs={'rows':8,}),
+            "research_question": forms.Textarea(
+                attrs={
+                    "rows": 2,
+                }
+            ),
+            "sub_questions": forms.Textarea(
+                attrs={
+                    "rows": 5,
+                }
+            ),
+            "message": forms.Textarea(
+                attrs={
+                    "rows": 8,
+                }
+            ),
         }
 
-    privacy_policy = forms.BooleanField(required=True,)
+    privacy_policy = forms.BooleanField(
+        required=True,
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -161,6 +178,10 @@ class QuestionSubmissionForm(models.ModelForm):
             _(
                 'The Radboud Pre-University College of Science processes the above data for the purpose of answering the questions. The personal data will not be stored after processing. I agree with the <a href="https://www.ru.nl/vaste-materialen/privacystatement-radboud-universiteit/" target="_blank">privacy regulations of Radboud University</a> and with the processing of the data provided by me for the purposes described above.'
             )
+        )
+        self.fields["expected_end_date"].required = True
+        self.fields["expected_end_date"].help_text = _(
+            "DD-MM-YYYY. When do you expect to be finished with your research."
         )
 
     def save(self, commit=True):

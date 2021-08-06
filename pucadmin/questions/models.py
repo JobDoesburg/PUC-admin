@@ -57,8 +57,10 @@ class Question(models.Model):
         related_name="questions",
         related_query_name="questions",
     )
-    research_question = models.TextField(  # django-doctor: disable=nullable-string-field
-        verbose_name=_("research question"), blank=True, null=True
+    research_question = (
+        models.TextField(  # django-doctor: disable=nullable-string-field
+            verbose_name=_("research question"), blank=True, null=True
+        )
     )
     sub_questions = models.TextField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("sub questions"), blank=True, null=True
@@ -77,9 +79,16 @@ class Question(models.Model):
 
     completed = models.BooleanField(verbose_name=_("completed"), default=False)
 
+    expected_end_date = models.DateField(verbose_name=_("expected end date"), null=True)
+
     class Meta:
         verbose_name = _("question")
         verbose_name_plural = _("questions")
+        permissions = [
+            ("view_unassigned", _("Can view questions not assigned to that user")),
+            ("complete_question", _("Can change the completion status of questions")),
+            ("change_assignee", _("Can change the assignee of questions")),
+        ]
 
     def __str__(self):
         return _("Question %(id)s (%(course)s, %(created)s)") % {
@@ -125,11 +134,17 @@ class Question(models.Model):
     def students_text(self):
         return self.__stringify_persons(self.students)
 
+    @property
+    def student_emails(self):
+        return ",".join(self.students.values_list("email", flat=True))
+
 
 class Student(models.Model):
     first_name = models.CharField(verbose_name=_("first name"), max_length=20)
     last_name = models.CharField(verbose_name=_("last name"), max_length=20)
-    email = models.EmailField(verbose_name=_("email"), blank=True, null=True)  # django-doctor: disable=nullable-string-field
+    email = models.EmailField(
+        verbose_name=_("email"), blank=True, null=True
+    )  # django-doctor: disable=nullable-string-field
 
     question = models.ForeignKey(
         Question,

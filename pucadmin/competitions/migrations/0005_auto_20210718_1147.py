@@ -314,6 +314,7 @@ class Migration(migrations.Migration):
             ),
         ),
         migrations.AlterUniqueTogether(
-            name="submission", unique_together={("competition", "title")},
+            name="submission",
+            unique_together={("competition", "title")},
         ),
     ]

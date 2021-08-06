@@ -73,7 +73,10 @@ class Migration(migrations.Migration):
                 ("phone", models.CharField(blank=True, max_length=20, null=True)),
                 ("email", models.EmailField(blank=True, max_length=254, null=True)),
             ],
-            options={"verbose_name": "student", "verbose_name_plural": "students",},
+            options={
+                "verbose_name": "student",
+                "verbose_name_plural": "students",
+            },
         ),
         migrations.CreateModel(
             name="Submission",
