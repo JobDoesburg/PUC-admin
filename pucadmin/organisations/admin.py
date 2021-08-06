@@ -32,7 +32,7 @@ class UserAdmin(admin.ModelAdmin):
     fieldsets = (
         (
             "Personal",
-            {"fields": ("first_name", "last_name", "email", "alternative_email",)},
+            {"fields": ("username", "first_name", "last_name", "email", "alternative_email",)},
         ),
         (
             "Administration",
@@ -54,8 +54,9 @@ class UserAdmin(admin.ModelAdmin):
         "groups",
         "user_permissions",
     )
-
+    list_display_links = ('username', '__str__')
     list_display = (
+        "username",
         "__str__",
         "email",
         "alternative_email",
@@ -73,6 +74,7 @@ class UserAdmin(admin.ModelAdmin):
     )
 
     search_fields = (
+        "username",
         "first_name",
         "last_name",
     )
