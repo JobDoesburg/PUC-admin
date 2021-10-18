@@ -1,4 +1,5 @@
 from django import forms
+from django.conf import settings
 from django.forms import models, inlineformset_factory
 from django.utils.safestring import mark_safe
 from django.utils.translation import gettext_lazy as _
@@ -51,8 +52,9 @@ class SubmissionForm(models.ModelForm):
 
         self.fields["privacy_policy"].label = mark_safe(
             _(
-                'The Radboud Pre-University College of Science processes the above data for the purpose of participation in the contest. The personal data will not be stored after processing. I agree with the <a href="https://www.ru.nl/vaste-materialen/privacystatement-radboud-universiteit/" target="_blank">privacy regulations of Radboud University</a> and with the processing of the data provided by me for the purposes described above.'
+                'The Radboud Pre-University College of Science processes the above data for the purpose of participation in the contest. The personal data will not be stored after processing. I agree with the <a href="%s" target="_blank">privacy regulations of Radboud University</a> and with the processing of the data provided by me for the purposes described above.'
             )
+            % settings.PRIVACY_STATEMENT_URL
         )
 
     def save(self, commit=True):
@@ -176,8 +178,9 @@ class QuestionSubmissionForm(models.ModelForm):
         )
         self.fields["privacy_policy"].label = mark_safe(
             _(
-                'The Radboud Pre-University College of Science processes the above data for the purpose of answering the questions. The personal data will not be stored after processing. I agree with the <a href="https://www.ru.nl/vaste-materialen/privacystatement-radboud-universiteit/" target="_blank">privacy regulations of Radboud University</a> and with the processing of the data provided by me for the purposes described above.'
+                'The Radboud Pre-University College of Science processes the above data for the purpose of answering the questions. The personal data will not be stored after processing. I agree with the <a href="%s" target="_blank">privacy regulations of Radboud University</a> and with the processing of the data provided by me for the purposes described above.'
             )
+            % settings.PRIVACY_STATEMENT_URL
         )
         self.fields["expected_end_date"].required = True
         self.fields["expected_end_date"].help_text = _(

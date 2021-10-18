@@ -113,3 +113,7 @@ LOGIN_REDIRECT_URL = "/"
 LOGOUT_REDIRECT_URL = "/"
 SP_UNIQUE_USERNAMES = False
 SESSION_SERIALIZER = "django.contrib.sessions.serializers.PickleSerializer"
+
+PRIVACY_STATEMENT_URL = (
+    "https://www.ru.nl/vaste-onderdelen/privacyverklaring-radboud-universiteit/"
+)
