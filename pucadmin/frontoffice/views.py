@@ -1,5 +1,5 @@
 from django.utils.decorators import method_decorator
-from django.views.generic import CreateView
+from django.views.generic import CreateView, TemplateView
 from django.views.decorators.clickjacking import xframe_options_exempt
 
 from PUCadmin.utils import send_email
@@ -20,7 +20,7 @@ class CompetitionSubmissionView(CreateView):
     model = Submission
     form_class = SubmissionForm
     template_name = "competition_submission_form.html"
-    success_url = "/"
+    success_url = "/frontoffice/competition-success"
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -52,8 +52,9 @@ class CompetitionSubmissionView(CreateView):
                 "email/submission-confirmation.txt",
                 {"submission": obj},
             )
-
-        return super().form_valid(form)
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
 
 
 @method_decorator(xframe_options_exempt, name="dispatch")
@@ -61,7 +62,7 @@ class QuestionSubmissionView(CreateView):
     model = Question
     form_class = QuestionSubmissionForm
     template_name = "question_submission_form.html"
-    success_url = "/"
+    success_url = "/frontoffice/question-success"
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
@@ -85,5 +86,14 @@ class QuestionSubmissionView(CreateView):
                 "email/question-confirmation.txt",
                 {"question": obj},
             )
+            return super().form_valid(form)
+        else:
+            return self.form_invalid(form)
 
-        return super().form_valid(form)
+
+class QuestionSubmissionSuccessView(TemplateView):
+    template_name = "question-submission-success.html"
+
+
+class CompetitionSubmissionSuccessView(TemplateView):
+    template_name = "competition-submission-success.html"
