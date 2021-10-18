@@ -5,7 +5,7 @@ from competitions.models import Student, Supervisor
 
 
 def minimise_data():
-    empty_data = {
+    empty_data_student = {
         "address_1": None,
         "address_2": None,
         "zip": None,
@@ -13,14 +13,18 @@ def minimise_data():
         "email": None,
         "phone": None,
     }
+    empty_data_supervisor = {
+        "email": None,
+        "phone": None,
+    }
     updated = Student.objects.filter(
         submission__competition__competition_date__lt=timezone.now()
-        - timezone.timedelta(days=100)
-    ).update(**empty_data)
+        - timezone.timedelta(days=31)
+    ).update(**empty_data_student)
     updated += Supervisor.objects.filter(
         submission__competition__competition_date__lt=timezone.now()
-        - timezone.timedelta(days=100)
-    ).update(**empty_data)
+        - timezone.timedelta(days=31)
+    ).update(**empty_data_supervisor)
     return updated
 
 

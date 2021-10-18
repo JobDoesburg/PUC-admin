@@ -47,9 +47,12 @@ Moreover, we use the following settings:
 # Data minimisation
 Data can be minimised by running `manage.py minimisedata`. This will use the following policy:
 
+##### Users
+Users that have not logged in for 2 years, or are not connected to an organisation will be removed.
+
 ##### Competitions
-Personal information from students and supervisors for competition submissions, is minimised 100 days after the competition has ended. Address, email and phone number are deleted. Name, school and the submitted document, together with the reports are kept indefinitely.
+Personal information from students and supervisors for competition submissions, is minimised 31 days after the competition has ended. Address, email and phone number are deleted. Name, school and the submitted document, together with the reports are kept indefinitely.
 
 ##### Questions
-All personal information from students that submitted a question is deleted 30 days after the question has been marked completed. The content of the question itself and the school are stored indefinitely, but name and email are deleted. 
+All personal information from students that submitted a question is deleted after 1 year  if the question has been marked completed. The content of the question itself and the school are stored indefinitely, but name and email are deleted. 
 
