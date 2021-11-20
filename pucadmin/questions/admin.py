@@ -3,9 +3,8 @@ from autocompletefilter.filters import AutocompleteListFilter
 from django.contrib import admin
 
 from django.contrib.admin import register
-from django.contrib.admin.utils import flatten_fieldsets
 from django.db.models import Q
-from django.urls import reverse, path
+from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
