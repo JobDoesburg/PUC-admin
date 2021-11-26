@@ -8,7 +8,7 @@ from django.urls import reverse
 from django.utils.html import format_html
 from django.utils.translation import gettext_lazy as _
 
-from .models import CourseAssignee, Question, Student
+from .models import CourseAssignee, Question, Student, Correspondence
 
 
 @register(CourseAssignee)
@@ -27,14 +27,23 @@ class CourseAssigneeAdmin(admin.ModelAdmin):
     _assignee.admin_order_field = "assignee"
 
 
-class StudentSubmissionInline(admin.StackedInline):
+class StudentInline(admin.StackedInline):
     model = Student
     extra = 0
 
 
+class CorrespondenceInline(admin.StackedInline):
+    model = Correspondence
+    extra = 0
+    fields = (
+        "date",
+        "message",
+    )
+
+
 @register(Question)
 class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
-    inlines = [StudentSubmissionInline]
+    inlines = [StudentInline, CorrespondenceInline]
 
     autocomplete_fields = ["school"]
     fieldsets = (
@@ -62,6 +71,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
                     "sub_questions",
                     "message",
                     "send_email",
+                    "tags",
                 )
             },
         ),
@@ -91,6 +101,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
         "message",
         "course",
         "school",
+        "tags",
     )
 
     def _created_at(self, obj):
@@ -127,6 +138,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
         "course",
         ("school", AutocompleteListFilter),
         ("assignee", AutocompleteListFilter),
+        ("tags", AutocompleteListFilter),
         "completed",
         "created_at",
     )

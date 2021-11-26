@@ -1,6 +1,9 @@
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
+
+from taggit_selectize.managers import TaggableManager
 
 from organisations.models import Course
 from questions.services import notify_new_assignee
@@ -66,6 +69,8 @@ class Question(models.Model):
         verbose_name=_("sub questions"), blank=True, null=True
     )
     message = models.TextField(verbose_name=_("message"))
+
+    tags = TaggableManager()
 
     assignee = models.ForeignKey(
         get_user_model(),
@@ -160,3 +165,25 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
+
+
+class Correspondence(models.Model):
+    class Meta:
+        verbose_name = _("correspondence")
+        verbose_name_plural = _("correspondence")
+
+    date = models.DateField(verbose_name=_("date"), default=timezone.now)
+    question = models.ForeignKey(
+        Question,
+        verbose_name=_("question"),
+        on_delete=models.CASCADE,
+        related_name="correspondence",
+        related_query_name="correspondence",
+    )
+    message = models.TextField(verbose_name=_("message"))
+
+    def __str__(self):
+        return _("Correspondence for %(question)s on %(date)s.") % {
+            "question": self.question,
+            "date": self.date.strftime("%d-%M-%Y"),
+        }

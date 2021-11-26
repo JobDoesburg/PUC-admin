@@ -4,6 +4,7 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     path("", RedirectView.as_view(url="/admin"), name="index"),
+    path("taggit/", include("taggit_selectize.urls")),
     path("sso/<idp_slug>/", include("sp.urls")),
     path(
         "login/", RedirectView.as_view(url="/sso/science_puc/login/"), name="saml-login"
