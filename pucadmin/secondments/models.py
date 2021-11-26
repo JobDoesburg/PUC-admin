@@ -82,13 +82,18 @@ class Employee(models.Model):
         related_query_name="employees",
         related_name="employees",
     )
-    study_year = models.PositiveSmallIntegerField(null=True, blank=True)
+    study_year = models.PositiveSmallIntegerField(
+        verbose_name=_("study year"), null=True, blank=True
+    )
 
     courses = models.ManyToManyField(
         Course,
+        verbose_name=_("courses"),
     )
 
-    hours_available = models.PositiveSmallIntegerField(null=True, blank=True)
+    hours_available = models.PositiveSmallIntegerField(
+        verbose_name=_("hours available"), null=True, blank=True
+    )
 
     dayparts = models.ManyToManyField(
         Daypart,
@@ -96,9 +101,9 @@ class Employee(models.Model):
         related_name="dayparts",
     )
 
-    drivers_license = models.BooleanField(verbose_name="drivers license")
+    drivers_license = models.BooleanField(verbose_name=_("drivers license"))
 
-    contract = models.BooleanField(verbose_name="contract")
+    contract = models.BooleanField(verbose_name=_("contract"))
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.time_period})"
@@ -164,10 +169,13 @@ class Request(models.Model):
         related_name="secondment_requests",
     )
 
-    num_hours = models.PositiveSmallIntegerField(null=False, blank=False)
+    num_hours = models.PositiveSmallIntegerField(
+        verbose_name=_("num. hours"), null=False, blank=False
+    )
 
     dayparts = models.ManyToManyField(
         Daypart,
+        verbose_name=_("dayparts"),
         related_name="requests",
         related_query_name="requests",
     )
@@ -182,7 +190,7 @@ class Request(models.Model):
         related_name="secondments",
     )
 
-    remarks = models.TextField(blank=True, null=True)
+    remarks = models.TextField(verbose_name=_("remarks"), blank=True, null=True)
 
     @property
     def candidates_url(self):

@@ -263,14 +263,18 @@ class SecondmentRequestAdmin(
         "school__school__location_town",
     )
     readonly_fields = ("candidates_url",)
-    list_display = ("school", "course", "employee", "candidates_url")
+    list_display = (
+        "course",
+        "num_hours",
+        "_location",
+        "_school",
+        "candidates_url",
+        "employee",
+    )
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
     }
-    list_display_links = (
-        "school",
-        "course",
-    )
+    list_display_links = ("course",)
     list_filter = (
         "school__time_period",
         ("employee", AutocompleteListFilter),
@@ -279,12 +283,24 @@ class SecondmentRequestAdmin(
         DaypartsFilter,
     )
 
+    def _location(self, obj):
+        return obj.school.school.location_town
+
+    _location.short_description = _("town")
+    _location.admin_order_field = "school__school__location_town"
+
+    def _school(self, obj):
+        return obj.school.school
+
+    _school.short_description = _("school")
+    _school.admin_order_field = "school__school"
+
     def candidates_url(self, obj):
         if obj:
             return format_html(
                 "<a class='button' href='{}'>{}</a>",
                 obj.candidates_url,
-                _("view candidates"),
+                _("candidates"),
             )
 
     candidates_url.short_description = _("candidates")
