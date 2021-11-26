@@ -73,7 +73,7 @@ class School(models.Model):
         related_name="schools",
     )
 
-    dissolved = models.BooleanField(verbose_name="dissolved", default=False)
+    dissolved = models.BooleanField(verbose_name=_("dissolved"), default=False)
 
     class Meta:
         verbose_name = _("school")
