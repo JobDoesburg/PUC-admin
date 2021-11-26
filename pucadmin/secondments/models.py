@@ -97,6 +97,7 @@ class Employee(models.Model):
 
     dayparts = models.ManyToManyField(
         Daypart,
+        verbose_name=_("dayparts"),
         related_query_name="dayparts",
         related_name="dayparts",
     )

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 21:38+0100\n"
+"POT-Creation-Date: 2021-11-26 21:44+0100\n"
 "PO-Revision-Date: 2021-11-26 21:38+0100\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
@@ -44,8 +44,8 @@ msgstr "aanmelding open"
 #: competitions/admin.py:121 competitions/admin.py:294
 #: competitions/models.py:109 questions/admin.py:118 questions/models.py:48
 #: schools/models.py:79 schools/models.py:93 secondments/admin.py:295
-#: secondments/models.py:114 secondments/models.py:126
-#: secondments/models.py:158
+#: secondments/models.py:115 secondments/models.py:127
+#: secondments/models.py:159
 msgid "school"
 msgstr "school"
 
@@ -68,7 +68,7 @@ msgstr "prijs"
 
 #: competitions/admin.py:156 competitions/models.py:95
 #: competitions/models.py:267 organisations/models.py:30 questions/models.py:17
-#: questions/models.py:58 secondments/models.py:166
+#: questions/models.py:58 secondments/models.py:167
 msgid "course"
 msgstr "vak"
 
@@ -213,12 +213,12 @@ msgid "town"
 msgstr "plaatsnaam"
 
 #: competitions/models.py:233 competitions/models.py:259 schools/models.py:66
-#: secondments/models.py:72 secondments/models.py:135
+#: secondments/models.py:72 secondments/models.py:136
 msgid "phone"
 msgstr "telefoon"
 
 #: competitions/models.py:236 competitions/models.py:262 questions/admin.py:130
-#: questions/models.py:151 secondments/models.py:75 secondments/models.py:138
+#: questions/models.py:151 secondments/models.py:75 secondments/models.py:139
 msgid "email"
 msgstr "e-mail"
 
@@ -493,7 +493,7 @@ msgstr "url"
 msgid "dissolved"
 msgstr "opgeheven"
 
-#: schools/models.py:80 secondments/models.py:115
+#: schools/models.py:80 secondments/models.py:116
 msgid "schools"
 msgstr "scholen"
 
@@ -501,7 +501,7 @@ msgstr "scholen"
 msgid "remark"
 msgstr "opmerking"
 
-#: schools/models.py:102 secondments/models.py:193
+#: schools/models.py:102 secondments/models.py:194
 msgid "remarks"
 msgstr "opmerkingen"
 
@@ -510,7 +510,8 @@ msgstr "opmerkingen"
 msgid "Remark on %(school)s at %(created)s."
 msgstr "Opmerking bij %(school)s op %(created)s."
 
-#: secondments/admin.py:64 secondments/models.py:37 secondments/models.py:178
+#: secondments/admin.py:64 secondments/models.py:37 secondments/models.py:100
+#: secondments/models.py:179
 msgid "dayparts"
 msgstr "dagdelen"
 
@@ -550,7 +551,7 @@ msgstr "#onvervuld"
 msgid "Secondments"
 msgstr "Detacheringen"
 
-#: secondments/models.py:12 secondments/models.py:63 secondments/models.py:119
+#: secondments/models.py:12 secondments/models.py:63 secondments/models.py:120
 msgid "time period"
 msgstr "periode"
 
@@ -574,7 +575,7 @@ msgstr "dagdeel"
 msgid "study program"
 msgstr "studie"
 
-#: secondments/models.py:58 secondments/models.py:185
+#: secondments/models.py:58 secondments/models.py:186
 msgid "employee"
 msgstr "werknemer"
 
@@ -590,35 +591,35 @@ msgstr "studiejaar"
 msgid "hours available"
 msgstr "uren beschikbaar"
 
-#: secondments/models.py:104
+#: secondments/models.py:105
 msgid "drivers license"
 msgstr "rijbewijs"
 
-#: secondments/models.py:106
+#: secondments/models.py:107
 msgid "contract"
 msgstr "contract"
 
-#: secondments/models.py:132
+#: secondments/models.py:133
 msgid "contact person"
 msgstr "contactpersoon"
 
-#: secondments/models.py:142
+#: secondments/models.py:143
 msgid "drivers license required"
 msgstr "rijbewijs vereist"
 
-#: secondments/models.py:153
+#: secondments/models.py:154
 msgid "request"
 msgstr "aanvraag"
 
-#: secondments/models.py:154
+#: secondments/models.py:155
 msgid "requests"
 msgstr "aanvragen"
 
-#: secondments/models.py:173
+#: secondments/models.py:174
 msgid "num. hours"
 msgstr "aantal uren"
 
-#: secondments/models.py:208
+#: secondments/models.py:209
 #, python-format
 msgid "Secondment request for %(course)s by %(school)s."
 msgstr "Detacheringsaanvraag voor %(course)s door %(school)s."
