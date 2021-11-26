@@ -16,27 +16,24 @@ class SchoolRemarkInline(admin.TabularInline):
 class SchoolAdmin(ExportActionMixin, admin.ModelAdmin):
     inlines = [SchoolRemarkInline]
     search_fields = [
+        "bg_id",
+        "brin_id",
         "name",
-        "town",
-        "address_1",
-        "address_2",
-        "zip",
+        "short_name",
+        "location_town",
     ]
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
     }
-    list_display_links = (
-        "name",
-        "town",
-    )
     list_display = (
-        "name",
-        "town",
-        "address_1",
-        "address_2",
-        "zip",
+        "__str__",
+        "location_town",
+        "url",
+        "location_street",
+        "location_house_number",
+        "location_zip",
     )
     list_filter = (
-        "town",
         "courses_offered",
+        "location_town",
     )

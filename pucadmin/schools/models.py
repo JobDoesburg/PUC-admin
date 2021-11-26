@@ -6,12 +6,25 @@ from organisations.models import Course
 
 
 class School(models.Model):
-    name = models.CharField(verbose_name=_("name"), max_length=100, unique=True)
-    address_1 = models.CharField(verbose_name=_("address 1"), max_length=100)
-    address_2 = models.CharField(  # django-doctor: disable=nullable-string-field
-        verbose_name=_("address 2"), max_length=100, blank=True, null=True
+    bg_id = models.CharField(
+        verbose_name=_("Bevoegd Gezag id"),
+        max_length=5,
     )
-    zip = models.CharField(
+    brin_id = models.CharField(
+        verbose_name=_("BRIN id"),
+        max_length=6,
+    )
+    name = models.CharField(verbose_name=_("name"), max_length=100)
+    short_name = models.CharField(
+        verbose_name=_("short name"), max_length=100, blank=True, null=True
+    )
+    location_street = models.CharField(
+        verbose_name=_("street"), max_length=100, blank=True, null=True
+    )
+    location_house_number = models.CharField(
+        verbose_name=_("house number"), max_length=10, blank=True, null=True
+    )
+    location_zip = models.CharField(
         _("zip"),
         max_length=7,
         validators=[
@@ -20,8 +33,39 @@ class School(models.Model):
                 message=_("Enter zip code in this format: '1234 AB'"),
             )
         ],
+        blank=True,
+        null=True,
     )
-    town = models.CharField(verbose_name=_("town"), max_length=50)
+    location_town = models.CharField(verbose_name=_("town"), max_length=50)
+    correspondence_street = models.CharField(
+        verbose_name=_("street (correspondence)"), max_length=100, blank=True, null=True
+    )
+    correspondence_house_number = models.CharField(
+        verbose_name=_("house number (correspondence)"),
+        max_length=10,
+        blank=True,
+        null=True,
+    )
+    correspondence_zip = models.CharField(
+        _("zip"),
+        max_length=7,
+        validators=[
+            RegexValidator(
+                regex="^[1-9][0-9]{3} (?!SA|SD|SS)[A-Z]{2}",
+                message=_("Enter zip code in this format: '1234 AB'"),
+            )
+        ],
+        blank=True,
+        null=True,
+    )
+    correspondence_town = models.CharField(
+        verbose_name=_("town (correspondence)"), max_length=50, blank=True, null=True
+    )
+
+    phone = models.CharField(
+        verbose_name=_("phone"), max_length=15, blank=True, null=True
+    )
+    url = models.URLField(verbose_name=_("url"), blank=True, null=True)
     courses_offered = models.ManyToManyField(
         Course,
         verbose_name=_("courses"),
@@ -29,12 +73,17 @@ class School(models.Model):
         related_name="schools",
     )
 
+    dissolved = models.BooleanField(verbose_name="dissolved", default=False)
+
     class Meta:
         verbose_name = _("school")
         verbose_name_plural = _("schools")
+        unique_together = ["bg_id", "brin_id"]
 
     def __str__(self):
-        return f"{self.name} ({self.town})"
+        if self.short_name:
+            return f"{self.short_name} ({self.location_town})"
+        return f"{self.name} ({self.location_town})"
 
 
 class SchoolRemark(models.Model):
