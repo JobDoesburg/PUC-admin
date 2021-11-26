@@ -139,7 +139,7 @@ class SecondmentSchool(models.Model):
     )  # django-doctor: disable=nullable-string-field  # django-doctor: disable=nullable-string-field
 
     drivers_license_required = models.BooleanField(
-        verbose_name="drivers license required"
+        verbose_name=_("drivers license required")
     )
 
     remarks = models.TextField(blank=True, null=True)

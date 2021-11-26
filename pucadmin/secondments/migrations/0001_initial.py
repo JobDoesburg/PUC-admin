@@ -9,107 +9,297 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('organisations', '0004_auto_20210718_1147'),
-        ('schools', '0004_auto_20211126_2107'),
+        ("organisations", "0004_auto_20210718_1147"),
+        ("schools", "0004_auto_20211126_2107"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Daypart',
+            name="Daypart",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20, verbose_name='name')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20, verbose_name="name")),
             ],
             options={
-                'verbose_name': 'daypart',
-                'verbose_name_plural': 'dayparts',
+                "verbose_name": "daypart",
+                "verbose_name_plural": "dayparts",
             },
         ),
         migrations.CreateModel(
-            name='Employee',
+            name="Employee",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('first_name', models.CharField(max_length=20, verbose_name='first name')),
-                ('last_name', models.CharField(max_length=20, verbose_name='last name')),
-                ('phone', models.CharField(blank=True, max_length=20, null=True, verbose_name='phone')),
-                ('email', models.EmailField(blank=True, max_length=254, null=True, verbose_name='email')),
-                ('study_year', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='study year')),
-                ('hours_available', models.PositiveSmallIntegerField(blank=True, null=True, verbose_name='hours available')),
-                ('drivers_license', models.BooleanField(verbose_name='drivers license')),
-                ('contract', models.BooleanField(verbose_name='contract')),
-                ('courses', models.ManyToManyField(to='organisations.Course', verbose_name='courses')),
-                ('dayparts', models.ManyToManyField(related_name='dayparts', related_query_name='dayparts', to='secondments.Daypart')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "first_name",
+                    models.CharField(max_length=20, verbose_name="first name"),
+                ),
+                (
+                    "last_name",
+                    models.CharField(max_length=20, verbose_name="last name"),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True, max_length=20, null=True, verbose_name="phone"
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True, max_length=254, null=True, verbose_name="email"
+                    ),
+                ),
+                (
+                    "study_year",
+                    models.PositiveSmallIntegerField(
+                        blank=True, null=True, verbose_name="study year"
+                    ),
+                ),
+                (
+                    "hours_available",
+                    models.PositiveSmallIntegerField(
+                        blank=True, null=True, verbose_name="hours available"
+                    ),
+                ),
+                (
+                    "drivers_license",
+                    models.BooleanField(verbose_name="drivers license"),
+                ),
+                ("contract", models.BooleanField(verbose_name="contract")),
+                (
+                    "courses",
+                    models.ManyToManyField(
+                        to="organisations.Course", verbose_name="courses"
+                    ),
+                ),
+                (
+                    "dayparts",
+                    models.ManyToManyField(
+                        related_name="dayparts",
+                        related_query_name="dayparts",
+                        to="secondments.Daypart",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'employee',
-                'verbose_name_plural': 'employees',
+                "verbose_name": "employee",
+                "verbose_name_plural": "employees",
             },
         ),
         migrations.CreateModel(
-            name='StudyProgram',
+            name="StudyProgram",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=20, verbose_name='name')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=20, verbose_name="name")),
             ],
             options={
-                'verbose_name': 'study program',
-                'verbose_name_plural': 'study program',
+                "verbose_name": "study program",
+                "verbose_name_plural": "study program",
             },
         ),
         migrations.CreateModel(
-            name='TimePeriod',
+            name="TimePeriod",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(help_text='For example, 2019-2020', max_length=20, verbose_name='name')),
-                ('start', models.DateField()),
-                ('end', models.DateField()),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "name",
+                    models.CharField(
+                        help_text="For example, 2019-2020",
+                        max_length=20,
+                        verbose_name="name",
+                    ),
+                ),
+                ("start", models.DateField()),
+                ("end", models.DateField()),
             ],
             options={
-                'verbose_name': 'time period',
-                'verbose_name_plural': 'time periods',
+                "verbose_name": "time period",
+                "verbose_name_plural": "time periods",
             },
         ),
         migrations.CreateModel(
-            name='SecondmentSchool',
+            name="SecondmentSchool",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('contact_person', models.CharField(blank=True, max_length=100, null=True, verbose_name='contact person')),
-                ('phone', models.CharField(blank=True, max_length=20, null=True, verbose_name='phone')),
-                ('email', models.EmailField(blank=True, max_length=254, null=True, verbose_name='email')),
-                ('drivers_license_required', models.BooleanField(verbose_name='drivers license required')),
-                ('remarks', models.TextField(blank=True, null=True)),
-                ('school', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='secondment_schools', related_query_name='secondment_schools', to='schools.school', verbose_name='school')),
-                ('time_period', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='secondment_schools', related_query_name='secondment_schools', to='secondments.timeperiod', verbose_name='time period')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "contact_person",
+                    models.CharField(
+                        blank=True,
+                        max_length=100,
+                        null=True,
+                        verbose_name="contact person",
+                    ),
+                ),
+                (
+                    "phone",
+                    models.CharField(
+                        blank=True, max_length=20, null=True, verbose_name="phone"
+                    ),
+                ),
+                (
+                    "email",
+                    models.EmailField(
+                        blank=True, max_length=254, null=True, verbose_name="email"
+                    ),
+                ),
+                (
+                    "drivers_license_required",
+                    models.BooleanField(verbose_name="drivers license required"),
+                ),
+                ("remarks", models.TextField(blank=True, null=True)),
+                (
+                    "school",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="secondment_schools",
+                        related_query_name="secondment_schools",
+                        to="schools.school",
+                        verbose_name="school",
+                    ),
+                ),
+                (
+                    "time_period",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="secondment_schools",
+                        related_query_name="secondment_schools",
+                        to="secondments.timeperiod",
+                        verbose_name="time period",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'school',
-                'verbose_name_plural': 'schools',
+                "verbose_name": "school",
+                "verbose_name_plural": "schools",
             },
         ),
         migrations.CreateModel(
-            name='Request',
+            name="Request",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('num_hours', models.PositiveSmallIntegerField(verbose_name='num. hours')),
-                ('remarks', models.TextField(blank=True, null=True, verbose_name='remarks')),
-                ('course', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='secondment_requests', related_query_name='secondment_requests', to='organisations.course', verbose_name='course')),
-                ('dayparts', models.ManyToManyField(related_name='requests', related_query_name='requests', to='secondments.Daypart', verbose_name='dayparts')),
-                ('employee', models.ForeignKey(blank=True, null=True, on_delete=django.db.models.deletion.PROTECT, related_name='secondments', related_query_name='secondments', to='secondments.employee', verbose_name='employee')),
-                ('school', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='requests', related_query_name='requests', to='secondments.secondmentschool', verbose_name='school')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "num_hours",
+                    models.PositiveSmallIntegerField(verbose_name="num. hours"),
+                ),
+                (
+                    "remarks",
+                    models.TextField(blank=True, null=True, verbose_name="remarks"),
+                ),
+                (
+                    "course",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="secondment_requests",
+                        related_query_name="secondment_requests",
+                        to="organisations.course",
+                        verbose_name="course",
+                    ),
+                ),
+                (
+                    "dayparts",
+                    models.ManyToManyField(
+                        related_name="requests",
+                        related_query_name="requests",
+                        to="secondments.Daypart",
+                        verbose_name="dayparts",
+                    ),
+                ),
+                (
+                    "employee",
+                    models.ForeignKey(
+                        blank=True,
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="secondments",
+                        related_query_name="secondments",
+                        to="secondments.employee",
+                        verbose_name="employee",
+                    ),
+                ),
+                (
+                    "school",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="requests",
+                        related_query_name="requests",
+                        to="secondments.secondmentschool",
+                        verbose_name="school",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'request',
-                'verbose_name_plural': 'requests',
+                "verbose_name": "request",
+                "verbose_name_plural": "requests",
             },
         ),
         migrations.AddField(
-            model_name='employee',
-            name='study_program',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='employees', related_query_name='employees', to='secondments.studyprogram', verbose_name='study program'),
+            model_name="employee",
+            name="study_program",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.PROTECT,
+                related_name="employees",
+                related_query_name="employees",
+                to="secondments.studyprogram",
+                verbose_name="study program",
+            ),
         ),
         migrations.AddField(
-            model_name='employee',
-            name='time_period',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='employees', related_query_name='employees', to='secondments.timeperiod', verbose_name='time period'),
+            model_name="employee",
+            name="time_period",
+            field=models.ForeignKey(
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="employees",
+                related_query_name="employees",
+                to="secondments.timeperiod",
+                verbose_name="time period",
+            ),
         ),
     ]

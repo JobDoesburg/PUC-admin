@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 21:07+0100\n"
-"PO-Revision-Date: 2021-11-26 21:07+0100\n"
+"POT-Creation-Date: 2021-11-26 21:38+0100\n"
+"PO-Revision-Date: 2021-11-26 21:38+0100\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -601,6 +601,10 @@ msgstr "contract"
 #: secondments/models.py:132
 msgid "contact person"
 msgstr "contactpersoon"
+
+#: secondments/models.py:142
+msgid "drivers license required"
+msgstr "rijbewijs vereist"
 
 #: secondments/models.py:153
 msgid "request"
