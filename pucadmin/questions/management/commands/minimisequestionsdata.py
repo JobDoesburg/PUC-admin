@@ -6,7 +6,6 @@ from questions.models import Student
 
 def minimise_data():
     deleted, _ = Student.objects.filter(
-        question__completed=True,
         question__created_at__lt=timezone.now() - timezone.timedelta(days=365),
     ).delete()
     return deleted
