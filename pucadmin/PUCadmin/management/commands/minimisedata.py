@@ -4,6 +4,7 @@ from django.utils import timezone
 
 import competitions.management.commands.minimisecompetitionsdata
 import questions.management.commands.minimisequestionsdata
+import secondments.management.commands.minimisesecondmentssdata
 
 
 def minimise_users():
@@ -22,6 +23,9 @@ def minimise_data():
     minimised = questions.management.commands.minimisequestionsdata.minimise_data()
     minimised += (
         competitions.management.commands.minimisecompetitionsdata.minimise_data()
+    )
+    minimised += (
+        secondments.management.commands.minimisesecondmentssdata.minimise_data()
     )
     minimised += minimise_users()
     return minimised
