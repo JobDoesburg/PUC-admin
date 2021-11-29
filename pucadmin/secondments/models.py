@@ -37,13 +37,8 @@ class Daypart(models.Model):
         verbose_name_plural = _("dayparts")
 
     name = models.CharField(verbose_name=_("name"), max_length=20)
-    short_name = models.SlugField(
-        verbose_name=_("short name"), max_length=8, blank=True, null=True
-    )
 
     def __str__(self):
-        if self.short_name:
-            return self.short_name
         return self.name
 
 

@@ -72,7 +72,6 @@ class School(models.Model):
         related_query_name="schools",
         related_name="schools",
         blank=True,
-        null=True,
     )
 
     dissolved = models.BooleanField(verbose_name=_("dissolved"), default=False)
