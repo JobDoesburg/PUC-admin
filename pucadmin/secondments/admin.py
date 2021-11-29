@@ -154,7 +154,7 @@ class EmployeeAdmin(ExportActionMixin, admin.ModelAdmin):
     hours_fulfilled.short_description = _("hours fulfilled")
 
     def hours_unfulfilled(self, obj):
-        if obj:
+        if obj and obj.hours_available:
             return (
                 obj.hours_available
                 - obj.secondments.aggregate(fulfilled=Coalesce(Sum("num_hours"), 0))[
