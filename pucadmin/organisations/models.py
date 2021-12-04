@@ -15,7 +15,7 @@ class Organisation(models.Model):
 
 
 class Course(models.Model):
-    name = models.CharField(verbose_name=_("name"), max_length=20, unique=True)
+    name = models.CharField(verbose_name=_("name"), max_length=40, unique=True)
     slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=3)
 
     organisation = models.ForeignKey(

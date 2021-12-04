@@ -70,7 +70,7 @@ class Question(models.Model):
     )
     message = models.TextField(verbose_name=_("message"))
 
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     assignee = models.ForeignKey(
         get_user_model(),
