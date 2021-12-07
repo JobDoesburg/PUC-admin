@@ -221,23 +221,10 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
             _("Nomimation"),
             {
                 "classes": ("collapse",),
-                "fields": (
-                    "nominated",
-                    "nomination_score",
-                    "nomination_report",
-                ),
+                "fields": ("nominated", "nomination_score", "nomination_report",),
             },
         ),
-        (
-            _("Jury"),
-            {
-                "classes": ("collapse",),
-                "fields": (
-                    "prize",
-                    "jury_report",
-                ),
-            },
-        ),
+        (_("Jury"), {"classes": ("collapse",), "fields": ("prize", "jury_report",),},),
     )
     readonly_fields = ("created_at",)
 

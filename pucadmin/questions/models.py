@@ -60,10 +60,8 @@ class Question(models.Model):
         related_name="questions",
         related_query_name="questions",
     )
-    research_question = (
-        models.TextField(  # django-doctor: disable=nullable-string-field
-            verbose_name=_("research question"), blank=True, null=True
-        )
+    research_question = models.TextField(  # django-doctor: disable=nullable-string-field
+        verbose_name=_("research question"), blank=True, null=True
     )
     sub_questions = models.TextField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("sub questions"), blank=True, null=True

@@ -6,14 +6,8 @@ from organisations.models import Course
 
 
 class School(models.Model):
-    bg_id = models.CharField(
-        verbose_name=_("Bevoegd Gezag id"),
-        max_length=5,
-    )
-    brin_id = models.CharField(
-        verbose_name=_("BRIN id"),
-        max_length=6,
-    )
+    bg_id = models.CharField(verbose_name=_("Bevoegd Gezag id"), max_length=5,)
+    brin_id = models.CharField(verbose_name=_("BRIN id"), max_length=6,)
     name = models.CharField(verbose_name=_("name"), max_length=100)
     short_name = models.CharField(
         verbose_name=_("short name"), max_length=100, blank=True, null=True

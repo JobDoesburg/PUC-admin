@@ -27,9 +27,7 @@ class SubmissionForm(models.ModelForm):
             "school_text",
         ]
 
-    privacy_policy = forms.BooleanField(
-        required=True,
-    )
+    privacy_policy = forms.BooleanField(required=True,)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -141,26 +139,12 @@ class QuestionSubmissionForm(models.ModelForm):
             "expected_end_date",
         ]
         widgets = {
-            "research_question": forms.Textarea(
-                attrs={
-                    "rows": 2,
-                }
-            ),
-            "sub_questions": forms.Textarea(
-                attrs={
-                    "rows": 5,
-                }
-            ),
-            "message": forms.Textarea(
-                attrs={
-                    "rows": 8,
-                }
-            ),
+            "research_question": forms.Textarea(attrs={"rows": 2,}),
+            "sub_questions": forms.Textarea(attrs={"rows": 5,}),
+            "message": forms.Textarea(attrs={"rows": 8,}),
         }
 
-    privacy_policy = forms.BooleanField(
-        required=True,
-    )
+    privacy_policy = forms.BooleanField(required=True,)
 
     expected_end_date = forms.DateField(input_formats=["%d-%m-%Y"])
 

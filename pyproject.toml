@@ -1,0 +1,24 @@
+[tool.poetry]
+name = "pucadmin"
+version = "1.1.0"
+description = "Django website to manage questions from high school students and submissions for competitions"
+authors = ["Job Doesburg <job.doesburg@ru.nl>"]
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.8"
+Django = "^4.0"
+django-saml2-auth = "^2.2.1"
+django-import-export = "^2.5.0"
+django-autocompletefilter = "^0.0.8"
+
+[tool.poetry.dev-dependencies]
+black = "19.10b0"
+
+[tool.black]
+target-version = ["py38"]
+exclude = '(/(\.eggs|\.git|\.tox)/|migrations)'
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

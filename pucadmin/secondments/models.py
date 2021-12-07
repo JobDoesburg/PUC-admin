@@ -86,10 +86,7 @@ class Employee(models.Model):
         verbose_name=_("study year"), null=True, blank=True
     )
 
-    courses = models.ManyToManyField(
-        Course,
-        verbose_name=_("courses"),
-    )
+    courses = models.ManyToManyField(Course, verbose_name=_("courses"),)
 
     hours_available = models.PositiveSmallIntegerField(
         verbose_name=_("hours available"), null=True, blank=True
