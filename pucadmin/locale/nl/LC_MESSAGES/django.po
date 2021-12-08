@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-11-26 21:44+0100\n"
-"PO-Revision-Date: 2021-11-26 21:38+0100\n"
+"POT-Creation-Date: 2021-12-08 15:21+0100\n"
+"PO-Revision-Date: 2021-12-08 15:22+0100\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -25,11 +25,11 @@ msgstr "PUC admin"
 msgid "All"
 msgstr "Alle"
 
-#: PUCadmin/settings/base.py:97
+#: PUCadmin/settings/base.py:91
 msgid "Dutch"
 msgstr "Nederlands"
 
-#: PUCadmin/settings/base.py:98
+#: PUCadmin/settings/base.py:92
 msgid "English"
 msgstr "Engels"
 
@@ -41,15 +41,15 @@ msgstr "#inzendingen"
 msgid "registration open"
 msgstr "aanmelding open"
 
-#: competitions/admin.py:121 competitions/admin.py:294
-#: competitions/models.py:109 questions/admin.py:118 questions/models.py:48
-#: schools/models.py:79 schools/models.py:93 secondments/admin.py:295
-#: secondments/models.py:115 secondments/models.py:127
-#: secondments/models.py:159
+#: competitions/admin.py:121 competitions/admin.py:281
+#: competitions/models.py:109 questions/admin.py:119 questions/models.py:48
+#: schools/models.py:74 schools/models.py:88 secondments/admin.py:281
+#: secondments/models.py:112 secondments/models.py:124
+#: secondments/models.py:156
 msgid "school"
 msgstr "school"
 
-#: competitions/admin.py:127 competitions/admin.py:304
+#: competitions/admin.py:127 competitions/admin.py:291
 #: competitions/models.py:53 competitions/models.py:86
 msgid "competition"
 msgstr "wedstrijd"
@@ -68,7 +68,7 @@ msgstr "prijs"
 
 #: competitions/admin.py:156 competitions/models.py:95
 #: competitions/models.py:267 organisations/models.py:30 questions/models.py:17
-#: questions/models.py:58 secondments/models.py:167
+#: questions/models.py:58 secondments/models.py:164
 msgid "course"
 msgstr "vak"
 
@@ -76,20 +76,20 @@ msgstr "vak"
 msgid "Nomimation"
 msgstr "Nominatie"
 
-#: competitions/admin.py:232
+#: competitions/admin.py:227
 msgid "Jury"
 msgstr "Jury"
 
-#: competitions/admin.py:276 competitions/models.py:83 questions/admin.py:110
-#: questions/models.py:42 schools/models.py:90
+#: competitions/admin.py:263 competitions/models.py:83 questions/admin.py:111
+#: questions/models.py:42 schools/models.py:85
 msgid "created at"
 msgstr "aangemaakt op"
 
-#: competitions/admin.py:282
+#: competitions/admin.py:269
 msgid "authors"
 msgstr "auteurs"
 
-#: competitions/admin.py:287 competitions/models.py:283
+#: competitions/admin.py:274 competitions/models.py:283
 msgid "supervisors"
 msgstr "begeleiders"
 
@@ -98,7 +98,7 @@ msgid "Competitions"
 msgstr "Wedstrijden"
 
 #: competitions/models.py:18 organisations/models.py:7
-#: organisations/models.py:18 schools/models.py:17 secondments/models.py:16
+#: organisations/models.py:18 schools/models.py:11 secondments/models.py:16
 #: secondments/models.py:39 secondments/models.py:50
 msgid "name"
 msgstr "naam"
@@ -183,12 +183,12 @@ msgid "This course is not managed by the organisation of this competition."
 msgstr "Dit vak wordt niet beheerd door de organisatie van deze wedstrijd."
 
 #: competitions/models.py:209 competitions/models.py:256
-#: questions/models.py:148 secondments/models.py:69
+#: questions/models.py:146 secondments/models.py:69
 msgid "first name"
 msgstr "voornaam"
 
 #: competitions/models.py:210 competitions/models.py:257
-#: questions/models.py:149 secondments/models.py:70
+#: questions/models.py:147 secondments/models.py:70
 msgid "last name"
 msgstr "achternaam"
 
@@ -200,33 +200,33 @@ msgstr "adresregel 1"
 msgid "address 2"
 msgstr "adresregel 2"
 
-#: competitions/models.py:218 schools/models.py:28 schools/models.py:50
+#: competitions/models.py:218 schools/models.py:22 schools/models.py:44
 msgid "zip"
 msgstr "postcode"
 
-#: competitions/models.py:225 schools/models.py:33 schools/models.py:55
+#: competitions/models.py:225 schools/models.py:27 schools/models.py:49
 msgid "Enter zip code in this format: '1234 AB'"
 msgstr "Voer postcode in als: ‘1234 AB’"
 
-#: competitions/models.py:230 schools/models.py:39 secondments/admin.py:289
+#: competitions/models.py:230 schools/models.py:33 secondments/admin.py:275
 msgid "town"
 msgstr "plaatsnaam"
 
-#: competitions/models.py:233 competitions/models.py:259 schools/models.py:66
-#: secondments/models.py:72 secondments/models.py:136
+#: competitions/models.py:233 competitions/models.py:259 schools/models.py:60
+#: secondments/models.py:72 secondments/models.py:133
 msgid "phone"
 msgstr "telefoon"
 
-#: competitions/models.py:236 competitions/models.py:262 questions/admin.py:130
-#: questions/models.py:151 secondments/models.py:75 secondments/models.py:139
+#: competitions/models.py:236 competitions/models.py:262 questions/admin.py:131
+#: questions/models.py:149 secondments/models.py:75 secondments/models.py:136
 msgid "email"
 msgstr "e-mail"
 
-#: competitions/models.py:248 questions/models.py:163
+#: competitions/models.py:248 questions/models.py:161
 msgid "student"
 msgstr "leerling"
 
-#: competitions/models.py:249 questions/admin.py:135 questions/models.py:164
+#: competitions/models.py:249 questions/admin.py:136 questions/models.py:162
 msgid "students"
 msgstr "leerlingen"
 
@@ -234,23 +234,23 @@ msgstr "leerlingen"
 msgid "supervisor"
 msgstr "begeleider"
 
-#: frontoffice/forms.py:40
+#: frontoffice/forms.py:38
 msgid "The title of your research"
 msgstr "De titel van jullie onderzoek"
 
-#: frontoffice/forms.py:43 frontoffice/forms.py:173
+#: frontoffice/forms.py:41 frontoffice/forms.py:157
 msgid "The course to which your research relates most"
 msgstr "Het vak waarop jullie onderzoek de meeste betrekking heeft"
 
-#: frontoffice/forms.py:47
+#: frontoffice/forms.py:45
 msgid "Provide a brief summary of your research (50 to 300 words)"
 msgstr "Geef een korte samenvatting van jullie onderzoek (50 tot 300 woorden)"
 
-#: frontoffice/forms.py:51 frontoffice/forms.py:170
+#: frontoffice/forms.py:49 frontoffice/forms.py:154
 msgid "School"
 msgstr "School"
 
-#: frontoffice/forms.py:55
+#: frontoffice/forms.py:53
 #, python-format
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
@@ -265,7 +265,11 @@ msgstr ""
 "\">privacyreglement van</a> de Radboud Universiteit en met de verwerking van "
 "de door mij verstrekte gegevens voor de hierboven beschreven doeleinden."
 
-#: frontoffice/forms.py:179
+#: frontoffice/forms.py:149
+msgid "Expected end date"
+msgstr "Verwachtte einddatum"
+
+#: frontoffice/forms.py:163
 msgid ""
 "Try to be as specific as possible. The more clearly the question is asked, "
 "the more specifically the answer can be formulated and the faster you will "
@@ -285,7 +289,7 @@ msgstr ""
 "experiment op de Radboud Universiteit; Het verzamelen van literatuur. "
 "Natuurlijk zijn andere vragen ook welkom, we kunnen altijd advies geven."
 
-#: frontoffice/forms.py:183
+#: frontoffice/forms.py:167
 #, python-format
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
@@ -301,9 +305,13 @@ msgstr ""
 "a> en met de verwerking van de door mij verstrekte gegevens voor de "
 "hierboven beschreven doeleinden."
 
-#: frontoffice/forms.py:189
+#: frontoffice/forms.py:173
 msgid "DD-MM-YYYY. When do you expect to be finished with your research."
 msgstr "DD-MM-JJJJ. Wanneer verwacht je klaar te zijn met het onderzoek."
+
+#: frontoffice/templates/competition-submission-success.html:5
+msgid "Your registration has successfully been submitted."
+msgstr "Je aanmelding is succesvol verwerkt."
 
 #: frontoffice/templates/competition_submission_form.html:4
 #: frontoffice/templates/question_submission_form.html:4
@@ -320,14 +328,18 @@ msgstr "Verwijder"
 msgid "Submit"
 msgstr "Verstuur"
 
-#: frontoffice/templates/competition_submission_form.html:16
-#: frontoffice/templates/question_submission_form.html:16
+#: frontoffice/templates/competition_submission_form.html:19
+#: frontoffice/templates/question_submission_form.html:19
 msgid "Students"
 msgstr "Leerlingen"
 
-#: frontoffice/templates/competition_submission_form.html:30
+#: frontoffice/templates/competition_submission_form.html:33
 msgid "Supervisors"
 msgstr "Begeleiders"
+
+#: frontoffice/templates/question-submission-success.html:5
+msgid "Your question has successfully been submitted."
+msgstr "Je vraag is succesvol verzonden."
 
 #: organisations/admin.py:27
 msgid "#schools"
@@ -341,8 +353,8 @@ msgstr "Organisaties"
 msgid "organisations"
 msgstr "organisaties"
 
-#: organisations/models.py:31 organisations/models.py:47 schools/models.py:71
-#: secondments/models.py:91
+#: organisations/models.py:31 organisations/models.py:47 schools/models.py:65
+#: secondments/models.py:89
 msgid "courses"
 msgstr "vakken"
 
@@ -358,7 +370,7 @@ msgstr ""
 "Notificaties voor nieuwe vragen voor dit vak worden naar dit adres "
 "verstuurd. Indien leeg gelaten wordt het standaard e-mailadres gebruikt."
 
-#: questions/admin.py:26 questions/models.py:24 questions/models.py:77
+#: questions/admin.py:26 questions/models.py:24 questions/models.py:75
 msgid "assignee"
 msgstr "verantwoordelijke"
 
@@ -370,7 +382,7 @@ msgstr "Administratief"
 msgid "Question"
 msgstr "Vraag"
 
-#: questions/admin.py:126
+#: questions/admin.py:127
 msgid "Send email to students"
 msgstr "Verstuur e-mail naar leerlingen"
 
@@ -391,60 +403,60 @@ msgstr "vakverantwoordelijken"
 msgid "%(course)s assigned to %(assignee)s."
 msgstr "%(course)s toegewezen aan %(assignee)s."
 
-#: questions/models.py:65
+#: questions/models.py:64
 msgid "research question"
 msgstr "onderzoeksvraag"
 
-#: questions/models.py:69
+#: questions/models.py:67
 msgid "sub questions"
 msgstr "deelvragen"
 
-#: questions/models.py:71 questions/models.py:183
+#: questions/models.py:69 questions/models.py:181
 msgid "message"
 msgstr "bericht"
 
-#: questions/models.py:85
+#: questions/models.py:83
 msgid "completed"
 msgstr "afgerond"
 
-#: questions/models.py:87
+#: questions/models.py:85
 msgid "expected end date"
 msgstr "verwachtte einddatum"
 
-#: questions/models.py:90 questions/models.py:156 questions/models.py:178
+#: questions/models.py:88 questions/models.py:154 questions/models.py:176
 msgid "question"
 msgstr "vraag"
 
-#: questions/models.py:91
+#: questions/models.py:89
 msgid "questions"
 msgstr "vragen"
 
-#: questions/models.py:93
+#: questions/models.py:91
 msgid "Can view questions not assigned to that user"
 msgstr "Kan vragen bekijken die niet toegewezen zijn aan gebruiker"
 
-#: questions/models.py:94
+#: questions/models.py:92
 msgid "Can change the completion status of questions"
 msgstr "Kan afrondingsstatus van vragen wijzigen"
 
-#: questions/models.py:95
+#: questions/models.py:93
 msgid "Can change the assignee of questions"
 msgstr "Kan verantwoordelijke van vragen wijzigen"
 
-#: questions/models.py:99
+#: questions/models.py:97
 #, python-format
 msgid "Question %(id)s (%(course)s, %(created)s)"
 msgstr "Vraag %(id)s (%(course)s, %(created)s)"
 
-#: questions/models.py:172 questions/models.py:173
+#: questions/models.py:170 questions/models.py:171
 msgid "correspondence"
 msgstr "correspondentie"
 
-#: questions/models.py:175
+#: questions/models.py:173
 msgid "date"
 msgstr "datum"
 
-#: questions/models.py:186
+#: questions/models.py:184
 #, python-format
 msgid "Correspondence for %(question)s on %(date)s."
 msgstr "Correspondentie voor %(question)s op %(date)s."
@@ -453,97 +465,97 @@ msgstr "Correspondentie voor %(question)s op %(date)s."
 msgid "Schools"
 msgstr "Scholen"
 
-#: schools/models.py:10
+#: schools/models.py:9
 msgid "Bevoegd Gezag id"
 msgstr "Bevoegd Gezag nummer"
 
-#: schools/models.py:14
+#: schools/models.py:10
 msgid "BRIN id"
 msgstr "BRIN nummer"
 
-#: schools/models.py:19
+#: schools/models.py:13
 msgid "short name"
 msgstr "korte naam"
 
-#: schools/models.py:22
+#: schools/models.py:16
 msgid "street"
 msgstr "straatnaam"
 
-#: schools/models.py:25
+#: schools/models.py:19
 msgid "house number"
 msgstr "huisnummer"
 
-#: schools/models.py:41
+#: schools/models.py:35
 msgid "street (correspondence)"
 msgstr "straatnaam (correspondentie)"
 
-#: schools/models.py:44
+#: schools/models.py:38
 msgid "house number (correspondence)"
 msgstr "huisnummer (correspondentie)"
 
-#: schools/models.py:62
+#: schools/models.py:56
 msgid "town (correspondence)"
 msgstr "plaatsnaam (correspondentie)"
 
-#: schools/models.py:68
+#: schools/models.py:62
 msgid "url"
 msgstr "url"
 
-#: schools/models.py:76
+#: schools/models.py:71
 msgid "dissolved"
 msgstr "opgeheven"
 
-#: schools/models.py:80 secondments/models.py:116
+#: schools/models.py:75 secondments/models.py:113
 msgid "schools"
 msgstr "scholen"
 
-#: schools/models.py:98 schools/models.py:101
+#: schools/models.py:93 schools/models.py:96
 msgid "remark"
 msgstr "opmerking"
 
-#: schools/models.py:102 secondments/models.py:194
+#: schools/models.py:97 secondments/models.py:191
 msgid "remarks"
 msgstr "opmerkingen"
 
-#: schools/models.py:105
+#: schools/models.py:100
 #, python-format
 msgid "Remark on %(school)s at %(created)s."
 msgstr "Opmerking bij %(school)s op %(created)s."
 
-#: secondments/admin.py:64 secondments/models.py:37 secondments/models.py:100
-#: secondments/models.py:179
+#: secondments/admin.py:57 secondments/models.py:37 secondments/models.py:97
+#: secondments/models.py:176
 msgid "dayparts"
 msgstr "dagdelen"
 
-#: secondments/admin.py:146
+#: secondments/admin.py:139
 msgid "secondments"
 msgstr "detacheringen"
 
-#: secondments/admin.py:154
+#: secondments/admin.py:147
 msgid "hours fulfilled"
 msgstr "uren vervuld"
 
-#: secondments/admin.py:166
+#: secondments/admin.py:159
 msgid "hours unfulfilled"
 msgstr "uren onvervuld"
 
-#: secondments/admin.py:200
+#: secondments/admin.py:186
 msgid "view candidates"
 msgstr "bekijk kandidaten"
 
-#: secondments/admin.py:203 secondments/admin.py:303 secondments/admin.py:306
+#: secondments/admin.py:189 secondments/admin.py:289 secondments/admin.py:292
 msgid "candidates"
 msgstr "kandidaten"
 
-#: secondments/admin.py:238
+#: secondments/admin.py:224
 msgid "#requests"
 msgstr "#aanvragen"
 
-#: secondments/admin.py:245
+#: secondments/admin.py:231
 msgid "#fulfilled"
 msgstr "#vervuld"
 
-#: secondments/admin.py:252
+#: secondments/admin.py:238
 msgid "#unfulfilled"
 msgstr "#onvervuld"
 
@@ -551,7 +563,7 @@ msgstr "#onvervuld"
 msgid "Secondments"
 msgstr "Detacheringen"
 
-#: secondments/models.py:12 secondments/models.py:63 secondments/models.py:120
+#: secondments/models.py:12 secondments/models.py:63 secondments/models.py:117
 msgid "time period"
 msgstr "periode"
 
@@ -575,7 +587,7 @@ msgstr "dagdeel"
 msgid "study program"
 msgstr "studie"
 
-#: secondments/models.py:58 secondments/models.py:186
+#: secondments/models.py:58 secondments/models.py:183
 msgid "employee"
 msgstr "werknemer"
 
@@ -587,39 +599,39 @@ msgstr "werknemers"
 msgid "study year"
 msgstr "studiejaar"
 
-#: secondments/models.py:95
+#: secondments/models.py:92
 msgid "hours available"
 msgstr "uren beschikbaar"
 
-#: secondments/models.py:105
+#: secondments/models.py:102
 msgid "drivers license"
 msgstr "rijbewijs"
 
-#: secondments/models.py:107
+#: secondments/models.py:104
 msgid "contract"
 msgstr "contract"
 
-#: secondments/models.py:133
+#: secondments/models.py:130
 msgid "contact person"
 msgstr "contactpersoon"
 
-#: secondments/models.py:143
+#: secondments/models.py:140
 msgid "drivers license required"
 msgstr "rijbewijs vereist"
 
-#: secondments/models.py:154
+#: secondments/models.py:151
 msgid "request"
 msgstr "aanvraag"
 
-#: secondments/models.py:155
+#: secondments/models.py:152
 msgid "requests"
 msgstr "aanvragen"
 
-#: secondments/models.py:174
+#: secondments/models.py:171
 msgid "num. hours"
 msgstr "aantal uren"
 
-#: secondments/models.py:209
+#: secondments/models.py:206
 #, python-format
 msgid "Secondment request for %(course)s by %(school)s."
 msgstr "Detacheringsaanvraag voor %(course)s door %(school)s."
