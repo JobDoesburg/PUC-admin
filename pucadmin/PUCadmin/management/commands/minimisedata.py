@@ -5,12 +5,17 @@ from django.utils import timezone
 import competitions.management.commands.minimisecompetitionsdata
 import questions.management.commands.minimisequestionsdata
 import secondments.management.commands.minimisesecondmentssdata
+from questions.models import CourseAssignee
 
 
 def minimise_users():
     one_year_ago = timezone.now() - timezone.timedelta(days=2 * 365)
     yesterday = timezone.now() - timezone.timedelta(days=1)
-    inactive_users = get_user_model().objects.filter(last_login__lt=one_year_ago)
+    inactive_users = (
+        get_user_model()
+        .objects.filter(last_login__lt=one_year_ago)
+        .exclude(pk__in=CourseAssignee.objects.values_list("assignee__pk"))
+    )
     unauthorized_users = get_user_model().objects.filter(
         organisation__isnull=True, last_login__lt=yesterday
     )
