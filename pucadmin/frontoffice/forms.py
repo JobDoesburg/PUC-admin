@@ -174,6 +174,7 @@ class QuestionSubmissionForm(models.ModelForm):
         self.fields["expected_end_date"].help_text = _(
             "DD-MM-YYYY. When do you expect to be finished with your research."
         )
+        self.fields["expected_end_date"].widget.input_type = "date"
 
     def save(self, commit=True):
         instance = super().save(commit=False)
