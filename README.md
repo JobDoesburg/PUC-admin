@@ -1,14 +1,19 @@
 # How to install (on CNCZ Apache with uWSGI)
 
-0. Clone this repo in `/www/pucadmin/live/repo`
+## Deploying
+0. Clone this repo in `/www/pucadmin/live/repo` (on the science filesystem)
 1. Create python 3.8 venv with `/www/pucadmin/live/repo/env`
-2. Install the dependencies in requirements.txt
-3. Create `/www/pucadmin/live/repo/pucadmin/PUCadmin/settings/production.py` and `/www/pucadmin/live/repo/pucadmin/PUCadmin/settings/management.py` based on the `.example` files (set secret key and passwords).
-4. `touch RELOAD` to trigger uWSGI to reload the django application
+2. Install the dependencies. Use `poetry export -f requirements.txt --output requirements.txt` to export the requirements to a `requirements.txt` file.
+3. Create `/www/pucadmin/live/repo/website/PUCadmin/settings/production.py` and `/www/pucadmin/live/repo/website/PUCadmin/settings/management.py` based on the `.example` files (set secret key and passwords).
+4. Run the `deploy.sh` script. This script can be run to update, too.
 
-Note that the webserver runs on a different machine then how you access it via lilo. The file system is mounted differently, so using relative paths is required. Also, for example, the password to access the database is different from lilo (via `manage.py`) the on real production. This requires the different `settings` files. Specifically, `wsgi.py` (ran by the webserver) needs a different settings file then `manage.py` (ran on lilo).
+Important notices:
+- The science filesystem (accessed via lilo) is mounted in a different way then on lilo. Make sure to use relative paths.
+- The database credentials for differ for lilo or the webserver. Therefore, management commands from lilo must be run with `PUCadmin.settings.management` (which is done automatically by `manage.py`).
+- To run management commands on production, first activate the python env with `source env/bin/activate`.
+- Note that the webserver does not have write permissions, except for the `writable/` folder. `manage.py collectstatic` must therefore be run explicitly and the media folder is located in there.
+- Via `/admin-login`, it is possible to bypass SAML login (for example for first installation when SAML has not yet been set up).
 
-To run management commands on production, first activate the python env with `source env/bin/activate` and then set an env variable to run `manage.py` with the correct settings: `export DJANGO_SETTINGS_MODULE=PUCadmin.settings.management` 
 
 ## SAML configuration
 To login, we use SAML. This needs to be configured. The SAML metadata for the CNCZ SAML IdP right now:

@@ -6,7 +6,13 @@ import sys
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PUCadmin.settings.development")
+    try:
+        import PUCadmin.settings.management  # noqa
+    except ModuleNotFoundError:
+        # Use development settings if no management settings are found
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PUCadmin.settings.development")
+    else:
+        os.environ.setdefault("DJANGO_SETTINGS_MODULE", "PUCadmin.settings.management")
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:
