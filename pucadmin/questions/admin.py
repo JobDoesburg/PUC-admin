@@ -99,9 +99,10 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
         "research_question",
         "sub_questions",
         "message",
-        "course",
-        "school",
-        "tags",
+        "course__name",
+        "school_text",
+        "school__name",
+        "tagged_items__tag__name",
     )
     # date_hierarchy = "created_at"
 
