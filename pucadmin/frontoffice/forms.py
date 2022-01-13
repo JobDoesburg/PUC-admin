@@ -147,7 +147,7 @@ class QuestionSubmissionForm(models.ModelForm):
     privacy_policy = forms.BooleanField(required=True,)
 
     expected_end_date = forms.DateField(
-        label=_("Expected end date"), input_formats=["%d-%m-%Y"]
+        label=_("Expected end date")
     )
 
     def __init__(self, *args, **kwargs):
