@@ -52,6 +52,12 @@ class CompetitionSubmissionView(CreateView):
                 "email/submission-confirmation.txt",
                 {"submission": obj},
             )
+            send_email(
+                ["scienecpws@ru.nl"],
+                f"Nieuwe inzending {obj.competition}",
+                "email/submission-confirmation.txt",
+                {"submission": obj},
+            )
             return super().form_valid(form)
         else:
             return self.form_invalid(form)
