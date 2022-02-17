@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-12-08 15:21+0100\n"
-"PO-Revision-Date: 2021-12-08 15:22+0100\n"
+"POT-Creation-Date: 2022-02-17 12:51+0100\n"
+"PO-Revision-Date: 2022-02-17 12:51+0100\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -42,7 +42,7 @@ msgid "registration open"
 msgstr "aanmelding open"
 
 #: competitions/admin.py:121 competitions/admin.py:281
-#: competitions/models.py:109 questions/admin.py:119 questions/models.py:48
+#: competitions/models.py:109 questions/admin.py:120 questions/models.py:48
 #: schools/models.py:74 schools/models.py:88 secondments/admin.py:281
 #: secondments/models.py:112 secondments/models.py:124
 #: secondments/models.py:156
@@ -80,7 +80,7 @@ msgstr "Nominatie"
 msgid "Jury"
 msgstr "Jury"
 
-#: competitions/admin.py:263 competitions/models.py:83 questions/admin.py:111
+#: competitions/admin.py:263 competitions/models.py:83 questions/admin.py:112
 #: questions/models.py:42 schools/models.py:85
 msgid "created at"
 msgstr "aangemaakt op"
@@ -217,7 +217,7 @@ msgstr "plaatsnaam"
 msgid "phone"
 msgstr "telefoon"
 
-#: competitions/models.py:236 competitions/models.py:262 questions/admin.py:131
+#: competitions/models.py:236 competitions/models.py:262 questions/admin.py:132
 #: questions/models.py:149 secondments/models.py:75 secondments/models.py:136
 msgid "email"
 msgstr "e-mail"
@@ -226,7 +226,7 @@ msgstr "e-mail"
 msgid "student"
 msgstr "leerling"
 
-#: competitions/models.py:249 questions/admin.py:136 questions/models.py:162
+#: competitions/models.py:249 questions/admin.py:137 questions/models.py:162
 msgid "students"
 msgstr "leerlingen"
 
@@ -238,7 +238,7 @@ msgstr "begeleider"
 msgid "The title of your research"
 msgstr "De titel van jullie onderzoek"
 
-#: frontoffice/forms.py:41 frontoffice/forms.py:157
+#: frontoffice/forms.py:41 frontoffice/forms.py:160
 msgid "The course to which your research relates most"
 msgstr "Het vak waarop jullie onderzoek de meeste betrekking heeft"
 
@@ -246,11 +246,15 @@ msgstr "Het vak waarop jullie onderzoek de meeste betrekking heeft"
 msgid "Provide a brief summary of your research (50 to 300 words)"
 msgstr "Geef een korte samenvatting van jullie onderzoek (50 tot 300 woorden)"
 
-#: frontoffice/forms.py:49 frontoffice/forms.py:154
+#: frontoffice/forms.py:49
+msgid "Preferably PDF, or ZIP with additional attachments"
+msgstr "Bij voorkeur PDF, of ZIP met bijlagen"
+
+#: frontoffice/forms.py:52 frontoffice/forms.py:157
 msgid "School"
 msgstr "School"
 
-#: frontoffice/forms.py:53
+#: frontoffice/forms.py:56
 #, python-format
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
@@ -265,11 +269,11 @@ msgstr ""
 "\">privacyreglement van</a> de Radboud Universiteit en met de verwerking van "
 "de door mij verstrekte gegevens voor de hierboven beschreven doeleinden."
 
-#: frontoffice/forms.py:149
+#: frontoffice/forms.py:152
 msgid "Expected end date"
 msgstr "Verwachtte einddatum"
 
-#: frontoffice/forms.py:163
+#: frontoffice/forms.py:166
 msgid ""
 "Try to be as specific as possible. The more clearly the question is asked, "
 "the more specifically the answer can be formulated and the faster you will "
@@ -289,7 +293,7 @@ msgstr ""
 "experiment op de Radboud Universiteit; Het verzamelen van literatuur. "
 "Natuurlijk zijn andere vragen ook welkom, we kunnen altijd advies geven."
 
-#: frontoffice/forms.py:167
+#: frontoffice/forms.py:170
 #, python-format
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
@@ -305,7 +309,7 @@ msgstr ""
 "a> en met de verwerking van de door mij verstrekte gegevens voor de "
 "hierboven beschreven doeleinden."
 
-#: frontoffice/forms.py:173
+#: frontoffice/forms.py:176
 msgid "DD-MM-YYYY. When do you expect to be finished with your research."
 msgstr "DD-MM-JJJJ. Wanneer verwacht je klaar te zijn met het onderzoek."
 
@@ -382,7 +386,7 @@ msgstr "Administratief"
 msgid "Question"
 msgstr "Vraag"
 
-#: questions/admin.py:127
+#: questions/admin.py:128
 msgid "Send email to students"
 msgstr "Verstuur e-mail naar leerlingen"
 

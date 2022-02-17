@@ -45,6 +45,9 @@ class SubmissionForm(models.ModelForm):
             "Provide a brief summary of your research (50 to 300 words)"
         )
         self.fields["document"].required = True
+        self.fields["document"].help_text = _(
+            "Preferably PDF, or ZIP with additional attachments"
+        )
         self.fields["school_text"].required = True
         self.fields["school_text"].label = _("School")
 
