@@ -99,7 +99,7 @@ class Submission(models.Model):
     )
     abstract = models.TextField(verbose_name=_("abstract"))
     document = models.FileField(
-        verbose_name=_("document"), upload_to=submission_upload_path
+        verbose_name=_("document"), upload_to=submission_upload_path, max_length=500
     )
     school_text = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("school (text)"), max_length=100, blank=True, null=True
