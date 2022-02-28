@@ -53,7 +53,7 @@ class CompetitionSubmissionView(CreateView):
                 {"submission": obj},
             )
             send_email(
-                ["scienecpws@ru.nl"],
+                ["jan.marijnissen@ru.nl"],
                 f"Nieuwe inzending {obj.competition}",
                 "email/submission-confirmation.txt",
                 {"submission": obj},
