@@ -7,10 +7,10 @@ from schools.models import School
 
 
 def import_schools():
-    url = "https://duo.nl//open_onderwijsdata/images/01-hoofdvestigingen-vo.csv"
+    url = "https://duo.nl/open_onderwijsdata/images/01-hoofdvestigingen-vo.csv"
     with requests.Session() as s:
         download = s.get(url)
-    decoded_content = download.content.decode("utf-8")
+    decoded_content = download.content.decode("unicode_escape")
     schools = csv.DictReader(decoded_content.splitlines(), delimiter=";")
     num_created = 0
     dissolved_before = School.objects.filter(dissolved=True).count()
