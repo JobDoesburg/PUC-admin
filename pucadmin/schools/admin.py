@@ -18,6 +18,7 @@ class SchoolAdmin(ExportActionMixin, admin.ModelAdmin):
     search_fields = [
         "bg_id",
         "brin_id",
+        "location_id",
         "name",
         "short_name",
         "location_town",

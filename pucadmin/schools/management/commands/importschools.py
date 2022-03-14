@@ -7,7 +7,7 @@ from schools.models import School
 
 
 def import_schools():
-    url = "https://duo.nl/open_onderwijsdata/images/01-hoofdvestigingen-vo.csv"
+    url = "https://duo.nl/open_onderwijsdata/images/02-alle-vestigingen-vo.csv"
     with requests.Session() as s:
         download = s.get(url)
     decoded_content = download.content.decode("unicode_escape")
@@ -18,7 +18,7 @@ def import_schools():
     for school in schools:
         if "VWO" in school["ONDERWIJSSTRUCTUUR"]:
             update_values = {
-                "name": school["INSTELLINGSNAAM"],
+                "name": school["VESTIGINGSNAAM"],
                 "location_street": school["STRAATNAAM"],
                 "location_house_number": school["HUISNUMMER-TOEVOEGING"],
                 "location_zip": school["POSTCODE"],
@@ -36,6 +36,7 @@ def import_schools():
             _, created = School.objects.update_or_create(
                 bg_id=school["BEVOEGD GEZAG NUMMER"],
                 brin_id=school["BRIN NUMMER"],
+                location_id=school["VESTIGINGSNUMMER"],
                 defaults=update_values,
             )
             if created:
