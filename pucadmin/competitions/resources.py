@@ -87,13 +87,17 @@ class StudentResource(resources.ModelResource):
 class SupervisorResource(StudentResource):
 
     school_correspondence_street = fields.Field(
-        attribute="school__correspondence_street"
+        attribute="submission__school__correspondence_street"
     )
     school_correspondence_house_number = fields.Field(
-        attribute="school__correspondence_house_number"
+        attribute="submission__school__correspondence_house_number"
     )
-    school_correspondence_zip = fields.Field(attribute="school__correspondence_zip")
-    school_correspondence_town = fields.Field(attribute="school__correspondence_town")
+    school_correspondence_zip = fields.Field(
+        attribute="submission__school__correspondence_zip"
+    )
+    school_correspondence_town = fields.Field(
+        attribute="submission__school__correspondence_town"
+    )
 
     class Meta:
         model = Supervisor
