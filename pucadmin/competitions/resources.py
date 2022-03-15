@@ -86,6 +86,8 @@ class StudentResource(resources.ModelResource):
 
 class SupervisorResource(StudentResource):
 
+    school_name = fields.Field(attribute="submission__school__name")
+    school_short_name = fields.Field(attribute="submission__school__short_name")
     school_correspondence_street = fields.Field(
         attribute="submission__school__correspondence_street"
     )
@@ -120,6 +122,8 @@ class SupervisorResource(StudentResource):
             "prize",
             "course",
             "school",
+            "school_name",
+            "school_short_name",
             "school_correspondence_street",
             "school_correspondence_house_number",
             "school_correspondence_zip",
