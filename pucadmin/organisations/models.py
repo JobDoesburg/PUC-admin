@@ -18,10 +18,10 @@ class Course(models.Model):
     name = models.CharField(verbose_name=_("name"), max_length=40, unique=True)
     slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=3)
 
-    gov_slug = models.SlugField(
-        verbose_name=_("government slug"),
+    gov_slugs = models.CharField(
+        verbose_name=_("government slugs"),
         unique=True,
-        max_length=4,
+        max_length=40,
         null=True,
         blank=True,
     )

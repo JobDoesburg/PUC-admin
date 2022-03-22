@@ -63,7 +63,7 @@ def import_courses():
             continue
 
         try:
-            course = Course.objects.get(gov_slug=c["AFKORTING VAKNAAM"])
+            course = Course.objects.get(gov_slugs__contains=c["AFKORTING VAKNAAM"])
         except Course.DoesNotExist:
             continue
 
