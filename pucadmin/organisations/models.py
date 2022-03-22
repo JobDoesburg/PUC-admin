@@ -18,6 +18,14 @@ class Course(models.Model):
     name = models.CharField(verbose_name=_("name"), max_length=40, unique=True)
     slug = models.SlugField(verbose_name=_("slug"), unique=True, max_length=3)
 
+    gov_slug = models.SlugField(
+        verbose_name=_("government slug"),
+        unique=True,
+        max_length=4,
+        null=True,
+        blank=True,
+    )
+
     organisation = models.ForeignKey(
         Organisation,
         verbose_name=_("organisation"),

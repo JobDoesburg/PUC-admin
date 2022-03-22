@@ -3,6 +3,7 @@ import csv
 import requests
 from django.core.management import BaseCommand
 
+from organisations.models import Course
 from schools.models import School
 
 
@@ -42,7 +43,31 @@ def import_schools():
             if created:
                 num_created += 1
     dissolved_after = School.objects.filter(dissolved=True).count()
+    import_courses()
     return num_created, max(dissolved_after - dissolved_before, 0)
+
+
+def import_courses():
+    url = "https://duo.nl/open_onderwijsdata/images/10-examenkandidaten-vwo-en-examencijfers-2020-2021.csv"
+    with requests.Session() as s:
+        download = s.get(url)
+    decoded_content = download.content.decode("unicode_escape")
+    courses = csv.DictReader(decoded_content.splitlines(), delimiter=";")
+    for c in courses:
+        try:
+            school = School.objects.get(
+                brin_id=c["BRIN NUMMER"],
+                location_id=c["BRIN NUMMER"] + c["VESTIGINGSNUMMER"],
+            )
+        except School.DoesNotExist:
+            continue
+
+        try:
+            course = Course.objects.get(gov_slug=c["AFKORTING VAKNAAM"])
+        except Course.DoesNotExist:
+            continue
+
+        school.courses_offered.add(course)
 
 
 class Command(BaseCommand):
