@@ -189,6 +189,7 @@ class Submission(models.Model):
     def supervisors_text(self):
         return self.__stringify_persons(self.supervisors)
 
+    @property
     def prize_text(self):
         if self.prize:
             ordinal = lambda n: "%d%s" % (
@@ -200,8 +201,8 @@ class Submission(models.Model):
                 .exclude(pk=self.pk)
                 .exists()
             ):
-                return f"{ordinal(self.prize)} prize ex aequo"
-            return f"{ordinal(self.prize)} prize"
+                return f"{ordinal(self.prize)} {_('prize')} ex aequo"
+            return f"{ordinal(self.prize)} {_('prize')}"
         return None
 
 

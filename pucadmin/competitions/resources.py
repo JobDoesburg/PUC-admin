@@ -7,6 +7,8 @@ class SubmissionResource(resources.ModelResource):
 
     course = fields.Field(attribute="course__slug")
     school = fields.Field(attribute="school__name")
+    authors = fields.Field(attribute="authors_text")
+    supervisors = fields.Field(attribute="supervisors_text")
 
     class Meta:
         model = Submission
@@ -14,6 +16,7 @@ class SubmissionResource(resources.ModelResource):
             "id",
             "created_at",
             "title",
+            "slug",
             "course",
             "abstract",
             "document",
@@ -22,12 +25,14 @@ class SubmissionResource(resources.ModelResource):
             "nomination_score",
             "prize",
             "jury_report",
-            "students",
+            "authors",
+            "supervisors",
         )
         export_order = (
             "id",
             "created_at",
             "title",
+            "slug",
             "course",
             "abstract",
             "document",
@@ -36,7 +41,8 @@ class SubmissionResource(resources.ModelResource):
             "nomination_score",
             "prize",
             "jury_report",
-            "students",
+            "authors",
+            "supervisors",
         )
         widgets = {
             "created_at": {"format": "%d-%m-%Y"},
