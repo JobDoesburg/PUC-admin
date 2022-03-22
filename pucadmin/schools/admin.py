@@ -33,9 +33,11 @@ class SchoolAdmin(ExportActionMixin, admin.ModelAdmin):
         "location_street",
         "location_house_number",
         "location_zip",
+        "in_service_region",
     )
     list_filter = (
         "courses_offered",
         "dissolved",
         "location_town",
+        "in_service_region",
     )

@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -70,6 +71,14 @@ class School(models.Model):
     )
 
     dissolved = models.BooleanField(verbose_name=_("dissolved"), default=False)
+
+    in_service_region = models.BooleanField(
+        verbose_name=_("in service region"),
+        help_text=_(
+            "Is this school considered to be located within our service region (normally, this is determined based on zip code)?"
+        ),
+        default=False,
+    )
 
     class Meta:
         verbose_name = _("school")

@@ -117,3 +117,35 @@ PRIVACY_STATEMENT_URL = (
 
 TAGGIT_TAGS_FROM_STRING = "taggit_selectize.utils.parse_tags"
 TAGGIT_STRING_FROM_TAGS = "taggit_selectize.utils.join_tags"
+
+SERVICE_REGION_ZIPS = [
+    "51",
+    "50",
+    "52",
+    "53",
+    "54",
+    "55",
+    "56",
+    "57",
+    "58",
+    "59",
+    "80",
+    "81",
+    "74",
+    "75",
+    "76",
+    "38",
+    "37",
+    "39",
+    "40",
+    "41",
+    "66",
+    "65",
+    "67",
+    "68",
+    "69",
+    "70",
+    "73",
+    "72",
+    "71",
+]

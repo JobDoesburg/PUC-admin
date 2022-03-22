@@ -1,6 +1,7 @@
 import csv
 
 import requests
+from django.conf import settings
 from django.core.management import BaseCommand
 
 from organisations.models import Course
@@ -33,6 +34,9 @@ def import_schools():
                 "phone": school["TELEFOONNUMMER"],
                 "url": school["INTERNETADRES"],
                 "dissolved": False,
+                "in_service_region": bool(
+                    school["POSTCODE"][:2] in settings.SERVICE_REGION_ZIPS
+                ),
             }
             _, created = School.objects.update_or_create(
                 bg_id=school["BEVOEGD GEZAG NUMMER"],
