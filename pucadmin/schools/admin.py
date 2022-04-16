@@ -25,9 +25,9 @@ class ActiveGraduatesFilter(admin.SimpleListFilter):
 
     def queryset(self, request, queryset):
         if self.value() == "yes":
-            return queryset.filter(courses_offered__isnull=False,)
+            return queryset.filter(courses_offered__isnull=False).distinct()
         if self.value() == "no":
-            return queryset.filter(courses_offered__isnull=True,)
+            return queryset.filter(courses_offered__isnull=True).distinct()
 
 
 @register(School)
