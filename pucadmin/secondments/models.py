@@ -127,7 +127,7 @@ class Employee(models.Model):
     remarks = models.TextField(verbose_name=_("remarks"), blank=True, null=True)
 
     def __str__(self):
-        return f"{self.first_name} {self.last_name} ({self.time_period})"
+        return f"{self.name} ({self.time_period})"
 
 
 class SecondmentSchool(models.Model):

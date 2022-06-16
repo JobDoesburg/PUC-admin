@@ -256,18 +256,21 @@ class SecondmentRequestAdmin(
     )
     readonly_fields = ("candidates_url",)
     list_display = (
+        "employee",
         "course",
         "num_hours",
-        "_location",
         "_school",
+        "_location",
         "candidates_url",
-        "employee",
         "remarks",
     )
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
     }
-    list_display_links = ("course",)
+    list_display_links = (
+        "employee",
+        "course",
+    )
     list_filter = (
         "school__time_period",
         ("employee", AutocompleteListFilter),
