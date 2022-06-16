@@ -1,4 +1,3 @@
-from django.conf import settings
 from django.core.validators import RegexValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -87,8 +86,8 @@ class School(models.Model):
 
     def __str__(self):
         if self.short_name:
-            return f"{self.short_name} ({self.location_town})"
-        return f"{self.name} ({self.location_town})"
+            return self.short_name
+        return self.name
 
 
 class SchoolRemark(models.Model):

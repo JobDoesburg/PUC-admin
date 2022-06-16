@@ -66,8 +66,13 @@ class Employee(models.Model):
         related_name="employees",
     )
 
-    first_name = models.CharField(verbose_name=_("first name"), max_length=20)
-    last_name = models.CharField(verbose_name=_("last name"), max_length=20)
+    name = models.CharField(
+        verbose_name=_("name"),
+        max_length=100,
+        help_text=_(
+            "Make sure the name matches the name registered at, for example, CampusDetachering."
+        ),
+    )
     phone = models.CharField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("phone"), max_length=20, blank=True, null=True
     )
@@ -101,7 +106,25 @@ class Employee(models.Model):
 
     drivers_license = models.BooleanField(verbose_name=_("drivers license"))
 
+    WEEK_SUBSCRIPTION = "week"
+    WEEKEND_SUBSCRIPTION = "weekend"
+
+    PUBLIC_TRANSPORT_TYPES = (
+        (WEEK_SUBSCRIPTION, _("Week subscription")),
+        (WEEKEND_SUBSCRIPTION, _("Weekend subscription")),
+    )
+
+    public_transport = models.CharField(
+        verbose_name=_("public transport"),
+        max_length=10,
+        choices=PUBLIC_TRANSPORT_TYPES,
+        blank=True,
+        null=True,
+    )
+
     contract = models.BooleanField(verbose_name=_("contract"))
+
+    remarks = models.TextField(verbose_name=_("remarks"), blank=True, null=True)
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} ({self.time_period})"

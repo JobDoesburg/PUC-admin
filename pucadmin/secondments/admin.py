@@ -2,12 +2,11 @@ from autocompletefilter.admin import AutocompleteFilterMixin
 from autocompletefilter.filters import AutocompleteListFilter
 from django import forms
 from django.contrib import admin
-from django.contrib.admin import register, BooleanFieldListFilter, EmptyFieldListFilter
+from django.contrib.admin import register, EmptyFieldListFilter
 from django.db import models
 from django.db.models import Sum
 from django.db.models.functions import Coalesce
 from django.forms import CheckboxSelectMultiple
-from django.urls import reverse
 from django.utils.html import format_html
 from import_export.admin import ExportActionMixin
 from django.utils.translation import gettext_lazy as _
@@ -19,6 +18,11 @@ from secondments.models import (
     Daypart,
     StudyProgram,
     TimePeriod,
+)
+from secondments.resources import (
+    EmployeeResource,
+    SecondmentRequestResource,
+    SecondmentSchoolResource,
 )
 
 
@@ -95,31 +99,29 @@ class DaypartsFilter(admin.SimpleListFilter):
 
 @register(Employee)
 class EmployeeAdmin(ExportActionMixin, admin.ModelAdmin):
+    resource_class = EmployeeResource
     inlines = [SecondmentInline]
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
     }
     search_fields = (
-        "first_name",
-        "last_name",
+        "name",
         "study_program",
     )
     list_display = (
-        "first_name",
-        "last_name",
+        "name",
         "study_program",
         "study_year",
         "drivers_license",
+        "public_transport",
         "contract",
         "num_secondments",
         "hours_available",
         "hours_fulfilled",
         "hours_unfulfilled",
+        "remarks",
     )
-    list_display_links = (
-        "first_name",
-        "last_name",
-    )
+    list_display_links = ("name",)
     list_filter = (
         "time_period",
         "study_program",
@@ -127,6 +129,7 @@ class EmployeeAdmin(ExportActionMixin, admin.ModelAdmin):
         "courses",
         DaypartsFilter,
         "drivers_license",
+        "public_transport",
         "contract",
         ("secondments__school__school", AutocompleteListFilter),
     )
@@ -193,6 +196,7 @@ class RequestInline(admin.TabularInline):
 class SecondmentSchoolAdmin(
     AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdmin
 ):
+    resource_class = SecondmentSchoolResource
     inlines = [RequestInline]
     list_display = (
         "school",
@@ -202,6 +206,7 @@ class SecondmentSchoolAdmin(
         "num_requests",
         "num_requests_fulfilled",
         "num_requests_unfulfilled",
+        "remarks",
     )
     search_fields = (
         "school",
@@ -242,6 +247,7 @@ class SecondmentSchoolAdmin(
 class SecondmentRequestAdmin(
     AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdmin
 ):
+    resource_class = SecondmentRequestResource
     search_fields = (
         "school__school__name",
         "school__contact_person",
@@ -256,6 +262,7 @@ class SecondmentRequestAdmin(
         "_school",
         "candidates_url",
         "employee",
+        "remarks",
     )
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
