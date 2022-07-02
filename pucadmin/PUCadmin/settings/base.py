@@ -11,7 +11,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "sp",
+    "PUCadmin.sp_app_config.CustomSPAppConfig",
     "autocompletefilter",
     "import_export",
     "organisations",

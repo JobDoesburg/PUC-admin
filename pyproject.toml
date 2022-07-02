@@ -8,9 +8,9 @@ license = "MIT"
 [tool.poetry.dependencies]
 python = "^3.8"
 Django = "^4.0"
-django-saml2-auth = "^2.2.1"
 django-import-export = "^2.5.0"
 django-autocompletefilter = "^0.0.8"
+django-saml-sp = {git = "https://github.com/imsweb/django-saml-sp.git"}
 
 [tool.poetry.dev-dependencies]
 black = "19.10b0"
