@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     "django_bootstrap5",
     "frontoffice",
     "secondments",
+    "secondments_frontoffice",
 ]
 
 AUTHENTICATION_BACKENDS = [

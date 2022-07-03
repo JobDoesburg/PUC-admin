@@ -1,0 +1,19 @@
+{% load i18n django_bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% translate "Submit" as submit %}
+
+<style>
+    * {
+        border-radius: 0!important;
+    }
+    .row {
+        margin-right: 0!important;
+    }
+</style>
+
+<form method="post" id="form-container" class="form" enctype="multipart/form-data">{% csrf_token %}
+    {% bootstrap_form_errors form layout='horizontal' %}
+    {% bootstrap_form form layout='horizontal' %}
+    {% bootstrap_button submit button_type="submit" button_class="btn-primary" %}
+</form>
