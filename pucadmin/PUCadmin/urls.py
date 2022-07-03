@@ -27,4 +27,5 @@ urlpatterns = [
     path("admin-logout/", admin.site.logout, name="admin-logout"),
     path("admin/", admin.site.urls),
     path("frontoffice/", include("frontoffice.urls")),
+    path("secondments-frontoffice/", include("secondments_frontoffice.urls")),
 ]
