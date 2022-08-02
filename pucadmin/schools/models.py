@@ -56,7 +56,12 @@ class School(models.Model):
     correspondence_town = models.CharField(
         verbose_name=_("town (correspondence)"), max_length=50, blank=True, null=True
     )
-
+    preferred_address = models.CharField(
+        verbose_name=_("preferred address"),
+        max_length=1,
+        choices=(("1", _("location")), ("2", _("correspondence"))),
+        default="2",
+    )
     phone = models.CharField(
         verbose_name=_("phone"), max_length=15, blank=True, null=True
     )
