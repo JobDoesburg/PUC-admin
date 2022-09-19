@@ -163,7 +163,7 @@ class QuestionSubmissionForm(models.ModelForm):
         self.fields["sub_questions"].required = True
         self.fields["message"].required = True
         self.fields["message"].help_text = _(
-            "Try to be as specific as possible. The more clearly the question is asked, the more specifically the answer can be formulated and the faster you will receive an answer. Also clearly state your subject and research plan in the question. We can help you with the following issues: Choosing a specific topic; Arranging a meeting with an expert; Borrowing material from Radboud University; Conducting an experiment at Radboud University; Collection of literature. Of course, other questions are also welcome, we can always give advice."
+            "Try to be as specific as possible. The more clearly the question is asked, the more specifically the answer can be formulated and the faster you will receive an answer. Also clearly state your subject and research plan in the question. We can help you with the following issues: Choosing a specific topic; Arranging a meeting with an expert; Borrowing material from Radboud University; Conducting an experiment at Radboud University; Collection of literature. Of course, other questions are also welcome, we can always give advice. We're also happy to schedule a (videoconferencing) meeting to discuss things face-to-face."
         )
         self.fields["privacy_policy"].label = mark_safe(
             _(

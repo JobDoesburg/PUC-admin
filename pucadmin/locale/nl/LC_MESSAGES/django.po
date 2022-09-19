@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-07-03 12:28+0200\n"
-"PO-Revision-Date: 2022-02-17 12:51+0100\n"
+"POT-Creation-Date: 2022-09-19 12:15+0200\n"
+"PO-Revision-Date: 2022-09-19 12:17+0200\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.0\n"
+"X-Generator: Poedit 3.1.1\n"
 
 #: PUCadmin/admin.py:5 PUCadmin/admin.py:6
 msgid "PUC admin"
@@ -33,63 +33,63 @@ msgstr "Nederlands"
 msgid "English"
 msgstr "Engels"
 
-#: competitions/admin.py:72
+#: competitions/admin.py:69
 msgid "#submissions"
 msgstr "#inzendingen"
 
-#: competitions/admin.py:77
+#: competitions/admin.py:74
 msgid "registration open"
 msgstr "aanmelding open"
 
-#: competitions/admin.py:121 competitions/admin.py:281
+#: competitions/admin.py:118 competitions/admin.py:278
 #: competitions/models.py:109 questions/admin.py:120 questions/models.py:48
-#: schools/models.py:83 schools/models.py:97 secondments/admin.py:291
+#: schools/models.py:88 schools/models.py:102 secondments/admin.py:291
 #: secondments/models.py:135 secondments/models.py:147
 #: secondments/models.py:179
 msgid "school"
 msgstr "school"
 
-#: competitions/admin.py:127 competitions/admin.py:291
+#: competitions/admin.py:124 competitions/admin.py:288
 #: competitions/models.py:53 competitions/models.py:86
 msgid "competition"
 msgstr "wedstrijd"
 
-#: competitions/admin.py:137 competitions/models.py:91
+#: competitions/admin.py:134 competitions/models.py:91
 msgid "title"
 msgstr "titel"
 
-#: competitions/admin.py:143 competitions/models.py:117
+#: competitions/admin.py:140 competitions/models.py:117
 msgid "nominated"
 msgstr "genomineerd"
 
-#: competitions/admin.py:150 competitions/models.py:126
+#: competitions/admin.py:147 competitions/models.py:126
 msgid "prize"
 msgstr "prijs"
 
-#: competitions/admin.py:156 competitions/models.py:95
+#: competitions/admin.py:153 competitions/models.py:95
 #: competitions/models.py:268 organisations/models.py:38 questions/models.py:17
 #: questions/models.py:58 secondments/models.py:187
 msgid "course"
 msgstr "vak"
 
-#: competitions/admin.py:221
+#: competitions/admin.py:218
 msgid "Nomimation"
 msgstr "Nominatie"
 
-#: competitions/admin.py:227
+#: competitions/admin.py:224
 msgid "Jury"
 msgstr "Jury"
 
-#: competitions/admin.py:263 competitions/models.py:83 questions/admin.py:112
-#: questions/models.py:42 schools/models.py:94
+#: competitions/admin.py:260 competitions/models.py:83 questions/admin.py:112
+#: questions/models.py:42 schools/models.py:99
 msgid "created at"
 msgstr "aangemaakt op"
 
-#: competitions/admin.py:269
+#: competitions/admin.py:266
 msgid "authors"
 msgstr "auteurs"
 
-#: competitions/admin.py:274 competitions/models.py:284
+#: competitions/admin.py:271 competitions/models.py:284
 msgid "supervisors"
 msgstr "begeleiders"
 
@@ -212,7 +212,7 @@ msgstr "Voer postcode in als: ‘1234 AB’"
 msgid "town"
 msgstr "plaatsnaam"
 
-#: competitions/models.py:234 competitions/models.py:260 schools/models.py:61
+#: competitions/models.py:234 competitions/models.py:260 schools/models.py:66
 #: secondments/models.py:77 secondments/models.py:156
 msgid "phone"
 msgstr "telefoon"
@@ -282,7 +282,8 @@ msgid ""
 "topic; Arranging a meeting with an expert; Borrowing material from Radboud "
 "University; Conducting an experiment at Radboud University; Collection of "
 "literature. Of course, other questions are also welcome, we can always give "
-"advice."
+"advice. We're also happy to schedule a (videoconferencing) meeting to "
+"discuss things face-to-face."
 msgstr ""
 "Probeer zo specifiek mogelijk te zijn. Hoe duidelijker de vraag is gesteld, "
 "hoe specifieker het antwoord geformuleerd kan worden en hoe sneller je "
@@ -291,7 +292,8 @@ msgstr ""
 "kiezen van een onderwerp; Het regelen van een gesprek met een expert; Het "
 "lenen van materiaal van de Radboud Universiteit; Het uitvoeren van een "
 "experiment op de Radboud Universiteit; Het verzamelen van literatuur. "
-"Natuurlijk zijn andere vragen ook welkom, we kunnen altijd advies geven."
+"Natuurlijk zijn andere vragen ook welkom, we kunnen altijd advies geven. We "
+"plannen ook graag een (videobel)afspraak."
 
 #: frontoffice/forms.py:170
 #, python-format
@@ -362,7 +364,7 @@ msgstr "organisaties"
 msgid "government slugs"
 msgstr "overheid slugs"
 
-#: organisations/models.py:39 organisations/models.py:55 schools/models.py:66
+#: organisations/models.py:39 organisations/models.py:55 schools/models.py:71
 #: secondments/models.py:94
 msgid "courses"
 msgstr "vakken"
@@ -457,7 +459,7 @@ msgstr "Kan verantwoordelijke van vragen wijzigen"
 msgid "Question %(id)s (%(course)s, %(created)s)"
 msgstr "Vraag %(id)s (%(course)s, %(created)s)"
 
-#: questions/models.py:170 questions/models.py:171
+#: questions/models.py:170 questions/models.py:171 schools/models.py:62
 msgid "correspondence"
 msgstr "correspondentie"
 
@@ -524,19 +526,27 @@ msgstr "huisnummer (correspondentie)"
 msgid "town (correspondence)"
 msgstr "plaatsnaam (correspondentie)"
 
-#: schools/models.py:63
+#: schools/models.py:60
+msgid "preferred address"
+msgstr "voorkeursadres"
+
+#: schools/models.py:62
+msgid "location"
+msgstr "locatie"
+
+#: schools/models.py:68
 msgid "url"
 msgstr "url"
 
-#: schools/models.py:72
+#: schools/models.py:77
 msgid "dissolved"
 msgstr "opgeheven"
 
-#: schools/models.py:75
+#: schools/models.py:80
 msgid "in service region"
 msgstr "in servicegebied"
 
-#: schools/models.py:77
+#: schools/models.py:82
 msgid ""
 "Is this school considered to be located within our service region (normally, "
 "this is determined based on zip code)?"
@@ -544,19 +554,19 @@ msgstr ""
 "Valt deze school binnen ons servicegebied (normaliter is dit gebaseerd op "
 "postcode)?"
 
-#: schools/models.py:84 secondments/models.py:136
+#: schools/models.py:89 secondments/models.py:136
 msgid "schools"
 msgstr "scholen"
 
-#: schools/models.py:102 schools/models.py:105
+#: schools/models.py:107 schools/models.py:110
 msgid "remark"
 msgstr "opmerking"
 
-#: schools/models.py:106 secondments/models.py:127 secondments/models.py:214
+#: schools/models.py:111 secondments/models.py:127 secondments/models.py:214
 msgid "remarks"
 msgstr "opmerkingen"
 
-#: schools/models.py:109
+#: schools/models.py:114
 #, python-format
 msgid "Remark on %(school)s at %(created)s."
 msgstr "Opmerking bij %(school)s op %(created)s."
@@ -705,7 +715,7 @@ msgstr "Hoe lang doe je deze studie?"
 
 #: secondments_frontoffice/forms.py:35
 msgid "What courses are you interested in to teach?"
-msgstr "In welke vakken ben je geïnteresseerd om te ondersteunen"
+msgstr "In welke vakken ben je geïnteresseerd om te ondersteunen?"
 
 #: secondments_frontoffice/forms.py:36
 msgid "How many hours are you available per week?"
