@@ -12,12 +12,12 @@ from schools.models import School
 
 
 class CourseAssignee(models.Model):
-    course = models.OneToOneField(
+    course = models.ForeignKey(
         Course,
         verbose_name=_("course"),
         on_delete=models.CASCADE,
-        related_name="assignee",
-        related_query_name="assignee",
+        related_name="assignees",
+        related_query_name="assignees",
     )
     assignee = models.ForeignKey(
         get_user_model(),
@@ -103,8 +103,8 @@ class Question(models.Model):
     def save(
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
-        if not self.assignee and self.course and hasattr(self.course, "assignee"):
-            self.assignee = self.course.assignee.assignee
+        if not self.assignee and self.course and hasattr(self.course, "assignees"):
+            self.assignee = self.course.assignees.all().first().assignee
 
         try:
             old_assignee = Question.objects.get(pk=self.pk).assignee
