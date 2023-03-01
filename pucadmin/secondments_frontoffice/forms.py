@@ -27,17 +27,28 @@ class EmployeeRegistrationForm(models.ModelForm):
             "dayparts": CheckboxSelectMultiple,
         }
 
-
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields["study_program"].help_text = _("What is your current study program?")
-        self.fields["study_year"].help_text = _("For how many years have you been studying this study program?")
-        self.fields["courses"].help_text = _("What courses are you interested in to teach?")
-        self.fields["hours_available"].help_text = _("How many hours are you available per week?")
+        self.fields["study_program"].help_text = _(
+            "What is your current study program?"
+        )
+        self.fields["study_year"].help_text = _(
+            "For how many years have you been studying this study program?"
+        )
+        self.fields["courses"].help_text = _(
+            "What courses are you interested in to teach?"
+        )
+        self.fields["hours_available"].help_text = _(
+            "How many hours are you available per week?"
+        )
         self.fields["dayparts"].help_text = _("What dayparts are you available?")
-        self.fields["public_transport"].help_text = _("Do you have a public transport subscription?")
+        self.fields["public_transport"].help_text = _(
+            "Do you have a public transport subscription?"
+        )
         self.fields["drivers_license"].help_text = _("Do you have a drivers license?")
-        self.fields["contract"].help_text = _("Do you already have a contract at CampusDetachering?")
+        self.fields["contract"].help_text = _(
+            "Do you already have a contract at CampusDetachering?"
+        )
         self.fields["time_period"].initial = TimePeriod.objects.last()
         self.fields["time_period"].initial = TimePeriod.objects.last()
         self.fields["email"].required = True

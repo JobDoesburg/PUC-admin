@@ -70,6 +70,7 @@ class QuestionAdmin(AutocompleteFilterMixin, admin.ModelAdmin):
                     "research_question",
                     "sub_questions",
                     "message",
+                    "contact_method",
                     "send_email",
                     "tags",
                 )

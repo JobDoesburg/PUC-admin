@@ -5,9 +5,6 @@ from django.contrib.admin import register
 from django.urls import reverse
 from django.utils.html import format_html
 from import_export.admin import (
-    ExportMixin,
-    ImportMixin,
-    ImportExportMixin,
     ExportActionMixin,
 )
 from django.utils.translation import gettext_lazy as _
@@ -221,10 +218,23 @@ class SubmissionAdmin(AutocompleteFilterMixin, ExportActionMixin, admin.ModelAdm
             _("Nomimation"),
             {
                 "classes": ("collapse",),
-                "fields": ("nominated", "nomination_score", "nomination_report",),
+                "fields": (
+                    "nominated",
+                    "nomination_score",
+                    "nomination_report",
+                ),
             },
         ),
-        (_("Jury"), {"classes": ("collapse",), "fields": ("prize", "jury_report",),},),
+        (
+            _("Jury"),
+            {
+                "classes": ("collapse",),
+                "fields": (
+                    "prize",
+                    "jury_report",
+                ),
+            },
+        ),
     )
     readonly_fields = ("created_at",)
 

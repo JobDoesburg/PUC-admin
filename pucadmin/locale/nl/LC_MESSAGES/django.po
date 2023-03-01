@@ -6,8 +6,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-09-19 12:15+0200\n"
-"PO-Revision-Date: 2022-09-19 12:17+0200\n"
+"POT-Creation-Date: 2023-03-01 09:30+0100\n"
+"PO-Revision-Date: 2023-03-01 09:33+0100\n"
 "Last-Translator: Job Doesburg <job.doesburg@gmail.com>\n"
 "Language-Team: \n"
 "Language: nl\n"
@@ -15,7 +15,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #: PUCadmin/admin.py:5 PUCadmin/admin.py:6
 msgid "PUC admin"
@@ -42,7 +42,7 @@ msgid "registration open"
 msgstr "aanmelding open"
 
 #: competitions/admin.py:118 competitions/admin.py:278
-#: competitions/models.py:109 questions/admin.py:120 questions/models.py:48
+#: competitions/models.py:109 questions/admin.py:121 questions/models.py:48
 #: schools/models.py:88 schools/models.py:102 secondments/admin.py:291
 #: secondments/models.py:135 secondments/models.py:147
 #: secondments/models.py:179
@@ -80,7 +80,7 @@ msgstr "Nominatie"
 msgid "Jury"
 msgstr "Jury"
 
-#: competitions/admin.py:260 competitions/models.py:83 questions/admin.py:112
+#: competitions/admin.py:260 competitions/models.py:83 questions/admin.py:113
 #: questions/models.py:42 schools/models.py:99
 msgid "created at"
 msgstr "aangemaakt op"
@@ -183,12 +183,12 @@ msgid "This course is not managed by the organisation of this competition."
 msgstr "Dit vak wordt niet beheerd door de organisatie van deze wedstrijd."
 
 #: competitions/models.py:210 competitions/models.py:257
-#: questions/models.py:146
+#: questions/models.py:156
 msgid "first name"
 msgstr "voornaam"
 
 #: competitions/models.py:211 competitions/models.py:258
-#: questions/models.py:147
+#: questions/models.py:157
 msgid "last name"
 msgstr "achternaam"
 
@@ -217,16 +217,17 @@ msgstr "plaatsnaam"
 msgid "phone"
 msgstr "telefoon"
 
-#: competitions/models.py:237 competitions/models.py:263 questions/admin.py:132
-#: questions/models.py:149 secondments/models.py:80 secondments/models.py:159
+#: competitions/models.py:237 competitions/models.py:263 questions/admin.py:133
+#: questions/models.py:75 questions/models.py:159 secondments/models.py:80
+#: secondments/models.py:159
 msgid "email"
 msgstr "e-mail"
 
-#: competitions/models.py:249 questions/models.py:161
+#: competitions/models.py:249 questions/models.py:171
 msgid "student"
 msgstr "leerling"
 
-#: competitions/models.py:250 questions/admin.py:137 questions/models.py:162
+#: competitions/models.py:250 questions/admin.py:138 questions/models.py:172
 msgid "students"
 msgstr "leerlingen"
 
@@ -238,7 +239,7 @@ msgstr "begeleider"
 msgid "The title of your research"
 msgstr "De titel van jullie onderzoek"
 
-#: frontoffice/forms.py:41 frontoffice/forms.py:160
+#: frontoffice/forms.py:41 frontoffice/forms.py:161
 msgid "The course to which your research relates most"
 msgstr "Het vak waarop jullie onderzoek de meeste betrekking heeft"
 
@@ -250,7 +251,7 @@ msgstr "Geef een korte samenvatting van jullie onderzoek (50 tot 300 woorden)"
 msgid "Preferably PDF, or ZIP with additional attachments"
 msgstr "Bij voorkeur PDF, of ZIP met bijlagen"
 
-#: frontoffice/forms.py:52 frontoffice/forms.py:157
+#: frontoffice/forms.py:52 frontoffice/forms.py:158
 msgid "School"
 msgstr "School"
 
@@ -259,21 +260,22 @@ msgstr "School"
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
 "the purpose of participation in the contest. The personal data will not be "
-"stored after processing. I agree with the <a href=\"%s\" target=\"_blank"
-"\">privacy regulations of Radboud University</a> and with the processing of "
-"the data provided by me for the purposes described above."
+"stored after processing. I agree with the <a href=\"%s\" "
+"target=\"_blank\">privacy regulations of Radboud University</a> and with the "
+"processing of the data provided by me for the purposes described above."
 msgstr ""
 "Het Radboud Pre-University College of Science verwerkt bovenstaande gegevens "
 "ten behoeve van deelname aan de wedstrijd. De persoonsgegevens worden na "
-"verwerking niet bewaard. Ik ga akkoord met het <a href=\"%s\" target=\"_blank"
-"\">privacyreglement van</a> de Radboud Universiteit en met de verwerking van "
-"de door mij verstrekte gegevens voor de hierboven beschreven doeleinden."
+"verwerking niet bewaard. Ik ga akkoord met het <a href=\"%s\" "
+"target=\"_blank\">privacyreglement van</a> de Radboud Universiteit en met de "
+"verwerking van de door mij verstrekte gegevens voor de hierboven beschreven "
+"doeleinden."
 
-#: frontoffice/forms.py:152
+#: frontoffice/forms.py:153
 msgid "Expected end date"
 msgstr "Verwachtte einddatum"
 
-#: frontoffice/forms.py:166
+#: frontoffice/forms.py:167
 msgid ""
 "Try to be as specific as possible. The more clearly the question is asked, "
 "the more specifically the answer can be formulated and the faster you will "
@@ -295,7 +297,11 @@ msgstr ""
 "Natuurlijk zijn andere vragen ook welkom, we kunnen altijd advies geven. We "
 "plannen ook graag een (videobel)afspraak."
 
-#: frontoffice/forms.py:170
+#: frontoffice/forms.py:171
+msgid "How would you like us to contact you?"
+msgstr "Hoe wil je onze reactie?"
+
+#: frontoffice/forms.py:175
 #, python-format
 msgid ""
 "The Radboud Pre-University College of Science processes the above data for "
@@ -311,7 +317,7 @@ msgstr ""
 "a> en met de verwerking van de door mij verstrekte gegevens voor de "
 "hierboven beschreven doeleinden."
 
-#: frontoffice/forms.py:176
+#: frontoffice/forms.py:181
 msgid "DD-MM-YYYY. When do you expect to be finished with your research."
 msgstr "DD-MM-JJJJ. Wanneer verwacht je klaar te zijn met het onderzoek."
 
@@ -381,7 +387,7 @@ msgstr ""
 "Notificaties voor nieuwe vragen voor dit vak worden naar dit adres "
 "verstuurd. Indien leeg gelaten wordt het standaard e-mailadres gebruikt."
 
-#: questions/admin.py:26 questions/models.py:24 questions/models.py:75
+#: questions/admin.py:26 questions/models.py:24 questions/models.py:85
 msgid "assignee"
 msgstr "verantwoordelijke"
 
@@ -393,7 +399,7 @@ msgstr "Administratief"
 msgid "Question"
 msgstr "Vraag"
 
-#: questions/admin.py:128
+#: questions/admin.py:129
 msgid "Send email to students"
 msgstr "Verstuur e-mail naar leerlingen"
 
@@ -422,52 +428,60 @@ msgstr "onderzoeksvraag"
 msgid "sub questions"
 msgstr "deelvragen"
 
-#: questions/models.py:69 questions/models.py:181
+#: questions/models.py:69 questions/models.py:191
 msgid "message"
 msgstr "bericht"
 
-#: questions/models.py:83
+#: questions/models.py:72
+msgid "contact method"
+msgstr "contactmethode"
+
+#: questions/models.py:76
+msgid "video call"
+msgstr "videocall"
+
+#: questions/models.py:93
 msgid "completed"
 msgstr "afgerond"
 
-#: questions/models.py:85
+#: questions/models.py:95
 msgid "expected end date"
 msgstr "verwachtte einddatum"
 
-#: questions/models.py:88 questions/models.py:154 questions/models.py:176
+#: questions/models.py:98 questions/models.py:164 questions/models.py:186
 msgid "question"
 msgstr "vraag"
 
-#: questions/models.py:89
+#: questions/models.py:99
 msgid "questions"
 msgstr "vragen"
 
-#: questions/models.py:91
+#: questions/models.py:101
 msgid "Can view questions not assigned to that user"
 msgstr "Kan vragen bekijken die niet toegewezen zijn aan gebruiker"
 
-#: questions/models.py:92
+#: questions/models.py:102
 msgid "Can change the completion status of questions"
 msgstr "Kan afrondingsstatus van vragen wijzigen"
 
-#: questions/models.py:93
+#: questions/models.py:103
 msgid "Can change the assignee of questions"
 msgstr "Kan verantwoordelijke van vragen wijzigen"
 
-#: questions/models.py:97
+#: questions/models.py:107
 #, python-format
 msgid "Question %(id)s (%(course)s, %(created)s)"
 msgstr "Vraag %(id)s (%(course)s, %(created)s)"
 
-#: questions/models.py:170 questions/models.py:171 schools/models.py:62
+#: questions/models.py:180 questions/models.py:181 schools/models.py:62
 msgid "correspondence"
 msgstr "correspondentie"
 
-#: questions/models.py:173
+#: questions/models.py:183
 msgid "date"
 msgstr "datum"
 
-#: questions/models.py:184
+#: questions/models.py:194
 #, python-format
 msgid "Correspondence for %(question)s on %(date)s."
 msgstr "Correspondentie voor %(question)s op %(date)s."
@@ -477,8 +491,6 @@ msgid "active graduates"
 msgstr "actieve afstudeerders"
 
 #: schools/admin.py:22
-#, fuzzy
-#| msgid "candidates"
 msgid "Graduates"
 msgstr "Afstudeerders"
 

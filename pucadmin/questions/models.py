@@ -60,13 +60,25 @@ class Question(models.Model):
         related_name="questions",
         related_query_name="questions",
     )
-    research_question = models.TextField(  # django-doctor: disable=nullable-string-field
-        verbose_name=_("research question"), blank=True, null=True
+    research_question = (
+        models.TextField(  # django-doctor: disable=nullable-string-field
+            verbose_name=_("research question"), blank=True, null=True
+        )
     )
     sub_questions = models.TextField(  # django-doctor: disable=nullable-string-field
         verbose_name=_("sub questions"), blank=True, null=True
     )
     message = models.TextField(verbose_name=_("message"))
+
+    contact_method = models.CharField(
+        verbose_name=_("contact method"),
+        max_length=100,
+        choices=(
+            ("email", _("email")),
+            ("video_call", _("video call")),
+        ),
+        default="email",
+    )
 
     tags = TaggableManager(blank=True)
 
@@ -104,7 +116,10 @@ class Question(models.Model):
         self, force_insert=False, force_update=False, using=None, update_fields=None
     ):
         if not self.assignee and self.course and hasattr(self.course, "assignees"):
-            self.assignee = self.course.assignees.all().first().assignee
+            try:
+                self.assignee = self.course.assignees.all().first().assignee
+            except AttributeError:
+                pass
 
         try:
             old_assignee = Question.objects.get(pk=self.pk).assignee

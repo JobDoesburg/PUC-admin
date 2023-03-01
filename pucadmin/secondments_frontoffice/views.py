@@ -6,6 +6,7 @@ from .forms import (
     EmployeeRegistrationForm,
 )
 
+
 class EmployeeRegistrationView(CreateView):
     model = Employee
     form_class = EmployeeRegistrationForm

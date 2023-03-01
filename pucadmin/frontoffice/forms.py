@@ -27,7 +27,9 @@ class SubmissionForm(models.ModelForm):
             "school_text",
         ]
 
-    privacy_policy = forms.BooleanField(required=True,)
+    privacy_policy = forms.BooleanField(
+        required=True,
+    )
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -139,15 +141,30 @@ class QuestionSubmissionForm(models.ModelForm):
             "research_question",
             "sub_questions",
             "message",
+            "contact_method",
             "expected_end_date",
         ]
         widgets = {
-            "research_question": forms.Textarea(attrs={"rows": 2,}),
-            "sub_questions": forms.Textarea(attrs={"rows": 5,}),
-            "message": forms.Textarea(attrs={"rows": 8,}),
+            "research_question": forms.Textarea(
+                attrs={
+                    "rows": 2,
+                }
+            ),
+            "sub_questions": forms.Textarea(
+                attrs={
+                    "rows": 5,
+                }
+            ),
+            "message": forms.Textarea(
+                attrs={
+                    "rows": 8,
+                }
+            ),
         }
 
-    privacy_policy = forms.BooleanField(required=True,)
+    privacy_policy = forms.BooleanField(
+        required=True,
+    )
 
     expected_end_date = forms.DateField(label=_("Expected end date"))
 
@@ -164,6 +181,10 @@ class QuestionSubmissionForm(models.ModelForm):
         self.fields["message"].required = True
         self.fields["message"].help_text = _(
             "Try to be as specific as possible. The more clearly the question is asked, the more specifically the answer can be formulated and the faster you will receive an answer. Also clearly state your subject and research plan in the question. We can help you with the following issues: Choosing a specific topic; Arranging a meeting with an expert; Borrowing material from Radboud University; Conducting an experiment at Radboud University; Collection of literature. Of course, other questions are also welcome, we can always give advice. We're also happy to schedule a (videoconferencing) meeting to discuss things face-to-face."
+        )
+        self.fields["contact_method"].required = True
+        self.fields["contact_method"].help_text = _(
+            "How would you like us to contact you?"
         )
         self.fields["privacy_policy"].label = mark_safe(
             _(

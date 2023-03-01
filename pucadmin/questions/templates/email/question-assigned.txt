@@ -15,6 +15,11 @@ Sub questions:
     {{ question.sub_questions }}
 
 
+Preferred contact method:
+
+    {{ question.contact_method }}
+
+
 Do not forget to mark this question as `completed` when it has been answered!
 
 This email was sent automatically by puc-admin.science.ru.nl

@@ -4,7 +4,6 @@ from .models import Submission, Student, Supervisor
 
 
 class SubmissionResource(resources.ModelResource):
-
     course = fields.Field(attribute="course__slug")
     school = fields.Field(attribute="school__name")
     authors = fields.Field(attribute="authors_text")
@@ -91,7 +90,6 @@ class StudentResource(resources.ModelResource):
 
 
 class SupervisorResource(StudentResource):
-
     school_name = fields.Field(attribute="submission__school__name")
     school_short_name = fields.Field(attribute="submission__school__short_name")
     school_correspondence_street = fields.Field(

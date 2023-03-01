@@ -53,7 +53,14 @@ class SecondmentInline(admin.TabularInline):
 
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
-        models.TextField: {"widget": forms.Textarea(attrs={"rows": 3, "cols": 20,})},
+        models.TextField: {
+            "widget": forms.Textarea(
+                attrs={
+                    "rows": 3,
+                    "cols": 20,
+                }
+            )
+        },
     }
 
 
@@ -168,7 +175,14 @@ class RequestInline(admin.TabularInline):
     autocomplete_fields = ("employee",)
     formfield_overrides = {
         models.ManyToManyField: {"widget": CheckboxSelectMultiple},
-        models.TextField: {"widget": forms.Textarea(attrs={"rows": 3, "cols": 20,})},
+        models.TextField: {
+            "widget": forms.Textarea(
+                attrs={
+                    "rows": 3,
+                    "cols": 20,
+                }
+            )
+        },
     }
 
     fields = (
