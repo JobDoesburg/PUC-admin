@@ -2,15 +2,14 @@
 
 ## Deploying
 0. Clone this repo in `/www/pucadmin/live/repo` (on the science filesystem)
-1. Create python 3.8 venv with `/www/pucadmin/live/repo/env`
-2. Install the dependencies. Use `poetry export -f requirements.txt --output requirements.txt` to export the requirements to a `requirements.txt` file.
-3. Create `/www/pucadmin/live/repo/website/PUCadmin/settings/production.py` and `/www/pucadmin/live/repo/website/PUCadmin/settings/management.py` based on the `.example` files (set secret key and passwords).
-4. Run the `deploy.sh` script. This script can be run to update, too.
+1. `poetry install` to create the venv.
+2. Create `/www/pucadmin/live/repo/website/PUCadmin/settings/production.py` and `/www/pucadmin/live/repo/website/PUCadmin/settings/management.py` based on the `.example` files (set secret key and passwords).
+3. Run the `deploy.sh` script. This script can be run to update, too.
 
 Important notices:
 - The science filesystem (accessed via lilo) is mounted in a different way then on lilo. Make sure to use relative paths.
 - The database credentials for differ for lilo or the webserver. Therefore, management commands from lilo must be run with `PUCadmin.settings.management` (which is done automatically by `manage.py`).
-- To run management commands on production, first activate the python env with `source env/bin/activate`.
+- To run management commands on production, first activate the python env with `poetry shell`.
 - Note that the webserver does not have write permissions, except for the `writable/` folder. `manage.py collectstatic` must therefore be run explicitly and the media folder is located in there.
 - Via `/admin-login`, it is possible to bypass SAML login (for example for first installation when SAML has not yet been set up).
 

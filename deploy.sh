@@ -2,7 +2,8 @@
 
 cd "${0%/*}"
 git pull
-source env/bin/activate
+poetry shell
+poetry install
 pucadmin/manage.py migrate
 pucadmin/manage.py collectstatic --noinput
 touch RELOAD

@@ -10,10 +10,11 @@ python = "^3.8"
 Django = "^4.0"
 django-import-export = "^3.1.0"
 django-autocompletefilter = "^0.0.8"
-django-saml-sp = {git = "https://github.com/imsweb/django-saml-sp.git"}
 django-taggit = "^3.1.0"
 taggit-selectize = "^2.11.0"
 django-bootstrap5 = "^22.2"
+django-saml-sp = {git = "https://github.com/imsweb/django-saml-sp", rev = "main"}
+mysqlclient = "^2.1.1"
 
 [tool.poetry.dev-dependencies]
 black = "23.1.0"
